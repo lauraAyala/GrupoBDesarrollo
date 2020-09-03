@@ -6,7 +6,11 @@ plugins {
 	war
 	kotlin("jvm") version "1.3.72"
 	kotlin("plugin.spring") version "1.3.72"
+
 }
+
+
+
 
 group = "ar.edu.unq.desapp.grupoB"
 version = "0.0.1-SNAPSHOT"

@@ -4,4 +4,4 @@ script:
      gradle clean build
 
 jdk:
-  –oraclejdk1.8
+  –oraclejdk8

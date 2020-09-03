@@ -4,4 +4,4 @@ script:
   - ./gradlew build --scan -s
 
 jdk:
-  –oraclejdk8
+  –oraclejdk1.8

@@ -1,7 +1,7 @@
 language: java
 
 script:
-  - ./gradlew build --scan -s
+     gradle clean build
 
 jdk:
   –oraclejdk1.8

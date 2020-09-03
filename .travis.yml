@@ -1,7 +1,9 @@
 language: java
+install: skip
+
+os: linux
+dist: trusty
+jdk: oraclejdk8
 
 script:
-     gradle clean build
-
-jdk:
-  –oraclejdk8
+  - ./gradlew build --scan -s

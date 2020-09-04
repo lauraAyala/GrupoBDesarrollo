@@ -1,8 +1,8 @@
 language: java
 
-before_install:
- – chmod +x gradlew
- -gradle wrapper --gradle-version 4.2
-
-jdk:
-  –openjdk8
+install: skip
+os: linux
+dist: trusty
+jdk: oraclejdk8
+script:
+  - ./gradlew build --scan -s

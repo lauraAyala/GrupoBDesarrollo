@@ -1,7 +1,6 @@
 language: java
 
-script: gradle test
-
+script:  - ./gradlew build --scan -s
 jdk:
   - oraclejdk11
 

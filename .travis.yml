@@ -2,6 +2,6 @@ language: java
 
 script: gradle clean test
 jdk:
-  - oraclejdk8
+  - oraclejdk11
 
 

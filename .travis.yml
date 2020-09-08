@@ -2,8 +2,7 @@ language: java
 before_script: 
   cd bakend-desapp-apl
 script:  
- - gradle build --scan -s
-
+ - gradle build
 jdk: 
  - oraclejdk11
 

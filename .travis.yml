@@ -1,7 +1,5 @@
 language: java
-
 script:  - ./gradlew build --scan -s
-jdk:
-  - oraclejdk8
+jdk: - oraclejdk8
 
 

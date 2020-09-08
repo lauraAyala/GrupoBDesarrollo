@@ -3,6 +3,6 @@ script:
  - cd bakend-desapp-apl && ./gradlew build --scan -s
 
 jdk: 
- - oraclejdk8
+ - oraclejdk11
 
 

@@ -1,6 +1,8 @@
 language: java
 script:  
  - cd bakend-desapp-apl && ./gradlew build --scan -s
-jdk: - oraclejdk8
+
+jdk: 
+ - oraclejdk8
 
 

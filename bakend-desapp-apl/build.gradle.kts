@@ -28,6 +28,8 @@ dependencies {
 		testImplementation("junit:junit:4.12")
 	}
 
+	implementation("org.jscience:jscience:4.3.1")
+	
 }
 
 tasks.withType<Test> {

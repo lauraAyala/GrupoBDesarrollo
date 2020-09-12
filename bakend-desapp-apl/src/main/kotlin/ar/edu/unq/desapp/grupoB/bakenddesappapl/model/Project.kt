@@ -1,8 +1,8 @@
 package ar.edu.unq.desapp.grupoB.bakenddesappapl.model
 
-class Proyecto {
+class Project {
 
-    var nameProyect : String? = null
+    var nameProject : String? = null
     var factor : Int? = null
     var porcentageMinClouse : Int? = null
     var dateInit : String? = null
@@ -10,7 +10,7 @@ class Proyecto {
 
     constructor(name:String, factorP:Int, porcentage:Int, dateI:String, dateF:String){
 
-        this.nameProyect = name
+        this.nameProject = name
         this.factor = factorP
         this.porcentageMinClouse = porcentage
         this.dateInit = dateI

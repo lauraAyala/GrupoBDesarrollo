@@ -84,7 +84,7 @@ class Aplication() {
 
         for(p: Project in this.listProjects){
 
-            if (p.dateEnd!!.month <= LocalDate.now().month){
+            if (p.dateEnd!!.month == LocalDate.now().month){
 
                 projects.add(p)
             }

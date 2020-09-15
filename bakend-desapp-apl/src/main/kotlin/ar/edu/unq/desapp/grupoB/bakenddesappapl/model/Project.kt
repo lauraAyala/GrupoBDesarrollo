@@ -1,19 +1,24 @@
 package ar.edu.unq.desapp.grupoB.bakenddesappapl.model
 
+import java.time.LocalDate
+
 class Project {
 
     var nameProject : String? = null
-    var factor : Int? = null
+    var factor : Int = 0
     var porcentageMinClouse : Int? = null
-    var dateInit : String? = null
-    var dateEnd : String? = null
+    var dateInit : LocalDate? = null
+    var dateEnd : LocalDate? = null
+    var location : Location? = null
+    var users :  ArrayList<User> = ArrayList()
 
-    constructor(name:String, factorP:Int, porcentage:Int, dateI:String, dateF:String){
+
+    constructor(name:String, porcentage:Int, dateI:LocalDate, locationP: Location){
 
         this.nameProject = name
-        this.factor = factorP
         this.porcentageMinClouse = porcentage
         this.dateInit = dateI
-        this.dateEnd = dateF
+        this.location = locationP
     }
+
 }

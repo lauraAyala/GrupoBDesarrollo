@@ -7,6 +7,7 @@ class User {
     var password : String ? = null
     var isAdmin : Boolean ? = null
     var nickName : String ? = null
+    var listPoints: ArrayList<Int> = ArrayList()
 
     constructor(name: String, mail: String, pass: String, admin: Boolean, nick: String){
 

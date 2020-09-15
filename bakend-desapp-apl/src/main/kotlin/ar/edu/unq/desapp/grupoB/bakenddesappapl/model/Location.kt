@@ -6,7 +6,8 @@ class Location {
     var province: String? = null
     var population : Int? = null
     var stateConective : Boolean? = null
-    var listDonation : String? = null
+    var listDonation : ArrayList<Donor> = ArrayList()
+    var collection : Int = 0
 
     constructor(nameLocation:String, provinceL:String, populationL: Int, conective:Boolean){
 

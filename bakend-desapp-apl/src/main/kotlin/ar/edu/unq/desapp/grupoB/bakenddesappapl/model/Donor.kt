@@ -1,4 +1,4 @@
-package kotlin.ar.edu.unq.desapp.grupoB.bakenddesappapl.model
+package ar.edu.unq.desapp.grupoB.bakenddesappapl.model
 
 class Donor {
     var nickName : String ? = null

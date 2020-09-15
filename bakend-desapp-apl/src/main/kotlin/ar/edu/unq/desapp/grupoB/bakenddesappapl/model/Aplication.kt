@@ -1,10 +1,9 @@
-package kotlin.ar.edu.unq.desapp.grupoB.bakenddesappapl.model
+package ar.edu.unq.desapp.grupoB.bakenddesappapl.model
 
-import ar.edu.unq.desapp.grupoB.bakenddesappapl.model.Project
 
 class Aplication {
-    val listOfOpenProjects = ArrayList<Project>()
-    val listOfProjectsToBeCompleted = ArrayList<Project>()
+    var listOfOpenProjects = ArrayList<Project>()
+    var listOfProjectsToBeCompleted = ArrayList<Project>()
 }
 
 //fun userRegister(user : User){}

@@ -17,7 +17,7 @@ class ProjectTests {
     fun setUp() {
         dateI = LocalDate.of(2020, 5, 1)
         quilmes = Location("Quilmes", "Buenos Aires", 10000, false)
-        project = Project("ProjectInitial", 10, dateI!!, quilmes!!)
+        project = Project("ProjectInitial", 10, dateI!!, LocalDate.of(2020,7,8),quilmes!!)
     }
 
     @Test

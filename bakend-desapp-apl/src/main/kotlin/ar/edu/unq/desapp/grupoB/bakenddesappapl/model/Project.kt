@@ -10,15 +10,17 @@ class Project {
     var dateInit : LocalDate? = null
     var dateEnd : LocalDate? = null
     var location : Location? = null
-    var users :  ArrayList<User> = ArrayList()
+    var numberOfInhabitants : Int = 0
 
 
-    constructor(name:String, porcentage:Int, dateI:LocalDate, locationP: Location){
+    constructor(name: String, porcentage: Int, dateI: LocalDate, dateE: LocalDate, locationP: Location){
 
         this.nameProject = name
         this.porcentageMinClouse = porcentage
         this.dateInit = dateI
+        this.dateEnd = dateE
         this.location = locationP
+        this.numberOfInhabitants = locationP.population!!
     }
 
 }

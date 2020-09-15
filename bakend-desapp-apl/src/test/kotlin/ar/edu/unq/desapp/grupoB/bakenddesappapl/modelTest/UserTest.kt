@@ -13,8 +13,11 @@ class UserTest {
 
     lateinit var user: User
     lateinit var bernal : Location
+    lateinit var quilmes : Location
     lateinit var fecha : LocalDate
     lateinit var project : Project
+    lateinit var project2 : Project
+
 
 
     @Before
@@ -23,8 +26,11 @@ class UserTest {
 
         user = User("Lara","laraA@gmail.com","lara", false,"ara")
         bernal = Location("Bernal", "Buenos Aires", 1000, false)
+        quilmes = Location("Quilmes", "Buenos Aires", 12000, false)
+
         fecha = LocalDate.of(2020,5,12)
         project = Project("ProjectInitial", 10, fecha, bernal!!)
+        project2 = Project("ProjectQuilmes", 11, fecha, quilmes!!)
 
     }
 
@@ -71,11 +77,31 @@ class UserTest {
     }
 
     @Test
-    fun AuserCollaboratesOnAProject(){
+    fun AuserCollaboratesOnAProjectWithMoreThan1000(){
 
-        user.collaboratesOnAProject(project,1200,Month.MAY)
+        user.collaboratesOnAProject(project,1200, LocalDate.of(2020,5,12))
 
-        Assert.assertEquals(user.points,1700)
+        Assert.assertEquals(user.points,1200)
+
+    }
+
+    @Test
+    fun AuserCollaboratesOnAProjectWithMoreThan2000Inhabitant(){
+
+        user.collaboratesOnAProject(project2,100, LocalDate.of(2020,5,12))
+
+        Assert.assertEquals(user.points,200)
+
+    }
+
+    @Test
+    fun collaborateOnAProjectTwiceInTheSameMonth(){
+
+        user.collaboratesOnAProject(project2,100, LocalDate.of(2020,5,12))
+        user.collaboratesOnAProject(project2,300, LocalDate.of(2020,5,12))
+
+
+        Assert.assertEquals(user.points,800)
 
     }
 

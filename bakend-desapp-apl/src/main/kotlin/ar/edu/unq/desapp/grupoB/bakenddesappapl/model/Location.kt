@@ -17,5 +17,8 @@ class Location {
         this.stateConective = conective
     }
 
+    fun donorRegister (donor: Donor){
+        this.listDonation.add(donor)
+    }
 }
 

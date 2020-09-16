@@ -11,6 +11,7 @@ class Project {
     var dateEnd : LocalDate? = null
     var location : Location? = null
     var numberOfInhabitants : Int = 0
+    var collection :Int =0
 
 
     constructor(name: String, porcentage: Int, dateI: LocalDate, dateE: LocalDate, locationP: Location){
@@ -23,4 +24,11 @@ class Project {
         this.numberOfInhabitants = locationP.population!!
     }
 
+    fun amountCollected(): Int {
+        var localDonations = this.location!!.listDonation
+        for (donation: Donor in localDonations) {
+            collection += donation.donation!!
+        }
+        return collection
+    }
 }

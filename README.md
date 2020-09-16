@@ -1,2 +1,3 @@
 # GrupoBDesarrollo
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/ad901c0b16de4aaa982d29828c690b06)](https://app.codacy.com/manual/lauraAyala/GrupoBDesarrollo?utm_source=github.com&utm_medium=referral&utm_content=lauraAyala/GrupoBDesarrollo&utm_campaign=Badge_Grade_Dashboard)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/ad901c0b16de4aaa982d29828c690b06)](https://app.codacy.com/manual/lauraAyala/GrupoBDesarrollo?utm_source=github.com&utm_medium=referral&utm_content=lauraAyala/GrupoBDesarrollo&utm_campaign=Badge_Grade_Dashboard)

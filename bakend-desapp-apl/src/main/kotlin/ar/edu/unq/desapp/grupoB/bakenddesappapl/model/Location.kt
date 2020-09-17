@@ -20,5 +20,12 @@ class Location {
     fun donorRegister (donor: Donor){
         this.listDonation.add(donor)
     }
+
+    fun lastDonationOfLocation(): Donor {
+
+        var longitud = this.listDonation.size
+        return ( this.listDonation.get(longitud))
+
+    }
 }
 

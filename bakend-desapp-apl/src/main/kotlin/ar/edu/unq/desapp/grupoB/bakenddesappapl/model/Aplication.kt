@@ -91,5 +91,65 @@ class Aplication() {
         }
         return projects
     }
+
+    fun top10Donors(): ArrayList<Donor> {
+
+        // devuelve una lista con las 10 donaciones
+
+
+       var  donors : ArrayList<Donor> = ArrayList()
+
+        for (p: Project in this.listProjects){
+
+            var donor = p.lastDonation()
+            donors.add(donor)
+        }
+
+        return (orderDonations(donors))
+    }
+
+    private fun orderDonations(donors: ArrayList<Donor>): ArrayList<Donor> {
+
+        var donorsRes : ArrayList<Donor> = donors
+        var posicion = 0
+
+        for (d:Donor in donorsRes){
+
+            var donor = donors.get(posicion + 1)
+
+            if (d.date!! >  donor.date) {
+
+                donorsRes.add(posicion, d)
+                donorsRes.add(posicion + 1, donor)
+                posicion += 1
+
+            }
+
+            posicion += 1
+        }
+
+        return this.only10Donatios(donorsRes)
+
+    }
+
+    private fun only10Donatios(donors:ArrayList<Donor>): ArrayList<Donor> {
+
+
+        var donorsRes : ArrayList<Donor> = ArrayList()
+        var longitud = donors.size
+        var cont = 10
+        var posicion = 0
+        var donor = donors.get(posicion)
+
+        while(cont > 0 && longitud != posicion){
+            donorsRes.add(donor)
+            cont -= 1
+            posicion += 1
+
+        }
+
+        return donorsRes
+    }
+
 }
 

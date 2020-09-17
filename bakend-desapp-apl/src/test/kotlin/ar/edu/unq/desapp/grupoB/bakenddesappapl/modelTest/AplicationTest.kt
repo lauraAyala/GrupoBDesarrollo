@@ -17,6 +17,10 @@ class AplicationTest {
     var quilmes: Location?  = null
     var bernal: Location?  = null
     var user: User?  = null
+    var user2: User?  = null
+    var user3: User?  = null
+
+
     var aplication: Aplication?  = null
 
     @BeforeEach
@@ -30,6 +34,10 @@ class AplicationTest {
         project3 = Project("Crecer", 13, LocalDate.of(2020,4,9), LocalDate.of(2020,9,15),bernal!!)
 
         user = User("Maria","maria@gmail.com","maria",false,"m")
+        user2 = User("Mario","mario@gmail.com","mario",false,"ma")
+        user3 = User("Iara","maria@gmail.com","iara",false,"ia")
+
+
 
         aplication = Aplication()
 
@@ -93,6 +101,25 @@ class AplicationTest {
         Assert.assertEquals(aplication!!.moneyToProvideInternet(project!!), 12000000)
     }
 
+    @Test
+    fun Top10Donors(){
+
+        aplication!!.addProjects(project!!)
+        aplication!!.addProjects(project2!!)
+        aplication!!.addProjects(project3!!)
+
+        aplication!!.userRegister(user!!)
+        aplication!!.userRegister(user2!!)
+        aplication!!.userRegister(user3!!)
+
+
+
+        user!!.collaboratesOnAProject(project!!,400, LocalDate.of(2020,2,12))
+        user2!!.collaboratesOnAProject(project2!!,500, LocalDate.of(2020,3,12))
+        user3!!.collaboratesOnAProject(project!!,300, LocalDate.of(2020,4,12))
+
+        Assert.assertEquals(aplication!!.top10Donors().size, 2 )
+    }
 
 
 }

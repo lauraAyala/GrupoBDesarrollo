@@ -31,4 +31,11 @@ class Project {
         }
         return collection
     }
+
+    fun lastDonation(): Donor {
+
+        return ( this.location!!.lastDonationOfLocation())
+
+
+    }
 }

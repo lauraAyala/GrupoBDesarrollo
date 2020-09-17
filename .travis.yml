@@ -5,5 +5,7 @@ script:
  - gradle build
 jdk: 
  - oraclejdk11
+ before_install:
+ - chmod +x gradlew
 
 

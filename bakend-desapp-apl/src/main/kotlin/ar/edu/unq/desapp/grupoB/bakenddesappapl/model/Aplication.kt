@@ -92,63 +92,68 @@ class Aplication() {
         return projects
     }
 
-    fun top10Donors(): ArrayList<Donor> {
+    fun top10Locations(): ArrayList<Location> {
 
         // devuelve una lista con las 10 donaciones
 
 
-       var  donors : ArrayList<Donor> = ArrayList()
+        var  locations : ArrayList<Location> = ArrayList()
 
         for (p: Project in this.listProjects){
 
-            var donor = p.lastDonation()
-            donors.add(donor)
+            var location = p.location
+            locations.add(location!!)
         }
 
-        return (orderDonations(donors))
+        //orderDonations(locations)
+        locations.sortBy { it.lastDonationOfLocation().date}
+
+        return ( only10Donatios(locations))
     }
 
-    private fun orderDonations(donors: ArrayList<Donor>): ArrayList<Donor> {
+    /* private fun orderDonations(locations: ArrayList<Location>): ArrayList<Location> {
 
-        var donorsRes : ArrayList<Donor> = donors
-        var posicion = 0
+         var locationsRes : ArrayList<Location> = ArrayList()
+         var posicion = 0
 
-        for (d:Donor in donorsRes){
+         for (l:Location in locations){
 
-            var donor = donors.get(posicion + 1)
+             var location = locations.get(posicion + 1)
 
-            if (d.date!! >  donor.date) {
+             if (l.lastDonationOfLocation().date!! >  location.lastDonationOfLocation().date) {
 
-                donorsRes.add(posicion, d)
-                donorsRes.add(posicion + 1, donor)
-                posicion += 1
-
-            }
-
-            posicion += 1
-        }
-
-        return this.only10Donatios(donorsRes)
-
-    }
-
-    private fun only10Donatios(donors:ArrayList<Donor>): ArrayList<Donor> {
+                 locationsRes.add(l)
+                 //locationsRes.add(posicion + 1, location)
 
 
-        var donorsRes : ArrayList<Donor> = ArrayList()
-        var longitud = donors.size
+             }
+
+             locationsRes.add(location)
+             locationsRes.add(posicion +1 , l)
+             posicion += 1
+         }
+
+         return this.only10Donatios(locationsRes)
+
+     }*/
+
+    private fun only10Donatios(locations:ArrayList<Location>): ArrayList<Location> {
+
+
+        var locationsRes : ArrayList<Location> = ArrayList()
+        var longitud = (locations.size) - 1
         var cont = 10
         var posicion = 0
-        var donor = donors.get(posicion)
+        var location = locations.get(posicion)
 
         while(cont > 0 && longitud != posicion){
-            donorsRes.add(donor)
+            locationsRes.add(location)
             cont -= 1
             posicion += 1
 
         }
 
-        return donorsRes
+        return locationsRes
     }
 
 }

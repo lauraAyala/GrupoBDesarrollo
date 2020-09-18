@@ -101,8 +101,8 @@ class AplicationTest {
         Assert.assertEquals(aplication!!.moneyToProvideInternet(project!!), 12000000)
     }
 
-   /* @Test
-    fun Top10Donors(){
+    @Test
+    fun Top10Locations(){
 
         aplication!!.addProjects(project!!)
         aplication!!.addProjects(project2!!)
@@ -118,8 +118,6 @@ class AplicationTest {
         user2!!.collaboratesOnAProject(project2!!,500, LocalDate.of(2020,3,12))
         user3!!.collaboratesOnAProject(project!!,300, LocalDate.of(2020,4,12))
 
-        Assert.assertEquals(aplication!!.top10Donors().size, 2 )
+        Assert.assertEquals(aplication!!.top10Locations().size, 2 )
     }
-
-*/
 }

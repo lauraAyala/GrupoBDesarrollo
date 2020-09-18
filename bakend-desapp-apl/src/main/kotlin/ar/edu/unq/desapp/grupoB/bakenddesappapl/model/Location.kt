@@ -23,7 +23,7 @@ class Location {
 
     fun lastDonationOfLocation(): Donor {
 
-        var longitud = this.listDonation.size
+        var longitud = (this.listDonation.size) -1
         return ( this.listDonation.get(longitud))
 
     }

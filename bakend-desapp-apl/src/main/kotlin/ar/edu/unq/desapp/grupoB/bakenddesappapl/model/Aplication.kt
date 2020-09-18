@@ -156,5 +156,9 @@ class Aplication() {
         return locationsRes
     }
 
+    fun totalCollected(project: Project):Int {
+        return project.amountCollected()
+    }
+
 }
 

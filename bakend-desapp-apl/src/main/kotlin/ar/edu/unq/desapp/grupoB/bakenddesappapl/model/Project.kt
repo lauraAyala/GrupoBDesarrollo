@@ -38,4 +38,14 @@ class Project {
 
 
     }
+
+    fun theTotalFinancingOfTheWorkWasCollected(): Boolean {
+        //SE RECOLECTO EL TOTAL FINANCIAMIENTO DE LA OBRA
+        return false
+    }
+
+    fun ItsProjectEndDate(): Boolean {
+        //RETORNO SI ES LA FECHA FIN DEL POROYECT
+        return false
+    }
 }

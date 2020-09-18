@@ -1,9 +1,6 @@
 package ar.edu.unq.desapp.grupoB.bakenddesappapl.modelTest
 
-import ar.edu.unq.desapp.grupoB.bakenddesappapl.model.Aplication
-import ar.edu.unq.desapp.grupoB.bakenddesappapl.model.Location
-import ar.edu.unq.desapp.grupoB.bakenddesappapl.model.Project
-import ar.edu.unq.desapp.grupoB.bakenddesappapl.model.User
+import ar.edu.unq.desapp.grupoB.bakenddesappapl.model.*
 import org.junit.Assert
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
@@ -11,6 +8,8 @@ import java.time.LocalDate
 
 class AplicationTest {
 
+    var donorPepe: Donor?  = null
+    var donorIsaias: Donor?  = null
     var project: Project?  = null
     var project2: Project?  = null
     var project3: Project?  = null
@@ -19,14 +18,19 @@ class AplicationTest {
     var user: User?  = null
     var user2: User?  = null
     var user3: User?  = null
-
-
     var aplication: Aplication?  = null
+    var aplicationNew: Aplication?  = null
+
 
     @BeforeEach
     fun setUp(){
 
+        donorPepe = Donor("pepe", 1000, LocalDate.of(2020,4,11))
+        donorIsaias = Donor("Isaias", 500, LocalDate.of(2020,4,11))
         quilmes = Location("Quilmes","Buenos Aires",12000,false)
+        quilmes!!.donorRegister(donorPepe!!)
+        quilmes!!.donorRegister(donorIsaias!!)
+
         bernal = Location("Bernal","Buenos Aires",13000,false)
 
         project = Project("Caritas", 13, LocalDate.of(2020,5,8), LocalDate.of(2020,7,8),quilmes!!)
@@ -40,6 +44,9 @@ class AplicationTest {
 
 
         aplication = Aplication()
+        aplicationNew = Aplication()
+        aplicationNew!!.addProjects(project!!)
+        aplicationNew!!.addProjects(project2!!)
 
     }
 
@@ -120,4 +127,14 @@ class AplicationTest {
 
         Assert.assertEquals(aplication!!.top10Locations().size, 2 )
     }
+    @Test
+    fun fromTheApplicationIVerifyTheAmountCollectedFromTheNewProjectThatDidNotReceiveDonations(){
+        Assert.assertEquals(aplicationNew!!.totalCollected(project2!!),0)
+    }
+
+    @Test
+    fun fromTheApplicationIVerifyTheAmountCollectedFromTheNewProjectThatReceiveTwoDonations(){
+        Assert.assertEquals(aplicationNew!!.totalCollected(project!!),1500)
+    }
+
 }

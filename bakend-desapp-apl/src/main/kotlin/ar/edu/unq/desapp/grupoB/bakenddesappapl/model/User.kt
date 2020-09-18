@@ -6,10 +6,11 @@ import java.time.Month
 class User {
 
 
-    var nameUser : String? = null
-    var email : String ? = null
+    var nameUser : String?  = null
+    var email : String ?    = null
     var password : String ? = null
     var isAdmin : Boolean ? = null
+    var isDonor : Boolean ? = null
     var nickName : String ? = null
     var points: Int = 0
     var listDonor : ArrayList<Donor> = ArrayList()
@@ -81,4 +82,12 @@ class User {
         return (cantHabitants!! > 2000)
 
     }
+
+    fun theProjectIsComplete(project: Project):Boolean{
+        return (project.theTotalFinancingOfTheWorkWasCollected() && project.ItsProjectEndDate())
+    }
+
+    //fun  proyecto finalizo(){
+    // if(theProjectIsComplete(project)){
+    // avisaracadaDonante()}}
 }

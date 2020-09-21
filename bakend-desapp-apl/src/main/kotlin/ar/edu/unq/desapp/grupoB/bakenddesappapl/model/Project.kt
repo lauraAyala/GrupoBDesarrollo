@@ -48,4 +48,11 @@ class Project {
         //RETORNO SI ES LA FECHA FIN DEL POROYECT
         return false
     }
+
+    fun donationsProject(): ArrayList<Donor> {
+
+        //devuelve la lista de donaciones del proyecto
+
+        return (this.location!!.listDonation)
+    }
 }

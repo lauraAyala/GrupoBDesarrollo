@@ -108,7 +108,7 @@ class Aplication() {
         //orderDonations(locations)
         locations.sortBy { it.lastDonationOfLocation().date}
 
-        return ( only10Donatios(locations))
+        return ( only10Locations(locations))
     }
 
     /* private fun orderDonations(locations: ArrayList<Location>): ArrayList<Location> {
@@ -137,7 +137,7 @@ class Aplication() {
 
      }*/
 
-    private fun only10Donatios(locations:ArrayList<Location>): ArrayList<Location> {
+    private fun only10Locations(locations:ArrayList<Location>): ArrayList<Location> {
 
 
         var locationsRes : ArrayList<Location> = ArrayList()
@@ -159,6 +159,41 @@ class Aplication() {
     fun totalCollected(project: Project):Int {
         return project.amountCollected()
     }
+
+    fun top10Donations(): ArrayList<Donor> {
+
+        var donations : ArrayList<Donor> = ArrayList()
+
+        for (p: Project in this.listProjects){
+
+            donations.addAll(p.donationsProject())
+
+        }
+
+        donations.sortBy { it.donation}
+
+        return (only10Donations(donations))
+
+    }
+
+    private fun only10Donations(donations: ArrayList<Donor>): ArrayList<Donor> {
+
+        var donationsRes : ArrayList<Donor> = ArrayList()
+        var longitud = (donations.size) - 1
+        var cont = 10
+        var posicion = longitud
+        var donation = donations.get(posicion)
+
+        while(cont > 0 && longitud != posicion){
+            donationsRes.add(donation)
+            cont -= 1
+            posicion -= 1
+
+        }
+
+       return donationsRes
+    }
+
 
 }
 

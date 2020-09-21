@@ -1,13 +1,16 @@
 package ar.edu.unq.desapp.grupoB.bakenddesappapl.model
 
 import java.time.LocalDate
+import java.util.*
+import kotlin.collections.ArrayList
 
 
-class Aplication() {
+class Aplication() : Observable(){
 
 
     var listUsers : ArrayList<User> = ArrayList()
     var listProjects : ArrayList<Project> = ArrayList()
+    var date : LocalDate? = null
 
     fun userRegister(user : User){
 
@@ -16,6 +19,7 @@ class Aplication() {
         this.listUsers.add(user)
     }
 
+    
    /* fun makeDonation(monto: Int , comentario: String){
 
 
@@ -95,6 +99,7 @@ class Aplication() {
 
         //orderDonations(locations)
         locations.sortBy { it.lastDonationOfLocation().date}
+        locations.reversed()
 
         return ( only10Locations(locations))
     }
@@ -159,6 +164,7 @@ class Aplication() {
         }
 
         donations.sortBy { it.donation}
+        donations.reversed()
 
         return (only10Donations(donations))
 
@@ -169,19 +175,26 @@ class Aplication() {
         var donationsRes : ArrayList<Donor> = ArrayList()
         var longitud = (donations.size) - 1
         var cont = 10
-        var posicion = longitud
+        var posicion = 0
         var donation = donations.get(posicion)
 
         while(cont > 0 && longitud != posicion){
             donationsRes.add(donation)
             cont -= 1
-            posicion -= 1
+            posicion += 1
 
         }
 
        return donationsRes
     }
 
+    fun cambiarFecha(date: LocalDate){
+
+        this.date = date
+        this.notifyObservers(top10Locations())
+        this.notifyObservers(top10Donations())
+
+    }
 
 }
 

@@ -2,8 +2,10 @@ package ar.edu.unq.desapp.grupoB.bakenddesappapl.model
 
 import java.time.LocalDate
 import java.time.Month
+import java.util.*
+import kotlin.collections.ArrayList
 
-class User {
+class User : Observer{
 
 
     var nameUser: String? = null
@@ -84,6 +86,10 @@ class User {
 
     fun theProjectIsComplete(project: Project): Boolean {
         return (project.theMinimunFinancingOfTheWorkWasCollected() && project.itsProjectEndDate())
+    }
+
+    override fun update(p0: Observable?, p1: Any?) {
+        TODO("Not yet implemented")
     }
 /*
     fun projectFinished(project: Project) {

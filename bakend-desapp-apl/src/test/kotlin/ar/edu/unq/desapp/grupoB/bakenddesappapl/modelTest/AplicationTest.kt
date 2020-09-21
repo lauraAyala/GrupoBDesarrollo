@@ -137,4 +137,24 @@ class AplicationTest {
         Assert.assertEquals(aplicationNew!!.totalCollected(project!!),1500)
     }
 
+    @Test
+    fun Top10Donations() {
+
+        aplication!!.addProjects(project!!)
+        aplication!!.addProjects(project2!!)
+        aplication!!.addProjects(project3!!)
+
+        aplication!!.userRegister(user!!)
+        aplication!!.userRegister(user2!!)
+        aplication!!.userRegister(user3!!)
+
+
+
+        user!!.collaboratesOnAProject(project!!, 400, LocalDate.of(2020, 2, 12))
+        user2!!.collaboratesOnAProject(project2!!, 500, LocalDate.of(2020, 3, 12))
+        user3!!.collaboratesOnAProject(project!!, 300, LocalDate.of(2020, 4, 12))
+
+        Assert.assertEquals(aplication!!.top10Donations().size, 5)
+
+    }
 }

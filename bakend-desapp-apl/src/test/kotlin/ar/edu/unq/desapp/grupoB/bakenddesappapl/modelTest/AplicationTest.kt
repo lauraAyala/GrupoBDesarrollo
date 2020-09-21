@@ -8,17 +8,17 @@ import java.time.LocalDate
 
 class AplicationTest {
 
-    var donorPepe: Donor?  = null
+    var donorPepe: Donor?    = null
     var donorIsaias: Donor?  = null
-    var project: Project?  = null
-    var project2: Project?  = null
-    var project3: Project?  = null
-    var quilmes: Location?  = null
-    var bernal: Location?  = null
-    var user: User?  = null
+    var project: Project?    = null
+    var project2: Project?   = null
+    var project3: Project?   = null
+    var quilmes: Location?   = null
+    var bernal: Location?    = null
+    var user: User?   = null
     var user2: User?  = null
     var user3: User?  = null
-    var aplication: Aplication?  = null
+    var aplication: Aplication?     = null
     var aplicationNew: Aplication?  = null
 
 

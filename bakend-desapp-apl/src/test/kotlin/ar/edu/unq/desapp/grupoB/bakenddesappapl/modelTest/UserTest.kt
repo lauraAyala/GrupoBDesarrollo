@@ -102,7 +102,13 @@ class UserTest {
 
 
         Assert.assertEquals(user!!.points,800)
-
     }
+
+
+    @Test
+    fun aUserWhoIsNotAnAdministratorCannotVerifyIfAProjectEnd(){
+        Assert.assertEquals(user!!.projectFinished(project!!),false)
+    }
+
 
 }

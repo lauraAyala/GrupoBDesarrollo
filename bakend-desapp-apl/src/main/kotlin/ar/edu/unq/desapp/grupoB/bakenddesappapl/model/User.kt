@@ -88,13 +88,18 @@ class User : Observer{
         return (project.theMinimunFinancingOfTheWorkWasCollected() && project.itsProjectEndDate())
     }
 
+    fun projectFinished(project: Project) {
+        if(isAdmin!!&& theProjectIsComplete(project)){
+            //project.avisaracadaDonante()
+            TODO("is administrator")
+        }
+        else{
+            TODO("Not is administrator")
+        }
+    }
+
     override fun update(p0: Observable?, p1: Any?) {
         TODO("Not yet implemented")
     }
-/*
-    fun projectFinished(project: Project) {
-        if (theProjectIsComplete(project)) {
-           // project.avisaracadaDonante()
-        }
-    }*/
+
 }

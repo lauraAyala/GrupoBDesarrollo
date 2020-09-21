@@ -40,7 +40,7 @@ class Project {
 
     fun theMinimunFinancingOfTheWorkWasCollected(): Boolean {
         //SE RECOLECTO EL MINIIMO DEL FINANCIAMIENTO DE LA OBRA
-        return this.calculateMinimumClosingPorcentage() >= this.moneyneeded()
+        return this.moneyneeded() >= this.calculateMinimumClosingPorcentage()
     }
 
     fun itsProjectEndDate(): Boolean {

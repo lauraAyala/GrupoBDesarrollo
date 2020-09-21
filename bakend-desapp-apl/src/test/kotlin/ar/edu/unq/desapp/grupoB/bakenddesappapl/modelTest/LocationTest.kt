@@ -9,16 +9,16 @@ import java.time.LocalDate
 
 class LocationTest {
 
-     var location: Location? = null
-     var donorPepe: Donor?  = null
+     var location: Location?  = null
+     var donorPepe: Donor?    = null
      var donorIsaias: Donor?  = null
 
     @BeforeEach
     fun setUp(){
 
-        donorPepe = Donor("pepe", 1000, LocalDate.of(2020,4,11))
+        donorPepe   = Donor("pepe", 1000, LocalDate.of(2020,4,11))
         donorIsaias = Donor("Isaias", 500, LocalDate.of(2020,4,11))
-        location = Location("Bernal","Buenos Aires",70,false)
+        location    = Location("Bernal","Buenos Aires",70,false)
     }
 
     @Test

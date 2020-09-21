@@ -56,4 +56,23 @@ class Project {
 
         return (this.location!!.listDonation)
     }
+
+    fun moneyneeded(): Int {
+
+        var count = 0
+
+        var location = this.location
+        if(this.factor > 0){
+
+            count = location!!.population!! * this.factor
+
+        }
+        else{
+
+            count = location!!.population!! * 1000
+        }
+
+        return count
+
+    }
 }

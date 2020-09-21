@@ -26,20 +26,8 @@ class Aplication() {
         //Calcula la cantidad de dinero que se necesita para proveer conectividad
         // para una poblacion de un proyecto
 
-        var count = 0
+        return project.moneyneeded()
 
-        var location = project.location
-        if(project.factor > 0){
-
-            count = location!!.population!! * project.factor
-
-        }
-        else{
-
-            count = location!!.population!! * 1000
-        }
-
-        return count
 
     }
 

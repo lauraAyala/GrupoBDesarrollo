@@ -29,8 +29,8 @@ class UserTest {
         quilmes = Location("Quilmes", "Buenos Aires", 12000, false)
 
         fecha = LocalDate.of(2020,5,12)
-        project = Project("ProjectInitial", 10, fecha!!, LocalDate.of(2020,7,8), bernal!!)
-        project2 = Project("ProjectQuilmes", 11, fecha!!, LocalDate.of(2020,7,8), quilmes!!)
+        project = Project("ProjectInitial", fecha!!, LocalDate.of(2020,7,8), bernal!!)
+        project2 = Project("ProjectQuilmes",fecha!!, LocalDate.of(2020,7,8), quilmes!!)
 
     }
 

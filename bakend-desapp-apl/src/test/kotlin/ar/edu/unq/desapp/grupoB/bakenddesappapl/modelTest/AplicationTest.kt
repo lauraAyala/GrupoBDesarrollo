@@ -33,9 +33,9 @@ class AplicationTest {
 
         bernal = Location("Bernal","Buenos Aires",13000,false)
 
-        project = Project("Caritas", 13, LocalDate.of(2020,5,8), LocalDate.of(2020,7,8),quilmes!!)
-        project2 = Project("pr", 13, LocalDate.of(2020,4,9), LocalDate.of(2020,5,9),bernal!!)
-        project3 = Project("Crecer", 13, LocalDate.of(2020,4,9), LocalDate.of(2020,9,15),bernal!!)
+        project = Project("Caritas", LocalDate.of(2020,5,8), LocalDate.of(2020,7,8),quilmes!!)
+        project2 = Project("pr", LocalDate.of(2020,4,9), LocalDate.of(2020,5,9),bernal!!)
+        project3 = Project("Crecer", LocalDate.of(2020,4,9), LocalDate.of(2020,9,15),bernal!!)
 
         user = User("Maria","maria@gmail.com","maria",false,"m")
         user2 = User("Mario","mario@gmail.com","mario",false,"ma")

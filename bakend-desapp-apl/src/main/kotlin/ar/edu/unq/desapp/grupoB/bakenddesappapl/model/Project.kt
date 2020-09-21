@@ -6,7 +6,7 @@ class Project {
 
     var nameProject : String? = null
     var factor : Int = 0
-    var porcentageMinClouse : Int? = null
+    var porcentageMinClouse : Int = 50
     var dateInit : LocalDate? = null
     var dateEnd : LocalDate? = null
     var location : Location? = null
@@ -14,10 +14,9 @@ class Project {
     var collection :Int =0
 
 
-    constructor(name: String, porcentage: Int, dateI: LocalDate, dateE: LocalDate, locationP: Location){
+    constructor(name: String,dateI: LocalDate, dateE: LocalDate, locationP: Location){
 
         this.nameProject = name
-        this.porcentageMinClouse = porcentage
         this.dateInit = dateI
         this.dateEnd = dateE
         this.location = locationP
@@ -39,12 +38,12 @@ class Project {
 
     }
 
-    fun theTotalFinancingOfTheWorkWasCollected(): Boolean {
-        //SE RECOLECTO EL TOTAL FINANCIAMIENTO DE LA OBRA
-        return false
+    fun theMinimunFinancingOfTheWorkWasCollected(): Boolean {
+        //SE RECOLECTO EL MINIIMO DEL FINANCIAMIENTO DE LA OBRA
+        return this.calculateMinimumClosingPorcentage() >= this.moneyneeded()
     }
 
-    fun ItsProjectEndDate(): Boolean {
+    fun itsProjectEndDate(): Boolean {
         //RETORNO SI ES LA FECHA FIN DEL POROYECT
         var currenteDate =LocalDate.now()
         return currenteDate == dateEnd
@@ -74,5 +73,9 @@ class Project {
 
         return count
 
+    }
+
+    fun calculateMinimumClosingPorcentage ():Int{
+      return  this.moneyneeded() * this.porcentageMinClouse / 100
     }
 }

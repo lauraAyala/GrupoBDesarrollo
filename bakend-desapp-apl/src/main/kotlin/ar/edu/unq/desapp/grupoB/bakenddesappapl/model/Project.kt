@@ -78,4 +78,8 @@ class Project {
     fun calculateMinimumClosingPorcentage ():Int{
       return  this.moneyneeded() * this.porcentageMinClouse / 100
     }
+
+    fun notifyDonorsThatTheProjectHasEnded() {
+        TODO("Not yet implemented")
+    }
 }

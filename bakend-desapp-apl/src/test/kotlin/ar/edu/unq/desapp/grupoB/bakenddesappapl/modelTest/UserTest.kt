@@ -1,8 +1,10 @@
 package ar.edu.unq.desapp.grupoB.bakenddesappapl.modelTest
 
 import ar.edu.unq.desapp.grupoB.bakenddesappapl.model.Location
+import ar.edu.unq.desapp.grupoB.bakenddesappapl.model.NotIsAdministrator
 import ar.edu.unq.desapp.grupoB.bakenddesappapl.model.Project
 import ar.edu.unq.desapp.grupoB.bakenddesappapl.model.User
+import javolution.testing.AssertionException
 import org.junit.Assert
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
@@ -105,10 +107,11 @@ class UserTest {
     }
 
 
-  /*  @Test
-    fun aUserWhoIsNotAnAdministratorCannotVerifyIfAProjectEnd(){
-        Assert.assertEquals(user!!.projectFinished(project!!),"Not is administrator")
+    @Test
+    fun IThrowAnExceptionWhenIWantToCheckIfAProjectIsFinishedAndIAmNotAnAdministrator(){
+        //user!!.projectFinished(project!!)
+        println(user!!.projectFinished(project!!))
+       // AssertionError( user!!.projectFinished(project!!))
     }
-*/
 
 }

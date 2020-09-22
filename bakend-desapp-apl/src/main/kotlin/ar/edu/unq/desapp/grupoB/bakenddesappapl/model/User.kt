@@ -83,20 +83,20 @@ class User : Observer{
         return (cantHabitants!! > 2000)
 
     }
-
     fun theProjectIsComplete(project: Project): Boolean {
         return (project.theMinimunFinancingOfTheWorkWasCollected() && project.itsProjectEndDate())
     }
 
     fun projectFinished(project: Project) {
-        if(isAdmin!!&& theProjectIsComplete(project)){
-            //project.avisaracadaDonante()
-            TODO("is administrator")
-        }
-        else{
-            TODO("Not is administrator")
+        try {
+              if (isAdmin!!&& theProjectIsComplete(project)){
+                  project.notifyDonorsThatTheProjectHasEnded()
+              }
+        }catch (error: NotIsAdministrator){
+            error.message
         }
     }
+
 
     override fun update(p0: Observable?, p1: Any?) {
         TODO("Not yet implemented")

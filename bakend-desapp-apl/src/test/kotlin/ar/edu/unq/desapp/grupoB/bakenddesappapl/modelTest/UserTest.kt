@@ -5,6 +5,7 @@ import javolution.testing.AssertionException
 import org.junit.Assert
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.assertThrows
 import org.springframework.boot.test.context.assertj.AssertableApplicationContext
 import java.time.LocalDate
 
@@ -105,16 +106,16 @@ class UserTest {
     }
 
 
-   /* @Test
+   @Test
     fun IThrowAnExceptionWhenIWantToCheckIfAProjectIsFinishedAndIAmNotAnAdministrator(){
         // nkkkkpp'+
         user!!.collaboratesOnAProject(project!!,400, LocalDate.of(2015,5,3))
        // var res = user!!.projectFinished(project!!)
        // println(user!!.projectFinished(project!!))
        //Assert.assertEquals( "Not Is Administrator",user!!.projectFinished(project!!))
-
-        AssertionError(user!!.projectFinished(project!!))
-    }*/
+         assertThrows<Exception> { user!!.projectFinished(project!!)}
+        //AssertionError(user!!.projectFinished(project!!))
+    }
 
     @Test
     fun userHasTheTop10Available(){

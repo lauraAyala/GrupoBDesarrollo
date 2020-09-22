@@ -3,6 +3,7 @@ package ar.edu.unq.desapp.grupoB.bakenddesappapl.modelTest
 import ar.edu.unq.desapp.grupoB.bakenddesappapl.model.Donor
 import ar.edu.unq.desapp.grupoB.bakenddesappapl.model.Location
 import ar.edu.unq.desapp.grupoB.bakenddesappapl.model.Project
+import ar.edu.unq.desapp.grupoB.bakenddesappapl.model.User
 import org.junit.Assert
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
@@ -10,10 +11,12 @@ import java.time.LocalDate
 
 class ProjectTests {
 
+    var projectNew: Project?  = null
     var project: Project?     = null
     var project2: Project?    = null
     var quilmes: Location?    = null
     var bernal: Location?     = null
+    var wilde: Location?      = null
     var dateI: LocalDate?     = null
     var todayDate: LocalDate? = null
     var donorPepe: Donor?     = null
@@ -27,13 +30,16 @@ class ProjectTests {
         donorPepe   = Donor("pepe", 1000, LocalDate.of(2020,4,11))
         donorIsaias = Donor("Isaias", 500, LocalDate.of(2020,4,11))
         donorJose   = Donor("Jose", 6000000, LocalDate.of(2020,4,11))
+        wilde       = Location("Wilde", "Buenos Aires", 10000, false)
         quilmes     = Location("Quilmes", "Buenos Aires", 10000, false)
         bernal      = Location("Quilmes", "Buenos Aires", 10000, false)
         quilmes!!.donorRegister(donorPepe!!)
         quilmes!!.donorRegister(donorIsaias!!)
         bernal!!.donorRegister(donorJose!!)
+        projectNew  = Project("Project new", dateI!!, LocalDate.of(2020,7,8),wilde!!)
         project     = Project("ProjectInitial", dateI!!, LocalDate.of(2020,7,8),quilmes!!)
         project2    = Project("Project2", dateI!!,todayDate!!,bernal!!)
+
     }
 
     @Test
@@ -49,6 +55,11 @@ class ProjectTests {
     @Test
     fun test03OfTheNewProjectIVerifyItsStartDateAndEndDate() {
         Assert.assertEquals(project!!.dateInit, dateI)
+    }
+
+    @Test
+    fun testICreateANewProjectAndVerifyThatTheListOfDonorUsersIsEmpty(){
+        Assert.assertEquals(projectNew!!.donorUsers.size,0)
     }
 
     @Test
@@ -98,5 +109,6 @@ class ProjectTests {
         Assert.assertEquals(1500,project!!.collection)
 
     }
+
 
 }

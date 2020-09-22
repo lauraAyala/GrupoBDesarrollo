@@ -14,34 +14,18 @@ open class Aplication() : Observable(){
 
     fun userRegister(user : User){
 
-        // se registra un usuario
-
         this.listUsers.add(user)
         this.addObserver(user)
     }
 
-
-   /* fun makeDonation(monto: Int , comentario: String){
-
-
-    }*/
-
     fun moneyToProvideInternet(project: Project): Int{
 
-        //Calcula la cantidad de dinero que se necesita para proveer conectividad
-        // para una poblacion de un proyecto
-
         return project.moneyneeded()
-
-
     }
 
     fun addProjects(project: Project){
 
-        //agrega un proyecto a la lista de proyectos
-
         this.listProjects.add(project)
-
     }
 
     fun listOfOpenProjects(): ArrayList<Project> {
@@ -57,9 +41,7 @@ open class Aplication() : Observable(){
                 projects.add(p)
 
             }
-
         }
-
         return projects
     }
 
@@ -97,39 +79,12 @@ open class Aplication() : Observable(){
             var location = p.location
             locations.add(location!!)
         }
-
-        //orderDonations(locations)
         locations.sortBy { it.lastDonationOfLocation().date}
         locations.reversed()
 
         return ( only10Locations(locations))
     }
 
-    /* private fun orderDonations(locations: ArrayList<Location>): ArrayList<Location> {
-
-         var locationsRes : ArrayList<Location> = ArrayList()
-         var posicion = 0
-
-         for (l:Location in locations){
-
-             var location = locations.get(posicion + 1)
-
-             if (l.lastDonationOfLocation().date!! >  location.lastDonationOfLocation().date) {
-
-                 locationsRes.add(l)
-                 //locationsRes.add(posicion + 1, location)
-
-
-             }
-
-             locationsRes.add(location)
-             locationsRes.add(posicion +1 , l)
-             posicion += 1
-         }
-
-         return this.only10Donatios(locationsRes)
-
-     }*/
 
     private fun only10Locations(locations:ArrayList<Location>): ArrayList<Location> {
 

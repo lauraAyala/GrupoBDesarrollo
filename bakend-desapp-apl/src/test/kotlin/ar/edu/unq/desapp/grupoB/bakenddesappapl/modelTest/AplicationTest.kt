@@ -25,25 +25,25 @@ class AplicationTest {
     @BeforeEach
     fun setUp(){
 
-        donorPepe = Donor("pepe", 1000, LocalDate.of(2020,4,11))
+        donorPepe   = Donor("pepe", 1000, LocalDate.of(2020,4,11))
         donorIsaias = Donor("Isaias", 500, LocalDate.of(2020,4,11))
-        quilmes = Location("Quilmes","Buenos Aires",12000,false)
+        quilmes     = Location("Quilmes","Buenos Aires",12000,false)
         quilmes!!.donorRegister(donorPepe!!)
         quilmes!!.donorRegister(donorIsaias!!)
 
-        bernal = Location("Bernal","Buenos Aires",13000,false)
+        bernal   = Location("Bernal","Buenos Aires",13000,false)
 
-        project = Project("Caritas", LocalDate.of(2020,5,8), LocalDate.of(2020,7,8),quilmes!!)
+        project  = Project("Caritas", LocalDate.of(2020,5,8), LocalDate.of(2020,7,8),quilmes!!)
         project2 = Project("pr", LocalDate.of(2020,4,9), LocalDate.of(2020,5,9),bernal!!)
         project3 = Project("Crecer", LocalDate.of(2020,4,9), LocalDate.of(2020,9,15),bernal!!)
 
-        user = User("Maria","maria@gmail.com","maria",false,"m")
+        user  = User("Maria","maria@gmail.com","maria",false,"m")
         user2 = User("Mario","mario@gmail.com","mario",false,"ma")
         user3 = User("Iara","maria@gmail.com","iara",false,"ia")
 
 
 
-        aplication = Aplication()
+        aplication    = Aplication()
         aplicationNew = Aplication()
         aplicationNew!!.addProjects(project!!)
         aplicationNew!!.addProjects(project2!!)

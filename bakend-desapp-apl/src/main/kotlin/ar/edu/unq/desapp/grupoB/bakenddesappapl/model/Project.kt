@@ -1,5 +1,6 @@
 package ar.edu.unq.desapp.grupoB.bakenddesappapl.model
 
+
 import java.time.LocalDate
 
 class Project {
@@ -12,6 +13,7 @@ class Project {
     var location : Location? = null
     var numberOfInhabitants : Int = 0
     var collection :Int =0
+    var donorUsers:ArrayList<User> = ArrayList()
 
 
     constructor(name: String,dateI: LocalDate, dateE: LocalDate, locationP: Location){
@@ -82,6 +84,9 @@ class Project {
     }
 
     fun notifyDonorsThatTheProjectHasEnded() {
+        for (user: User in this.donorUsers){
+            user.listOfClosedProjects.add(this)
 
+        }
     }
 }

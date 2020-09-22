@@ -14,11 +14,11 @@ class User : Observer{
     var email: String? = null
     var password: String? = null
     var isAdmin: Boolean? = null
-    var isDonor: Boolean? = null
     var nickName: String? = null
     var points: Int = 0
     var listDonor: ArrayList<Donor> = ArrayList()
     var cambio: String? = null
+    var listOfClosedProjects: ArrayList<Project> = ArrayList()
 
 
     constructor(name: String, mail: String, pass: String, admin: Boolean, nick: String) {
@@ -38,6 +38,7 @@ class User : Observer{
         this.listDonor.add(donor)
 
         this.scorePoints(donorUser, project, date.month)
+        project.donorUsers!!.add(this)
 
     }
 
@@ -71,7 +72,6 @@ class User : Observer{
 
                 res += 1
 
-
         }
 
         return (res > 2)
@@ -80,13 +80,13 @@ class User : Observer{
 
     fun isProjectWithInhabitants(project: Project): Boolean {
 
-
         var cantHabitants = project.location!!.population
 
         return (cantHabitants!! > 2000)
 
     }
     fun theProjectIsComplete(project: Project): Boolean {
+
         return (project.theMinimunFinancingOfTheWorkWasCollected() && project.itsProjectEndDate())
     }
 

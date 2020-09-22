@@ -90,4 +90,13 @@ class ProjectTests {
 
     }
 
+    @Test
+    fun collectionOfAnProjectc(){
+
+        project!!.amountCollected()
+
+        Assert.assertEquals(1500,project!!.collection)
+
+    }
+
 }

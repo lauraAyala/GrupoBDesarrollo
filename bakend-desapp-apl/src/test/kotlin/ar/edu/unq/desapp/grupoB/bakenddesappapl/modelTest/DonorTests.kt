@@ -18,5 +18,8 @@ class DonorTests {
     fun aNewDonationIsCreatedAndTheDataIsVerifiedToBeCorrect(){
         Assert.assertEquals(donor!!.nickName, "pepe")
         Assert.assertEquals(donor!!.donation, 1000)
+        Assert.assertEquals(donor!!.date, LocalDate.of(2020,4,11))
+
+
     }
 }

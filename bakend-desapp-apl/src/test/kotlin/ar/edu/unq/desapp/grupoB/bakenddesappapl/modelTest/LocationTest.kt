@@ -53,4 +53,11 @@ class LocationTest {
         Assert.assertEquals(location!!.listDonation.size,2)
 
     }
+
+    @Test
+    fun verifyThatCollectionOfAnLocation(){
+
+        Assert.assertEquals(0,location!!.collection)
+
+    }
 }

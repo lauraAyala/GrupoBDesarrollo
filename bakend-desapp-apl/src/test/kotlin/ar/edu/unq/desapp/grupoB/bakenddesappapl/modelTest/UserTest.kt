@@ -99,7 +99,7 @@ class UserTest {
     fun collaborateOnAProjectTwiceInTheSameMonth(){
 
         user!!.collaboratesOnAProject(project2!!,100, LocalDate.of(2020,5,12))
-        user!!.collaboratesOnAProject(project2!!,300, LocalDate.of(2020,5,12))
+        user!!.collaboratesOnAProject(project2!!,300, LocalDate.of(2020,5,15))
 
 
         Assert.assertEquals(user!!.points,800)
@@ -108,13 +108,10 @@ class UserTest {
 
    @Test
     fun IThrowAnExceptionWhenIWantToCheckIfAProjectIsFinishedAndIAmNotAnAdministrator(){
-        // nkkkkpp'+
+
         user!!.collaboratesOnAProject(project!!,400, LocalDate.of(2015,5,3))
-       // var res = user!!.projectFinished(project!!)
-       // println(user!!.projectFinished(project!!))
-       //Assert.assertEquals( "Not Is Administrator",user!!.projectFinished(project!!))
+
          assertThrows<Exception> { user!!.projectFinished(project!!)}
-        //AssertionError(user!!.projectFinished(project!!))
     }
 
     @Test

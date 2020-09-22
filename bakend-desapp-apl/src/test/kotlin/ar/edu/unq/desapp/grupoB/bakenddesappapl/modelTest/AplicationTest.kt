@@ -103,10 +103,19 @@ class AplicationTest {
     }
 
     @Test
-    fun stateOfConectiveOfAnProject(){
+    fun moneyToProvideInternetOfAnProject(){
 
         Assert.assertEquals(aplication!!.moneyToProvideInternet(project!!), 12000000)
     }
+
+    @Test
+    fun moneyToProvideInternetOfAnProjectWhithFactorIn200(){
+
+        project!!.factor = 200
+
+        Assert.assertEquals(aplication!!.moneyToProvideInternet(project!!), 2400000)
+    }
+
 
     @Test
     fun Top10Locations(){

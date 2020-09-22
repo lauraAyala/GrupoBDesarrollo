@@ -1,8 +1,10 @@
 package ar.edu.unq.desapp.grupoB.bakenddesappapl.model
 
+import java.lang.Exception
 import java.time.LocalDate
 import java.time.Month
 import java.util.*
+import java.util.logging.Handler
 import kotlin.collections.ArrayList
 
 class User : Observer{
@@ -16,6 +18,7 @@ class User : Observer{
     var nickName: String? = null
     var points: Int = 0
     var listDonor: ArrayList<Donor> = ArrayList()
+    var cambio: String? = null
 
 
     constructor(name: String, mail: String, pass: String, admin: Boolean, nick: String) {
@@ -88,18 +91,22 @@ class User : Observer{
     }
 
     fun projectFinished(project: Project) {
-        try {
-              if (isAdmin!!&& theProjectIsComplete(project)){
-                  project.notifyDonorsThatTheProjectHasEnded()
-              }
-        }catch (error: NotIsAdministrator){
-            error.message
-        }
-    }
 
+        if (isAdmin!! && this.theProjectIsComplete(project)){
+                  project.notifyDonorsThatTheProjectHasEnded()
+        }
+        else {
+
+            throw Exception("Not is Administrator")
+          }
+    }
 
     override fun update(p0: Observable?, p1: Any?) {
-        TODO("Not yet implemented")
+
+        this.cambio = p1.toString()
     }
 
+
 }
+
+

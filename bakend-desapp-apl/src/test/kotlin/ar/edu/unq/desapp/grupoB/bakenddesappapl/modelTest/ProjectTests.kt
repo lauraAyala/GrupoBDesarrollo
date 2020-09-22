@@ -78,4 +78,16 @@ class ProjectTests {
         Assert.assertEquals(project2!!.theMinimunFinancingOfTheWorkWasCollected(),true)
     }
 
+    @Test
+    fun lastDonationFromProject(){
+
+        Assert.assertEquals(donorIsaias,project!!.lastDonation())
+    }
+    @Test
+    fun numbreInabitantsOfAnProject(){
+
+        Assert.assertEquals(10000,project!!.numberOfInhabitants)
+
+    }
+
 }

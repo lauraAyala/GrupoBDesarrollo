@@ -33,6 +33,8 @@ class Project {
 
     fun lastDonation(): Donor {
 
+        //devuelve la ultima donation
+
         return ( this.location!!.lastDonationOfLocation())
 
 
@@ -80,6 +82,6 @@ class Project {
     }
 
     fun notifyDonorsThatTheProjectHasEnded() {
-        TODO("Not yet implemented")
+
     }
 }

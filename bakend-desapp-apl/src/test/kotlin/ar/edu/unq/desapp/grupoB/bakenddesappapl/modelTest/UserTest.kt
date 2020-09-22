@@ -1,13 +1,11 @@
 package ar.edu.unq.desapp.grupoB.bakenddesappapl.modelTest
 
-import ar.edu.unq.desapp.grupoB.bakenddesappapl.model.Location
-import ar.edu.unq.desapp.grupoB.bakenddesappapl.model.NotIsAdministrator
-import ar.edu.unq.desapp.grupoB.bakenddesappapl.model.Project
-import ar.edu.unq.desapp.grupoB.bakenddesappapl.model.User
+import ar.edu.unq.desapp.grupoB.bakenddesappapl.model.*
 import javolution.testing.AssertionException
 import org.junit.Assert
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
+import org.springframework.boot.test.context.assertj.AssertableApplicationContext
 import java.time.LocalDate
 
 
@@ -107,11 +105,26 @@ class UserTest {
     }
 
 
-    @Test
+   /* @Test
     fun IThrowAnExceptionWhenIWantToCheckIfAProjectIsFinishedAndIAmNotAnAdministrator(){
-        //user!!.projectFinished(project!!)
-        println(user!!.projectFinished(project!!))
-       // AssertionError( user!!.projectFinished(project!!))
+        // nkkkkpp'+
+        user!!.collaboratesOnAProject(project!!,400, LocalDate.of(2015,5,3))
+       // var res = user!!.projectFinished(project!!)
+       // println(user!!.projectFinished(project!!))
+       //Assert.assertEquals( "Not Is Administrator",user!!.projectFinished(project!!))
+
+        AssertionError(user!!.projectFinished(project!!))
+    }*/
+
+    @Test
+    fun userHasTheTop10Available(){
+
+        var aplication = Aplication()
+        aplication.userRegister(user!!)
+        aplication.addProjects(project!!)
+        aplication.cambiarFecha(LocalDate.now())
+
+        Assert.assertEquals("the top 10 are already available", user!!.cambio)
     }
 
 }

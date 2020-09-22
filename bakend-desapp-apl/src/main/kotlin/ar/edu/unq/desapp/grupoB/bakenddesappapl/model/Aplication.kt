@@ -5,7 +5,7 @@ import java.util.*
 import kotlin.collections.ArrayList
 
 
-class Aplication() : Observable(){
+open class Aplication() : Observable(){
 
 
     var listUsers : ArrayList<User> = ArrayList()
@@ -17,9 +17,10 @@ class Aplication() : Observable(){
         // se registra un usuario
 
         this.listUsers.add(user)
+        this.addObserver(user)
     }
 
-    
+
    /* fun makeDonation(monto: Int , comentario: String){
 
 
@@ -191,8 +192,8 @@ class Aplication() : Observable(){
     fun cambiarFecha(date: LocalDate){
 
         this.date = date
-        this.notifyObservers(top10Locations())
-        this.notifyObservers(top10Donations())
+        this.setChanged()
+        this.notifyObservers("the top 10 are already available")
 
     }
 

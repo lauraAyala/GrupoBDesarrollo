@@ -1,4 +1,4 @@
-package ar.edu.unq.desapp.grupoB.bakenddesappapl.service.impl
+package ar.edu.unq.desapp.grupoB.bakenddesappapl.service.runner
 
 import org.hibernate.Session
 

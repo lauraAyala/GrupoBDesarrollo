@@ -1,0 +1,28 @@
+---------------------------------------------------------------------
+TAG 1.0
+---------------------------------------------------------------------
+NEW FEATURES (lo que están entregando y está funcionando):
+* Un usuario puede: registrarse en aplicación, realizar una donación y guardarla, hacer el cierre de un proyecto, calcular los puntos.
+
+* Un proyecto puede: calcular el monto recaudado, saber cual fue la ultima donación que se realizo, calcular el minimo financiamiento, responder si finalizo, calcular el minimo monto que se necesita para proveer internet a una población, calcular el minimo porcentaje de cierre.
+
+* Una donación puede: saber el monto donado y el apodo del usuario que dono.
+
+* Una Localidad puede: registrar una donación, mostrar la ultima donación realizada.
+
+* Una Aplication puede: registrar un usuario, registrar un proyecto, calcular el dinero necesario para proveer de internet a una localidad, mostrar la lista de proyectos cerrados y abiertos, top 10 de donaciones, top 10 de localidades
+
+NOTES (ej: funcionalidad que falta, alguna consideración especial):
+* En la clase proyecto: 
+             - Decidimos inicializar el porcentaje en 50, para que siempre tome ese porcentaje
+             - El factor lo inicializamos en 0 y solo cambia si se lo pedimos.
+
+* Utilizamos el patron observer para notificarle que estan disponibles los top10 de donaciones y localidades
+* Para saber si un proyecto esta cerrardo, comparamos la fecha fin del  proyecto con la fecha actual.
+* En aplicacion le agregamos una fecha, para que cada vez que cambie la fecha se notifique a los usuario de los top 10.
+
+*Falta hacer funcionar codacy con coverage
+                - 
+
+KNOWN ISSUES () :
+

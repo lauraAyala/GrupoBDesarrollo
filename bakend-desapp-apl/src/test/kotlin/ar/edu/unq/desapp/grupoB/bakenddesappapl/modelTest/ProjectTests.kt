@@ -11,78 +11,106 @@ import java.time.LocalDate
 
 class ProjectTests {
 
-    var projectNew: Project?  = null
-    var project: Project?     = null
-    var project2: Project?    = null
-    var quilmes: Location?    = null
-    var bernal: Location?     = null
-    var wilde: Location?      = null
-    var dateI: LocalDate?     = null
-    var todayDate: LocalDate? = null
-    var donorPepe: Donor?     = null
-    var donorIsaias: Donor?   = null
-    var donorJose: Donor?     = null
-
-    @BeforeEach
-    fun setUp() {
-        dateI       = LocalDate.of(2020, 5, 1)
-        todayDate   = LocalDate.now()
-        donorPepe   = Donor("pepe", 1000, LocalDate.of(2020,4,11))
-        donorIsaias = Donor("Isaias", 500, LocalDate.of(2020,4,11))
-        donorJose   = Donor("Jose", 6000000, LocalDate.of(2020,4,11))
-        wilde       = Location("Wilde", "Buenos Aires", 10000, false)
-        quilmes     = Location("Quilmes", "Buenos Aires", 10000, false)
-        bernal      = Location("Quilmes", "Buenos Aires", 10000, false)
-        quilmes!!.donorRegister(donorPepe!!)
-        quilmes!!.donorRegister(donorIsaias!!)
-        bernal!!.donorRegister(donorJose!!)
-        projectNew  = Project("Project new", dateI!!, LocalDate.of(2020,7,8),wilde!!)
-        project     = Project("ProjectInitial", dateI!!, LocalDate.of(2020,7,8),quilmes!!)
-        project2    = Project("Project2", dateI!!,todayDate!!,bernal!!)
-
-    }
 
     @Test
     fun test01aNewProjectIsCreatedAndIVerifyItsName() {
+
+        var quilmes = Location("Quilmes", "Buenos Aires", 10000, false)
+        var dateI= LocalDate.of(2020, 5, 1)
+        var project = Project("ProjectInitial", dateI!!, LocalDate.of(2020,7,8),quilmes!!)
+
         Assert.assertEquals(project!!.nameProject, "ProjectInitial")
     }
 
     @Test
     fun test02OfTheNewProjectIVerifyItsLocation() {
+
+        var quilmes = Location("Quilmes", "Buenos Aires", 10000, false)
+        var dateI= LocalDate.of(2020, 5, 1)
+        var project = Project("ProjectInitial", dateI!!, LocalDate.of(2020,7,8),quilmes!!)
+
         Assert.assertEquals(project!!.location, quilmes)
     }
 
     @Test
     fun test03OfTheNewProjectIVerifyItsStartDateAndEndDate() {
+
+        var quilmes = Location("Quilmes", "Buenos Aires", 10000, false)
+        var dateI= LocalDate.of(2020, 5, 1)
+        var project = Project("ProjectInitial", dateI!!, LocalDate.of(2020,7,8),quilmes!!)
+
         Assert.assertEquals(project!!.dateInit, dateI)
     }
 
     @Test
     fun testICreateANewProjectAndVerifyThatTheListOfDonorUsersIsEmpty(){
+        var wilde = Location("Wilde", "Buenos Aires", 10000, false)
+        var dateI= LocalDate.of(2020, 5, 1)
+        var projectNew = Project("Project new", dateI!!, LocalDate.of(2020,7,8),wilde!!)
+
+
         Assert.assertEquals(projectNew!!.donorUsers.size,0)
     }
 
     @Test
     fun test04GivenAProjectIVerifyHowMuchICollectFromDonations(){
-        Assert.assertEquals(project!!.amountCollected(),1500)
+
+        var quilmes = Location("Quilmes", "Buenos Aires", 10000, false)
+        var donorIsaias = Donor("Isaias", 500, LocalDate.of(2020,4,11))
+        var donorPepe   = Donor("pepe", 1000, LocalDate.of(2020,4,11))
+        quilmes!!.donorRegister(donorIsaias!!)
+        quilmes!!.donorRegister(donorPepe!!)
+        var dateI       = LocalDate.of(2020, 5, 1)
+        var project = Project("ProjectInitial", dateI!!, LocalDate.of(2020,7,8),quilmes!!)
+
+
+        Assert.assertEquals(1500,project!!.amountCollected())
     }
 
     @Test
     fun test05VerifyIfItIsTheEndDateOfTheProject(){
-        Assert.assertEquals(project!!.itsProjectEndDate(),false)
+
+        var quilmes = Location("Quilmes", "Buenos Aires", 10000, false)
+        var dateI       = LocalDate.of(2020, 5, 1)
+        var project = Project("ProjectInitial", dateI!!, LocalDate.of(2020,7,8),quilmes!!)
+
+        Assert.assertEquals(false,project!!.itsProjectEndDate())
     }
 
     @Test
     fun test06ICreateAProjectWithAnEndDateToday(){
-        Assert.assertEquals(project2!!.itsProjectEndDate(),true)
+
+        var bernal = Location("Quilmes", "Buenos Aires", 10000, false)
+        var dateI       = LocalDate.of(2020, 5, 1)
+        var todayDate   = LocalDate.now()
+        var project2    = Project("Project2", dateI!!,todayDate!!,bernal!!)
+
+
+        Assert.assertEquals(true, project2!!.itsProjectEndDate())
     }
     @Test
     fun test07GivenAProjectIVerifyIfTheMinimumRequiredWasCollected() {
+
+        var quilmes = Location("Quilmes", "Buenos Aires", 10000, false)
+        var dateI       = LocalDate.of(2020, 5, 1)
+        var project = Project("ProjectInitial", dateI!!, LocalDate.of(2020,7,8),quilmes!!)
+
+
         Assert.assertEquals(project!!.theMinimunFinancingOfTheWorkWasCollected(), false)
     }
 
     @Test
     fun test08GivenAProjectThatReceivedDonationsIVerifyThatTheMinimumRequiredHasBeenCollected(){
+
+        var bernal      = Location("Quilmes", "Buenos Aires", 10000, false)
+        var donorJose   = Donor("Jose", 6000000, LocalDate.of(2020,4,11))
+        bernal!!.donorRegister(donorJose!!)
+        var todayDate   = LocalDate.now()
+        var dateI       = LocalDate.of(2020, 5, 1)
+        var project2    = Project("Project2", dateI!!,todayDate!!,bernal!!)
+
+
+
         Assert.assertEquals(project2!!.moneyneeded(),10000000)
         Assert.assertEquals(project2!!.amountCollected(),6000000)
         Assert.assertEquals(project2!!.calculateMinimumClosingPorcentage(),5000000)
@@ -92,10 +120,23 @@ class ProjectTests {
     @Test
     fun lastDonationFromProject(){
 
+        var quilmes = Location("Quilmes", "Buenos Aires", 10000, false)
+        var dateI       = LocalDate.of(2020, 5, 1)
+        var donorPepe   = Donor("pepe", 1000, LocalDate.of(2020,4,11))
+        var donorIsaias = Donor("Isaias", 500, LocalDate.of(2020,4,11))
+        quilmes!!.donorRegister(donorPepe!!)
+        quilmes!!.donorRegister(donorIsaias!!)
+        var project = Project("ProjectInitial", dateI!!, LocalDate.of(2020,7,8),quilmes!!)
+
+
         Assert.assertEquals(donorIsaias,project!!.lastDonation())
     }
     @Test
     fun numbreInabitantsOfAnProject(){
+
+        var quilmes = Location("Quilmes", "Buenos Aires", 10000, false)
+        var dateI       = LocalDate.of(2020, 5, 1)
+        var project = Project("ProjectInitial", dateI!!, LocalDate.of(2020,7,8),quilmes!!)
 
         Assert.assertEquals(10000,project!!.numberOfInhabitants)
 
@@ -103,6 +144,15 @@ class ProjectTests {
 
     @Test
     fun collectionOfAnProjectc(){
+
+        var quilmes = Location("Quilmes", "Buenos Aires", 10000, false)
+        var dateI       = LocalDate.of(2020, 5, 1)
+        var donorIsaias = Donor("Isaias", 500, LocalDate.of(2020,4,11))
+        var donorPepe   = Donor("pepe", 1000, LocalDate.of(2020,4,11))
+        quilmes!!.donorRegister(donorPepe!!)
+        quilmes!!.donorRegister(donorIsaias!!)
+        var project = Project("ProjectInitial", dateI!!, LocalDate.of(2020,7,8),quilmes!!)
+
 
         project!!.amountCollected()
 

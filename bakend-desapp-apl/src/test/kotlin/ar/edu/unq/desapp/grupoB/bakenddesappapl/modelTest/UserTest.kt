@@ -12,37 +12,10 @@ import java.time.LocalDate
 
 class UserTest {
 
-    var user: User?              = null
-    var userAdministrator: User? = null
-    var bernal : Location?       = null
-    var quilmes : Location?      = null
-    var fecha : LocalDate?       = null
-    var dateI: LocalDate?        = null
-    var todayDate: LocalDate?    = null
-    var project : Project?       = null
-    var project2 : Project?      = null
-    var project3: Project?       = null
-
-    @BeforeEach
-    fun setUp(){
-
-
-        user              = User("Lara","laraA@gmail.com","lara", false,"ara")
-        userAdministrator = User("tomas","tomasA@gmail.com","lara", true,"ara")
-        bernal  = Location("Bernal", "Buenos Aires", 1000, false)
-        quilmes = Location("Quilmes", "Buenos Aires", 12000, false)
-
-        fecha     = LocalDate.of(2020,5,12)
-        dateI     = LocalDate.of(2020, 5, 1)
-        todayDate = LocalDate.now()
-        project   = Project("ProjectInitial", fecha!!, LocalDate.of(2020,7,8), bernal!!)
-        project2  = Project("ProjectQuilmes",fecha!!, LocalDate.of(2020,7,8), quilmes!!)
-        project3  = Project("Project2", dateI!!,todayDate!!,bernal!!)
-
-    }
-
     @Test
     fun AUserIsCreatedAndYourNameIsVerified(){
+
+        var user = User("Lara","laraA@gmail.com","lara", false,"ara")
 
         Assert.assertEquals(user!!.nameUser,"Lara")
 
@@ -51,12 +24,16 @@ class UserTest {
     @Test
     fun AUserIsCreatedAndYourEmailIsVerified(){
 
+        var user = User("Lara","laraA@gmail.com","lara", false,"ara")
+
         Assert.assertEquals(user!!.email,"laraA@gmail.com")
 
     }
 
     @Test
     fun AUserIsCreatedAndYourPasswordIsVerified(){
+
+        var user = User("Lara","laraA@gmail.com","lara", false,"ara")
 
         Assert.assertEquals(user!!.password,"lara")
 
@@ -65,12 +42,16 @@ class UserTest {
     @Test
     fun AUserIsCreatedAndYourNickNameIsVerified(){
 
+        var user = User("Lara","laraA@gmail.com","lara", false,"ara")
+
         Assert.assertEquals(user!!.nickName,"ara")
 
     }
 
     @Test
     fun AUserIsCreatedAndVerifiedIfYouAreAnAdministrator(){
+
+        var user = User("Lara","laraA@gmail.com","lara", false,"ara")
 
         Assert.assertEquals(user!!.isAdmin,false)
 
@@ -79,6 +60,8 @@ class UserTest {
     @Test
     fun AUserIsCreatedWithoutPointsAndVerified(){
 
+        var user = User("Lara","laraA@gmail.com","lara", false,"ara")
+
         Assert.assertEquals(user!!.points,0)
 
     }
@@ -86,11 +69,19 @@ class UserTest {
     @Test
     fun iCreateAUserAndVerifyThatTheListOfClosedProjectsIsEmptyBecauseIDidNotMakeADonation(){
 
+        var user = User("Lara","laraA@gmail.com","lara", false,"ara")
+
         Assert.assertEquals(user!!.listOfClosedProjects.size,0)
     }
 
     @Test
     fun AuserCollaboratesOnAProjectWithMoreThan1000(){
+
+        var user = User("Lara","laraA@gmail.com","lara", false,"ara")
+        var bernal  = Location("Bernal", "Buenos Aires", 1000, false)
+        var fecha = LocalDate.of(2020,5,12)
+        var project   = Project("ProjectInitial", fecha!!, LocalDate.of(2020,7,8), bernal!!)
+
 
         user!!.collaboratesOnAProject(project!!,1200, LocalDate.of(2020,5,12))
 
@@ -101,6 +92,12 @@ class UserTest {
     @Test
     fun AuserCollaboratesOnAProjectWithMoreThan2000Inhabitant(){
 
+        var user = User("Lara","laraA@gmail.com","lara", false,"ara")
+        var fecha = LocalDate.of(2020,5,12)
+        var quilmes = Location("Quilmes", "Buenos Aires", 12000, false)
+        var project2  = Project("ProjectQuilmes",fecha!!, LocalDate.of(2020,7,8), quilmes!!)
+
+
         user!!.collaboratesOnAProject(project2!!,100, LocalDate.of(2020,5,12))
 
         Assert.assertEquals(user!!.points,200)
@@ -110,6 +107,12 @@ class UserTest {
     @Test
     fun collaborateOnAProjectTwiceInTheSameMonth(){
 
+        var user = User("Lara","laraA@gmail.com","lara", false,"ara")
+        var fecha = LocalDate.of(2020,5,12)
+        var quilmes = Location("Quilmes", "Buenos Aires", 12000, false)
+        var project2  = Project("ProjectQuilmes",fecha!!, LocalDate.of(2020,7,8), quilmes!!)
+
+
         user!!.collaboratesOnAProject(project2!!,100, LocalDate.of(2020,5,12))
         user!!.collaboratesOnAProject(project2!!,300, LocalDate.of(2020,5,15))
 
@@ -118,6 +121,13 @@ class UserTest {
     }
     @Test
     fun givenAProjectINotifyitsDonorUsersThatItEnded() {
+
+        var user = User("Lara","laraA@gmail.com","lara", false,"ara")
+        var bernal  = Location("Bernal", "Buenos Aires", 1000, false)
+        var fecha = LocalDate.of(2020,5,12)
+        var project   = Project("ProjectInitial", fecha!!, LocalDate.of(2020,7,8), bernal!!)
+
+
         user!!.collaboratesOnAProject(project!!, 400, LocalDate.of(2015, 5, 3))
         project!!.notifyDonorsThatTheProjectHasEnded()
 
@@ -128,13 +138,27 @@ class UserTest {
    @Test
     fun IThrowAnExceptionWhenIWantToCheckIfAProjectIsFinishedAndIAmNotAnAdministrator(){
 
-        user!!.collaboratesOnAProject(project!!,400, LocalDate.of(2015,5,3))
+       var user = User("Lara","laraA@gmail.com","lara", false,"ara")
+       var bernal  = Location("Bernal", "Buenos Aires", 1000, false)
+       var fecha = LocalDate.of(2020,5,12)
+       var project   = Project("ProjectInitial", fecha!!, LocalDate.of(2020,7,8), bernal!!)
+
+       user!!.collaboratesOnAProject(project!!,400, LocalDate.of(2015,5,3))
 
          assertThrows<Exception> { user!!.projectFinished(project!!)}
     }
 
     @Test
     fun aUserWhoIsAnAdministratorNotifiesThaTheProjectEnded(){
+
+        var userAdministrator = User("tomas","tomasA@gmail.com","lara", true,"ara")
+        var bernal  = Location("Bernal", "Buenos Aires", 1000, false)
+        var dateI     = LocalDate.of(2020, 5, 1)
+        var todayDate = LocalDate.now()
+        var project3  = Project("Project2", dateI!!,todayDate!!,bernal!!)
+
+
+
         userAdministrator!!.collaboratesOnAProject(project3!!,6000000, LocalDate.of(2015,5,3))
         userAdministrator!!.projectFinished(project3!!)
 
@@ -145,6 +169,11 @@ class UserTest {
     fun userHasTheTop10Available(){
 
         var aplication = Aplication()
+        var user = User("Lara","laraA@gmail.com","lara", false,"ara")
+        var bernal  = Location("Bernal", "Buenos Aires", 1000, false)
+        var fecha = LocalDate.of(2020,5,12)
+        var project   = Project("ProjectInitial", fecha!!, LocalDate.of(2020,7,8), bernal!!)
+
         aplication.userRegister(user!!)
         aplication.addProjects(project!!)
         aplication.cambiarFecha(LocalDate.now())

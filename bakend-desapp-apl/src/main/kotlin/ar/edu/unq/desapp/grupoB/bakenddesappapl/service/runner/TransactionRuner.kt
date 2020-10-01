@@ -43,11 +43,31 @@ class HibernateTransaction: Transaction {
 enum class TransactionType {
 
     HIBERNATE {
-        fun getTransaction(): Transaction {
+        override fun getTransaction(): Transaction {
             return HibernateTransaction()
         }
 
-    }
+    };
+    abstract fun getTransaction(): Transaction
+
 
 }
 
+
+
+object TransactionRunner {
+    private var transactions:List<Transaction> = listOf()
+
+    fun <T> runTrx(bloque: ()->T, types: List<TransactionType> = listOf()): T {
+        transactions = types.map { it.getTransaction() }
+        try{
+            transactions.forEach { it.start() }
+            val result = bloque()
+            transactions.forEach { it.commit() }
+            return result
+        } catch (exception:Throwable){
+            transactions.forEach { it.rollback() }
+            throw exception
+        }
+    }
+}

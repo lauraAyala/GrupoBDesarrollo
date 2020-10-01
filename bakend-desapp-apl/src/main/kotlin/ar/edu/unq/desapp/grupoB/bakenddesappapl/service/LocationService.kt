@@ -1,9 +1,9 @@
-package ar.edu.unq.desapp.grupoB.bakenddesappapl
+package ar.edu.unq.desapp.grupoB.bakenddesappapl.service
 
 import ar.edu.unq.desapp.grupoB.bakenddesappapl.model.Donor
 import ar.edu.unq.desapp.grupoB.bakenddesappapl.model.Location
 
-interface LocationDao{
+interface LocationService {
 
     fun createdLocation(location: Location)
     fun updateLocation(location: Location)

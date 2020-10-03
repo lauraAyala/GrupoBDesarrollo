@@ -23,7 +23,8 @@ class DonorServiceTest {
         var donor = Donor("lau",300, LocalDate.now())
         service.createdDonation(donor)
 
-        Assert.assertEquals(donor, service.recoverDonor(1.toLong()))
+        var res = service.recoverDonor(1)
+         Assert.assertEquals("lau", res.nickName)
 
     }
 }

@@ -5,9 +5,17 @@ import java.time.LocalDate
 import java.time.Month
 import java.util.*
 import java.util.logging.Handler
+import javax.persistence.*
 import kotlin.collections.ArrayList
 
-class User : Observer{
+@Entity(name = "user")
+class User (): Observer{
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    var id: Long? = null
+
+    @Column(nullable = false, length = 500)
 
 
     var nameUser: String? = null
@@ -21,7 +29,7 @@ class User : Observer{
     var listOfClosedProjects: ArrayList<Project> = ArrayList()
 
 
-    constructor(name: String, mail: String, pass: String, admin: Boolean, nick: String) {
+    constructor(name: String, mail: String, pass: String, admin: Boolean, nick: String) : this(){
 
         this.nameUser = name
         this.email = mail

@@ -5,14 +5,14 @@ import ar.edu.unq.desapp.grupoB.bakenddesappapl.DonorDao
 import ar.edu.unq.desapp.grupoB.bakenddesappapl.model.Donor
 import ar.edu.unq.desapp.grupoB.bakenddesappapl.service.DonorService
 import ar.edu.unq.desapp.grupoB.bakenddesappapl.service.runner.TransactionRunner.runTrx
-import ar.edu.unq.desapp.grupoB.bakenddesappapl.service.runner.TransactionType
+//import ar.edu.unq.desapp.grupoB.bakenddesappapl.service.runner.TransactionType
 
 class DonorServiceImpl(private val donorDAO: DonorDao,
                        private val dataDAO: DataDAO) : DonorService {
 
     override fun createdDonation(donor: Donor) {
 
-        return runTrx({ donorDAO.createdDonation(donor);TransactionType.HIBERNATE })
+        return runTrx({ donorDAO.createdDonation(donor)})
     }
 
     override fun recoverDonor(id: Long): Donor {

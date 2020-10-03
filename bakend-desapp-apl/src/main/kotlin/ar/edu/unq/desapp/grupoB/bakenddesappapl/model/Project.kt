@@ -2,8 +2,17 @@ package ar.edu.unq.desapp.grupoB.bakenddesappapl.model
 
 
 import java.time.LocalDate
+import javax.persistence.*
 
-class Project {
+@Entity(name = "proyect")
+
+class Project() {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    var id: Long? = null
+
+    @Column(nullable = false, length = 500)
 
     var nameProject : String? = null
     var factor : Int = 0
@@ -16,7 +25,7 @@ class Project {
     var donorUsers:ArrayList<User> = ArrayList()
 
 
-    constructor(name: String,dateI: LocalDate, dateE: LocalDate, locationP: Location){
+    constructor(name: String,dateI: LocalDate, dateE: LocalDate, locationP: Location): this (){
 
         this.nameProject = name
         this.dateInit = dateI

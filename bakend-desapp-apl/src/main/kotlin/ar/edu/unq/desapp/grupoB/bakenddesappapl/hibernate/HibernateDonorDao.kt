@@ -13,13 +13,6 @@ open class HibernateDonorDao : HibernateDAO<Donor>(Donor::class.java),DonorDao{
 
     override fun recoverDonor(id: Long): Donor {
 
-        return (this.recuperar(id.toLong()))
+        return (this.recuperar(id))
     }
 }
-
-/*open class HibernatePatogenoDAO : HibernateDAO<Patogeno>(Patogeno::class.java), PatogenoDAO {
-
-    override fun crear(patogeno: Patogeno): Int {
-        this.guardar(patogeno)
-        return (this.recuperar(patogeno.id).id!!.toInt())
-    }*/

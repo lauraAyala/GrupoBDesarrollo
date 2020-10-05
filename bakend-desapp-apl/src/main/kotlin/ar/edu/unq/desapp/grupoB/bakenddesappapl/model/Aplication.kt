@@ -76,7 +76,7 @@ open class Aplication() : Observable(){
 
         for (p: Project in this.listProjects){
 
-            var location = p.location
+            var location = p.locationP
             locations.add(location!!)
         }
         locations.sortBy { it.lastDonationOfLocation().date}

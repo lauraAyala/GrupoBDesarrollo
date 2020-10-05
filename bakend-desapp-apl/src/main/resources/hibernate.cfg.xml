@@ -19,6 +19,9 @@
         <property name="hibernate.hbm2ddl.auto">create-drop</property>
 
         <mapping class="ar.edu.unq.desapp.grupoB.bakenddesappapl.model.Donor"/>
+        <mapping class="ar.edu.unq.desapp.grupoB.bakenddesappapl.model.Project"/>
+        <mapping class="ar.edu.unq.desapp.grupoB.bakenddesappapl.model.Location"/>
+
 
 
     </session-factory>

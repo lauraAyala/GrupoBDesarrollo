@@ -5,7 +5,6 @@ import ar.edu.unq.desapp.grupoB.bakenddesappapl.DonorDao
 import ar.edu.unq.desapp.grupoB.bakenddesappapl.model.Donor
 import ar.edu.unq.desapp.grupoB.bakenddesappapl.service.DonorService
 import ar.edu.unq.desapp.grupoB.bakenddesappapl.service.runner.TransactionRunner.runTrx
-//import ar.edu.unq.desapp.grupoB.bakenddesappapl.service.runner.TransactionType
 
 class DonorServiceImpl(private val donorDAO: DonorDao,
                        private val dataDAO: DataDAO) : DonorService {

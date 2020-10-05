@@ -7,26 +7,43 @@ import ar.edu.unq.desapp.grupoB.bakenddesappapl.model.Donor
 import ar.edu.unq.desapp.grupoB.bakenddesappapl.model.Location
 import ar.edu.unq.desapp.grupoB.bakenddesappapl.service.LocationService
 import ar.edu.unq.desapp.grupoB.bakenddesappapl.service.ProjectService
+import ar.edu.unq.desapp.grupoB.bakenddesappapl.service.runner.TransactionRunner.runTrx
 
 class LocationServiceImpl(private val locationDAO: LocationDao,
                           private val dataDAO: DataDAO) : LocationService {
-    override fun createdLocation(location: Location) {
-        TODO("Not yet implemented")
+    override fun createdLocation(location: Location) : Location{
+
+
+        return runTrx{locationDAO.createdLocation(location)}
     }
 
     override fun updateLocation(location: Location) {
-        TODO("Not yet implemented")
+
+
+        return runTrx{locationDAO.updateLocation(location)}
+
     }
 
-    override fun recoverLocation(name: String): Location {
-        TODO("Not yet implemented")
+    override fun recoverLocation(id: Long): Location {
+
+
+        return runTrx{locationDAO.recoverLocation(id)}
+
     }
 
-    override fun registerDonor(donor: Donor) {
-        TODO("Not yet implemented")
+    override fun registerDonor(location:Location,donor: Donor) {
+
+
+
+        return runTrx{locationDAO.registerDonor(location,donor)}
+
+
     }
 
-    override fun allDonations(): ArrayList<Donor> {
-        TODO("Not yet implemented")
+    override fun allDonations(location: Location): MutableList<Donor> {
+
+
+        return runTrx{locationDAO.allDonations(location)}
+
     }
 }

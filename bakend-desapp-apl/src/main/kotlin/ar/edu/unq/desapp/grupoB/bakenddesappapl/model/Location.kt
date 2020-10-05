@@ -3,6 +3,7 @@ package ar.edu.unq.desapp.grupoB.bakenddesappapl.model
 import javax.persistence.*
 
 @Entity(name = "location")
+@Table(name = "location")
 class Location() {
 
     @Id
@@ -16,9 +17,12 @@ class Location() {
     var population : Int? = null
     var stateConective : Boolean? = null
 
-    @OneToMany(mappedBy = "location", cascade = [javax.persistence.CascadeType.ALL], fetch = FetchType.EAGER)
-    var listDonation : ArrayList<Donor> = ArrayList()
+    @OneToMany(mappedBy = "locationD", cascade = [CascadeType.ALL], fetch = FetchType.EAGER)
+    var listDonation : MutableList<Donor> = mutableListOf()
     var collection : Int = 0
+
+    @OneToMany( mappedBy = "locationP",cascade = [CascadeType.ALL], fetch = FetchType.LAZY)
+    var projects : MutableList<Project> = mutableListOf()
 
     constructor(nameLocation:String, provinceL:String, populationL: Int, conective:Boolean): this(){
 

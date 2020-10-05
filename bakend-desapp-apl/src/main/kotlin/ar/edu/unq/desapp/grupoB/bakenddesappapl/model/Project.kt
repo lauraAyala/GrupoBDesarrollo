@@ -4,7 +4,8 @@ package ar.edu.unq.desapp.grupoB.bakenddesappapl.model
 import java.time.LocalDate
 import javax.persistence.*
 
-@Entity(name = "proyect")
+@Entity(name = "project")
+@Table(name= "project")
 
 class Project() {
 
@@ -13,29 +14,45 @@ class Project() {
     var id: Long? = null
 
     @Column(nullable = false, length = 500)
-
     var nameProject : String? = null
+
+    @Column(nullable = false, length = 500)
     var factor : Int = 0
+
+    @Column(nullable = false, length = 500)
     var porcentageMinClouse : Int = 50
+
+    @Column(nullable = false, length = 500)
     var dateInit : LocalDate? = null
+
+    @Column(nullable = false, length = 500)
     var dateEnd : LocalDate? = null
-    var location : Location? = null
+
+    @Column(nullable = false, length = 500)
     var numberOfInhabitants : Int = 0
+
+    @Column(nullable = false, length = 500)
     var collection :Int =0
+
+    @Column(nullable = false, length = 500)
     var donorUsers:ArrayList<User> = ArrayList()
 
+    @ManyToOne
+    var locationP : Location? = null
 
-    constructor(name: String,dateI: LocalDate, dateE: LocalDate, locationP: Location): this (){
+
+    constructor(name: String,dateI: LocalDate, dateE: LocalDate, location: Location): this (){
 
         this.nameProject = name
         this.dateInit = dateI
         this.dateEnd = dateE
-        this.location = locationP
-        this.numberOfInhabitants = locationP.population!!
+        this.locationP = location
+        this.numberOfInhabitants = location.population!!
     }
 
+
     fun amountCollected(): Int {
-        var localDonations = this.location!!.listDonation
+        var localDonations = this.locationP!!.listDonation
         for (donation: Donor in localDonations) {
             collection += donation.donation!!
         }
@@ -46,7 +63,7 @@ class Project() {
 
         //devuelve la ultima donation
 
-        return ( this.location!!.lastDonationOfLocation())
+        return ( this.locationP!!.lastDonationOfLocation())
 
 
     }
@@ -62,18 +79,18 @@ class Project() {
         return currenteDate == dateEnd
     }
 
-    fun donationsProject(): ArrayList<Donor> {
+    fun donationsProject(): MutableList<Donor> {
 
         //devuelve la lista de donaciones del proyecto
 
-        return (this.location!!.listDonation)
+        return (this.locationP!!.listDonation)
     }
 
     fun moneyneeded(): Int {
 
         var count = 0
 
-        var location = this.location
+        var location = this.locationP
         if(this.factor > 0){
 
             count = location!!.population!! * this.factor

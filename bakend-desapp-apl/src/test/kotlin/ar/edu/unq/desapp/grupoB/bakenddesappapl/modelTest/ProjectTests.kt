@@ -3,9 +3,7 @@ package ar.edu.unq.desapp.grupoB.bakenddesappapl.modelTest
 import ar.edu.unq.desapp.grupoB.bakenddesappapl.model.Donor
 import ar.edu.unq.desapp.grupoB.bakenddesappapl.model.Location
 import ar.edu.unq.desapp.grupoB.bakenddesappapl.model.Project
-import ar.edu.unq.desapp.grupoB.bakenddesappapl.model.User
 import org.junit.Assert
-import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import java.time.LocalDate
 
@@ -29,7 +27,7 @@ class ProjectTests {
         var dateI= LocalDate.of(2020, 5, 1)
         var project = Project("ProjectInitial", dateI!!, LocalDate.of(2020,7,8),quilmes!!)
 
-        Assert.assertEquals(project!!.location, quilmes)
+        Assert.assertEquals(project!!.locationP, quilmes)
     }
 
     @Test

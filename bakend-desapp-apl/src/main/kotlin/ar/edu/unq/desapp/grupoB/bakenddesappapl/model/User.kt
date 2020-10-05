@@ -4,7 +4,6 @@ import java.lang.Exception
 import java.time.LocalDate
 import java.time.Month
 import java.util.*
-import java.util.logging.Handler
 import javax.persistence.*
 import kotlin.collections.ArrayList
 
@@ -42,7 +41,7 @@ class User (): Observer{
 
         val donor = Donor(this.nickName!!, donorUser, date)
 
-        project.location!!.listDonation.add(donor)
+        project.locationP!!.listDonation.add(donor)
         this.listDonor.add(donor)
 
         this.scorePoints(donorUser, project, date.month)
@@ -88,7 +87,7 @@ class User (): Observer{
 
     fun isProjectWithInhabitants(project: Project): Boolean {
 
-        var cantHabitants = project.location!!.population
+        var cantHabitants = project.locationP!!.population
 
         return (cantHabitants!! > 2000)
 

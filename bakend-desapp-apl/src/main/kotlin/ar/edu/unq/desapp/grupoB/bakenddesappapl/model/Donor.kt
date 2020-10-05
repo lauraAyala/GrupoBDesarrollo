@@ -17,8 +17,7 @@ class Donor() {
     var date: LocalDate? = null
 
     @ManyToOne
-    var location: Location? = null
-
+    var locationD: Location? = null
 
     constructor(nick: String, donation: Int, dateL: LocalDate) : this(){
         this.nickName = nick

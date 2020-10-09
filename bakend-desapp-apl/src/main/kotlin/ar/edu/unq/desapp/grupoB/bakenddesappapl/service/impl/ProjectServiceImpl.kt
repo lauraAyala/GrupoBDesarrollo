@@ -20,7 +20,7 @@ class ProjectServiceImpl( private val projectDAO: ProjectDao,
     }
 
     override fun updateProject(project: Project) {
-        TODO("Not yet implemented")
+        return runTrx { projectDAO.updateProject(project) }
     }
 
 

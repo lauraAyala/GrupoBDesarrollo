@@ -6,7 +6,7 @@ import ar.edu.unq.desapp.grupoB.bakenddesappapl.model.User
 interface UserService {
 
     fun createUser(user: User)
-    fun update(user: User)
-    fun recover(name: String): User
+    fun updateUser(user: User)
+    fun recover(id:Long): User
     fun addDonation(donor: Donor)
 }

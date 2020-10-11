@@ -2,13 +2,21 @@ package ar.edu.unq.desapp.grupoB.bakenddesappapl.model
 
 import java.time.LocalDate
 import java.util.*
+import javax.persistence.*
 import kotlin.collections.ArrayList
 
-
+@Entity(name = "aplication")
+@Table(name = "aplication")
 open class Aplication() : Observable(){
 
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    var id: Long? = null
+
+
     var listUsers : ArrayList<User> = ArrayList()
+
     var listProjects : ArrayList<Project> = ArrayList()
     var date : LocalDate? = null
 

@@ -7,4 +7,5 @@ interface ProjectService {
     fun createdProject(project: Project)
     fun recoverProject(id: Long) : Project
     fun updateProject(project: Project)
+    fun allProjects(): MutableList<Project>
 }

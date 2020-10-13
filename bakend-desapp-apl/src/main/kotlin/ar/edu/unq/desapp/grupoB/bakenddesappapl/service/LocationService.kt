@@ -10,4 +10,5 @@ interface LocationService {
     fun recoverLocation(id: Long): Location
     fun registerDonor(location: Location,donor: Donor)
     fun allDonations(location: Location): MutableList<Donor>
+    fun allLoctions(): MutableList<Location>
 }

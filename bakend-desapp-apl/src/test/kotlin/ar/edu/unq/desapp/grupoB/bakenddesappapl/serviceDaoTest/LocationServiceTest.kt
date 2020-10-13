@@ -49,5 +49,17 @@ class LocationServiceTest {
 
     }
 
+    @Test
+    fun allLocations() {
+        var berazategui = Location("Berazateui", "Buenos Aires", 2000, false)
+        berazategui = service.createdLocation(berazategui)
+        var ezpeleta = Location("Ezpeleta", "Buenos Aires", 2000, false)
+        ezpeleta = service.createdLocation(ezpeleta)
+
+        Assert.assertEquals(3,service.allLoctions().size)
+        Assert.assertTrue(service.allLoctions().any { it.name == "Berazateui" })
+        Assert.assertTrue(service.allLoctions().any { it.name == "Ezpeleta" })
+
+    }
 
 }

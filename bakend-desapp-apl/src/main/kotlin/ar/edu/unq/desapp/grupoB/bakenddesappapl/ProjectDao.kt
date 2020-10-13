@@ -8,5 +8,6 @@ interface ProjectDao{
     fun createdProject(project: Project):Int
     fun recoverProject(id: Long) : Project
     fun updateProject(project: Project)
+    fun allProjects():MutableList<Project>
 
 }

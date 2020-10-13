@@ -68,4 +68,15 @@ open class HibernateLocationDao :HibernateDAO<Location>(Location::class.java), L
 
         return query.resultList
     }
+
+    override fun allLocations(): MutableList<Location> {
+
+        val session = TransactionRunner.currentSession
+
+        val hql= " from location"
+
+        val query = session.createQuery(hql,Location::class.java)
+
+        return query.resultList
+    }
 }

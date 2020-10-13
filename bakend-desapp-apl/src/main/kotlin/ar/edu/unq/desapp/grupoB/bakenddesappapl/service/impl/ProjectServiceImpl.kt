@@ -23,5 +23,11 @@ class ProjectServiceImpl( private val projectDAO: ProjectDao,
         return runTrx { projectDAO.updateProject(project) }
     }
 
+    override fun allProjects(): MutableList<Project> {
+
+        return runTrx { projectDAO.allProjects() }
+
+    }
+
 
 }

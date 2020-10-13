@@ -24,4 +24,15 @@ class HibernateProjectDAO : HibernateDAO<Project>(Project::class.java),ProjectDa
        session.saveOrUpdate(project)
 
     }
+
+    override fun allProjects(): MutableList<Project> {
+
+        val session = TransactionRunner.currentSession
+
+        val hql= "from project"
+
+        val query = session.createQuery(hql,Project::class.java)
+
+        return query.resultList
+    }
 }

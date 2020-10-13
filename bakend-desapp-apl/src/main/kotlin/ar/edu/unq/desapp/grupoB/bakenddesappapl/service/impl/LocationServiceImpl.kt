@@ -46,4 +46,10 @@ class LocationServiceImpl(private val locationDAO: LocationDao,
         return runTrx{locationDAO.allDonations(location)}
 
     }
+
+    override fun allLoctions(): MutableList<Location> {
+
+        return runTrx{locationDAO.allLocations()}
+
+    }
 }

@@ -17,11 +17,12 @@ class UserServiceImpl(private val userDAO: UserDao,
         return runTrx { userDAO.updateUser(user) }
     }
 
-    override fun recover(id:Long): User {
-        return  runTrx { userDAO.recover(id) }
+    override fun recoverUser(id:Long): User {
+        return  runTrx { userDAO.recoverUser(id)}
     }
 
-    override fun addDonation(donor: Donor) {
-        TODO("Not yet implemented")
+
+    override fun allDonation(user: User): MutableList<Donor> {
+        return runTrx{userDAO.allDonation(user)}
     }
 }

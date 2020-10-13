@@ -23,10 +23,11 @@ class User (): Observer{
     var isAdmin: Boolean? = null
     var nickName: String? = null
     var points: Int = 0
-    var listDonor: ArrayList<Donor> = ArrayList()
     var cambio: String? = null
     var listOfClosedProjects: ArrayList<Project> = ArrayList()
 
+    @OneToMany(mappedBy = "userD", cascade = [CascadeType.ALL], fetch = FetchType.EAGER)
+    var listDonor: ArrayList<Donor> = ArrayList()
 
     constructor(name: String, mail: String, pass: String, admin: Boolean, nick: String) : this(){
 

@@ -26,11 +26,10 @@ class ProjectServiceTest {
         var location = Location("F Varela","Buenos Aires", 2000, false)
 
         location = serviceLocation.createdLocation(location)
-       // location = serviceLocation.recoverLocation(1)
         var project = Project("caritas", dateE,dateF,location)
         service.createdProject(project)
 
-        Assert.assertEquals("caritas", service.recoverProject(location.id!!).nameProject)
+        Assert.assertEquals("caritas", service.recoverProject(project.id!!).nameProject)
 
     }
 

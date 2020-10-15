@@ -4,7 +4,6 @@ import ar.edu.unq.desapp.grupoB.bakenddesappapl.DonorDao
 import ar.edu.unq.desapp.grupoB.bakenddesappapl.hibernate.HibernateDonorDao
 import ar.edu.unq.desapp.grupoB.bakenddesappapl.model.Donor
 import ar.edu.unq.desapp.grupoB.bakenddesappapl.service.impl.DataServiceImpl
-import ar.edu.unq.desapp.grupoB.bakenddesappapl.service.impl.DonorServiceImpl
 import org.junit.Assert
 import org.junit.jupiter.api.Test
 import java.time.LocalDate

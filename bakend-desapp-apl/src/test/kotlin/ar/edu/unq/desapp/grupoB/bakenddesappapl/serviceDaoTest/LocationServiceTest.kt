@@ -1,15 +1,5 @@
 package ar.edu.unq.desapp.grupoB.bakenddesappapl.serviceDaoTest
 
-import ar.edu.unq.desapp.grupoB.bakenddesappapl.hibernate.HibernateDonorDao
-import ar.edu.unq.desapp.grupoB.bakenddesappapl.hibernate.HibernateLocationDao
-import ar.edu.unq.desapp.grupoB.bakenddesappapl.model.Donor
-import ar.edu.unq.desapp.grupoB.bakenddesappapl.model.Location
-import ar.edu.unq.desapp.grupoB.bakenddesappapl.service.impl.DataServiceImpl
-import ar.edu.unq.desapp.grupoB.bakenddesappapl.service.impl.DonorServiceImpl
-import org.junit.Assert
-import org.junit.jupiter.api.Test
-import java.time.LocalDate
-
 class LocationServiceTest {
 
    /* var daoDonor =  HibernateDonorDao()

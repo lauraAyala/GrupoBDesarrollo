@@ -2,18 +2,14 @@ package ar.edu.unq.desapp.grupoB.bakenddesappapl.serviceDaoTest
 
 import ar.edu.unq.desapp.grupoB.bakenddesappapl.hibernate.HibernateLocationDao
 import ar.edu.unq.desapp.grupoB.bakenddesappapl.hibernate.HibernateUserDao
-import ar.edu.unq.desapp.grupoB.bakenddesappapl.model.Location
-import ar.edu.unq.desapp.grupoB.bakenddesappapl.model.Project
 import ar.edu.unq.desapp.grupoB.bakenddesappapl.model.User
 import ar.edu.unq.desapp.grupoB.bakenddesappapl.service.impl.DataServiceImpl
-import ar.edu.unq.desapp.grupoB.bakenddesappapl.service.impl.LocationServiceImpl
 import ar.edu.unq.desapp.grupoB.bakenddesappapl.service.impl.UserServiceImpl
 import org.junit.Assert
 import org.junit.jupiter.api.Test
-import java.time.LocalDate
 
 class UserServiceTest {
-     val dao= HibernateUserDao()
+   /*  val dao= HibernateUserDao()
      var daoLocation = HibernateLocationDao()
      var service = UserServiceImpl(dao, DataServiceImpl())
      var serviceLocation = LocationServiceImpl(daoLocation,DataServiceImpl())
@@ -47,4 +43,6 @@ class UserServiceTest {
     //        Assert.assertEquals(user!!.points,1200)
     //
     //    }*/
+
+    */
 }

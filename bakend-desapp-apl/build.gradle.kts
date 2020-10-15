@@ -27,6 +27,7 @@ dependencies {
 	implementation("org.hibernate:hibernate-core")
 	implementation("mysql:mysql-connector-java")
 	providedRuntime("org.springframework.boot:spring-boot-starter-tomcat")
+	runtimeOnly ("com.h2database:h2")
 	testImplementation("org.springframework.boot:spring-boot-starter-test") {
 		exclude(group = "org.junit.vintage", module = "junit-vintage-engine")
 		testImplementation("junit:junit:4.12")

@@ -2,8 +2,7 @@ package ar.edu.unq.desapp.grupoB.bakenddesappapl.model
 
 import javax.persistence.*
 
-@Entity(name = "location")
-@Table(name = "location")
+@Entity
 class Location() {
 
     @Id

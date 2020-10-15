@@ -26,8 +26,8 @@ class User (): Observer{
     var cambio: String? = null
     var listOfClosedProjects: ArrayList<Project> = ArrayList()
 
-    @OneToMany(mappedBy = "userD", cascade = [CascadeType.ALL], fetch = FetchType.EAGER)
-    var listDonor: ArrayList<Donor> = ArrayList()
+    @OneToMany(mappedBy = "userD", cascade = [CascadeType.ALL], fetch = FetchType.LAZY)
+    var listDonor: MutableList<Donor> = mutableListOf()
 
     constructor(name: String, mail: String, pass: String, admin: Boolean, nick: String) : this(){
 

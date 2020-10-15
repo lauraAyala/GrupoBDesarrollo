@@ -6,14 +6,13 @@ import ar.edu.unq.desapp.grupoB.bakenddesappapl.model.Donor
 import ar.edu.unq.desapp.grupoB.bakenddesappapl.model.Location
 import ar.edu.unq.desapp.grupoB.bakenddesappapl.service.impl.DataServiceImpl
 import ar.edu.unq.desapp.grupoB.bakenddesappapl.service.impl.DonorServiceImpl
-import ar.edu.unq.desapp.grupoB.bakenddesappapl.service.impl.LocationServiceImpl
 import org.junit.Assert
 import org.junit.jupiter.api.Test
 import java.time.LocalDate
 
 class LocationServiceTest {
 
-    var daoDonor =  HibernateDonorDao()
+   /* var daoDonor =  HibernateDonorDao()
     var serviceDonor = DonorServiceImpl(daoDonor,DataServiceImpl())
     var dao = HibernateLocationDao()
     var service = LocationServiceImpl(dao,DataServiceImpl())
@@ -60,6 +59,6 @@ class LocationServiceTest {
         Assert.assertTrue(service.allLoctions().any { it.name == "Berazateui" })
         Assert.assertTrue(service.allLoctions().any { it.name == "Ezpeleta" })
 
-    }
+    }*/
 
 }

@@ -19,6 +19,9 @@ class Donor() {
     @ManyToOne
     var locationD: Location? = null
 
+    @ManyToOne
+    var userD: User? = null
+
     constructor(nick: String, donation: Int, dateL: LocalDate) : this(){
         this.nickName = nick
         this.donation = donation

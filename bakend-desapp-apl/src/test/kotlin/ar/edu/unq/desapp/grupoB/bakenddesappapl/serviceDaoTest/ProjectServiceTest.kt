@@ -1,22 +1,23 @@
 package ar.edu.unq.desapp.grupoB.bakenddesappapl.serviceDaoTest
 
-import ar.edu.unq.desapp.grupoB.bakenddesappapl.hibernate.HibernateLocationDao
-import ar.edu.unq.desapp.grupoB.bakenddesappapl.hibernate.HibernateProjectDAO
 import ar.edu.unq.desapp.grupoB.bakenddesappapl.model.Location
 import ar.edu.unq.desapp.grupoB.bakenddesappapl.model.Project
-import ar.edu.unq.desapp.grupoB.bakenddesappapl.service.impl.DataServiceImpl
-import ar.edu.unq.desapp.grupoB.bakenddesappapl.service.impl.LocationServiceImpl
-import ar.edu.unq.desapp.grupoB.bakenddesappapl.service.impl.ProjectServiceImpl
+import ar.edu.unq.desapp.grupoB.bakenddesappapl.service.LocationService
+import ar.edu.unq.desapp.grupoB.bakenddesappapl.service.ProjectService
 import org.junit.Assert
 import org.junit.jupiter.api.Test
+import org.springframework.beans.factory.annotation.Autowired
 import java.time.LocalDate
 
 class ProjectServiceTest {
 
-    var daoLocation = HibernateLocationDao()
+    /*var daoLocation = HibernateLocationDao()
     var serviceLocation = LocationServiceImpl(daoLocation,DataServiceImpl())
     var dao = HibernateProjectDAO()
-    var service = ProjectServiceImpl(dao,DataServiceImpl())
+    var service = ProjectServiceImpl(dao,DataServiceImpl())*/
+
+    var service = ProjectService()
+    var serviceLocation = LocationService()
 
     @Test
     fun createdAnProject(){

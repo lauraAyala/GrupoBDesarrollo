@@ -34,7 +34,6 @@ dependencies {
 	}
 
 	implementation("org.jscience:jscience:4.3.1")
-	runtimeOnly("mysql:mysql-connector-java")
 
 }
 

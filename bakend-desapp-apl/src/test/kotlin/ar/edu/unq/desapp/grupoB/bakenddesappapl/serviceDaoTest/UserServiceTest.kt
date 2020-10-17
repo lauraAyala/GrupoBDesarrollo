@@ -1,12 +1,5 @@
 package ar.edu.unq.desapp.grupoB.bakenddesappapl.serviceDaoTest
 
-import ar.edu.unq.desapp.grupoB.bakenddesappapl.hibernate.HibernateLocationDao
-import ar.edu.unq.desapp.grupoB.bakenddesappapl.hibernate.HibernateUserDao
-import ar.edu.unq.desapp.grupoB.bakenddesappapl.model.User
-import ar.edu.unq.desapp.grupoB.bakenddesappapl.service.impl.DataServiceImpl
-import ar.edu.unq.desapp.grupoB.bakenddesappapl.service.impl.UserServiceImpl
-import org.junit.Assert
-import org.junit.jupiter.api.Test
 
 class UserServiceTest {
    /*  val dao= HibernateUserDao()

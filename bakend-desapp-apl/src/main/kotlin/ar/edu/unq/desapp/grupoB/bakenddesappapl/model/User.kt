@@ -8,6 +8,7 @@ import javax.persistence.*
 import kotlin.collections.ArrayList
 
 @Entity(name = "user")
+@Table
 class User (): Observer{
 
     @Id

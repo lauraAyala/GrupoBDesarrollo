@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*
 
 @Suppress("SpringJavaInjectionPointsAutowiringInspection")
 @CrossOrigin
-@ServiceREST
+@RestController
 @RequestMapping("/project")
 class ProjectController(val projectService: ProjectService) {
 

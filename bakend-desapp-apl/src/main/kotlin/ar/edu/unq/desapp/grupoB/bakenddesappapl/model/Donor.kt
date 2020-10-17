@@ -4,6 +4,7 @@ import java.time.LocalDate
 import javax.persistence.*
 
 @Entity (name = "donor")
+@Table
 class Donor() {
 
     @Id

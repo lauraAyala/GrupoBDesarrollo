@@ -4,8 +4,8 @@ package ar.edu.unq.desapp.grupoB.bakenddesappapl.model
 import java.time.LocalDate
 import javax.persistence.*
 
-@Entity
-
+@Entity(name= "project")
+@Table
 class Project() {
 
     @Id

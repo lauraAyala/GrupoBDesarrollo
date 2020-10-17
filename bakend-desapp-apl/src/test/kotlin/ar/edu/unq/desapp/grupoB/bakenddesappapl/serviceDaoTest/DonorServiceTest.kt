@@ -1,16 +1,13 @@
 package ar.edu.unq.desapp.grupoB.bakenddesappapl.serviceDaoTest
 
-import ar.edu.unq.desapp.grupoB.bakenddesappapl.DonorDao
-import ar.edu.unq.desapp.grupoB.bakenddesappapl.hibernate.HibernateDonorDao
 import ar.edu.unq.desapp.grupoB.bakenddesappapl.model.Donor
-import ar.edu.unq.desapp.grupoB.bakenddesappapl.service.impl.DataServiceImpl
 import org.junit.Assert
 import org.junit.jupiter.api.Test
 import java.time.LocalDate
 
 class DonorServiceTest {
 
-    val dao: DonorDao = HibernateDonorDao()
+    /*val dao: DonorDao = HibernateDonorDao()
     var service = DonorServiceImpl(dao,DataServiceImpl())
 
     @Test
@@ -24,5 +21,5 @@ class DonorServiceTest {
         Assert.assertEquals( 300, donorRecover.donation)
 
 
-    }
+    }*/
 }

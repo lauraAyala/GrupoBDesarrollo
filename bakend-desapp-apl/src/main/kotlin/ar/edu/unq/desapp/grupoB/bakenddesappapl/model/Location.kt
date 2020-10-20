@@ -2,12 +2,11 @@ package ar.edu.unq.desapp.grupoB.bakenddesappapl.model
 
 import javax.persistence.*
 
-@Entity(name = "location")
-@Table
+@Entity
 class Location() {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     var id: Long? = null
 
 

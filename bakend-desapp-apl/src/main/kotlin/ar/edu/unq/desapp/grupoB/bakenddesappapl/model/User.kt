@@ -7,12 +7,11 @@ import java.util.*
 import javax.persistence.*
 import kotlin.collections.ArrayList
 
-@Entity(name = "user")
-@Table
+@Entity
 class User (): Observer{
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     var id: Long? = null
 
     @Column(nullable = false, length = 500)

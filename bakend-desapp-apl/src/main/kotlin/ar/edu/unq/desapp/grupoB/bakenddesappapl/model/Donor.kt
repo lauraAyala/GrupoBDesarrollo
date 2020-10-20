@@ -3,12 +3,11 @@ package ar.edu.unq.desapp.grupoB.bakenddesappapl.model
 import java.time.LocalDate
 import javax.persistence.*
 
-@Entity (name = "donor")
-@Table
+@Entity
 class Donor() {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     var id: Long? = null
 
     @Column(nullable = false, length = 500)

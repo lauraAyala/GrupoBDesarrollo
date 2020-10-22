@@ -1,9 +1,11 @@
 package ar.edu.unq.desapp.grupoB.bakenddesappapl.model
 
+import org.hibernate.annotations.Table
 import java.time.LocalDate
 import javax.persistence.*
 
 @Entity
+@javax.persistence.Table
 class Donor() {
 
     @Id

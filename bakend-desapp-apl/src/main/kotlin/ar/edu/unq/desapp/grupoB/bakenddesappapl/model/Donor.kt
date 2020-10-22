@@ -13,7 +13,9 @@ class Donor() {
     @Column(nullable = false, length = 500)
 
     var nickName : String ? = null
+    @Column
     var donation: Int ? = null
+    @Column
     var date: LocalDate? = null
 
     @ManyToOne

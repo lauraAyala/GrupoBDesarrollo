@@ -26,6 +26,7 @@ dependencies {
 	implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
 	implementation("org.hibernate:hibernate-core")
 	implementation("mysql:mysql-connector-java")
+	implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
 	providedRuntime("org.springframework.boot:spring-boot-starter-tomcat")
 	runtimeOnly ("com.h2database:h2")
 	testImplementation("org.springframework.boot:spring-boot-starter-test") {

@@ -12,8 +12,11 @@ class Location() {
 
     @Column(nullable = false, length = 500)
     var name: String? = null
+    @Column
     var province: String? = null
+    @Column
     var population : Int? = null
+    @Column
     var stateConective : Boolean? = null
 
     @OneToMany(mappedBy = "locationD", cascade = [CascadeType.ALL], fetch = FetchType.LAZY)

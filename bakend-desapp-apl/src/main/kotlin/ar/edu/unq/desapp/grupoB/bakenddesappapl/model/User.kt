@@ -18,11 +18,17 @@ class User (): Observer{
 
 
     var nameUser: String? = null
+    @Column
     var email: String? = null
+    @Column
     var password: String? = null
+    @Column
     var isAdmin: Boolean? = null
+    @Column
     var nickName: String? = null
+    @Column
     var points: Int = 0
+    @Column
     var cambio: String? = null
     var listOfClosedProjects: ArrayList<Project> = ArrayList()
 

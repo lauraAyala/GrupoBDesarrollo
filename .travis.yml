@@ -4,6 +4,10 @@ before_script:
 
   cd bakend-desapp-apl
   
+env:
+    global:
+        - CODACY_API_BASE_URL=19829b3579ca4fb7a126c16317cc430f
+  
 before_install:
 
  - sudo apt-get install jq

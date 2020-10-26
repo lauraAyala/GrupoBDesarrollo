@@ -4,11 +4,10 @@ import java.time.LocalDate
 import javax.persistence.*
 
 @Entity
-@Table
 class Donor() {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     var id: Long? = null
 
     @Column(nullable = false, length = 500)

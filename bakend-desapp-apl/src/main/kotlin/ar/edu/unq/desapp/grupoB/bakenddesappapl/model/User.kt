@@ -8,11 +8,10 @@ import javax.persistence.*
 import kotlin.collections.ArrayList
 
 @Entity
-@Table
 class User (): Observer{
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     var id: Long? = null
 
     @Column(nullable = false, length = 500)
@@ -33,7 +32,7 @@ class User (): Observer{
     var cambio: String? = null
     var listOfClosedProjects: ArrayList<Project> = ArrayList()
 
-    @OneToMany(mappedBy = "userD", cascade = [CascadeType.ALL], fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "userD", cascade = [CascadeType.ALL])
     var listDonor: MutableList<Donor> = mutableListOf()
 
     constructor(name: String, mail: String, pass: String, admin: Boolean, nick: String) : this(){

@@ -3,11 +3,10 @@ package ar.edu.unq.desapp.grupoB.bakenddesappapl.model
 import javax.persistence.*
 
 @Entity
-@Table
 class Location() {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     var id: Long? = null
 
 
@@ -20,11 +19,11 @@ class Location() {
     @Column
     var stateConective : Boolean? = null
 
-    @OneToMany(mappedBy = "locationD", cascade = [CascadeType.ALL], fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "locationD", cascade = [CascadeType.ALL])
     var listDonation : MutableList<Donor> = mutableListOf()
     var collection : Int = 0
 
-    @OneToMany( mappedBy = "locationP",cascade = [CascadeType.ALL], fetch = FetchType.LAZY)
+    @OneToMany( mappedBy = "locationP",cascade = [CascadeType.ALL])
     var projects : MutableList<Project> = mutableListOf()
 
     constructor(nameLocation:String, provinceL:String, populationL: Int, conective:Boolean): this(){

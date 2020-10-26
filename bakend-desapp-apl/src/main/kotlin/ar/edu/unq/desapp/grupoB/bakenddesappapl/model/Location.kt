@@ -3,6 +3,7 @@ package ar.edu.unq.desapp.grupoB.bakenddesappapl.model
 import javax.persistence.*
 
 @Entity
+@Table
 class Location() {
 
     @Id

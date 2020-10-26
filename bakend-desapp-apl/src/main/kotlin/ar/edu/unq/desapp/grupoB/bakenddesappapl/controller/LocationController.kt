@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*
 @CrossOrigin
 @RestController
 @RequestMapping("/location")
-class LocationProject(val locationService: LocationService) {
+class LocationController(val locationService: LocationService) {
 
     @PostMapping("/registerlocation")
     fun createdProject(@RequestBody location: Location) : ResponseEntity<Location> {

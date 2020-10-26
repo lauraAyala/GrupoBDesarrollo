@@ -6,10 +6,11 @@ import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
 
+
 @CrossOrigin
 @RestController
 @RequestMapping("/user")
-class UserController(val userService: UserService ) {
+class UserController(val userService: UserService) {
 
     @PostMapping("/registerUser")
     fun createdUser(@RequestBody user: User) : ResponseEntity<User> {
@@ -25,5 +26,10 @@ class UserController(val userService: UserService ) {
 
     @GetMapping("/users")
     fun getAll() = userService.allUsers()
+
+    @DeleteMapping("/delete/{name}")
+    fun deleteByName(@PathVariable name: String?): List<User>? {
+        return userService.deleteUserByName(name)
+    }
 
 }

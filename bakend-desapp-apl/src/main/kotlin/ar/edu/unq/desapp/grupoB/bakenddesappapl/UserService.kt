@@ -9,6 +9,8 @@ import ar.edu.unq.desapp.grupoB.bakenddesappapl.repository.UserRepository
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 import java.time.LocalDate
+import java.util.*
+
 
 @Service
 class UserService {
@@ -34,7 +36,7 @@ class UserService {
         userRepository.saveAndFlush(user)
 
     }
-    fun recoverUser(id:Long): User{
+    fun recoverUser(id: Long): User{
 
         return userRepository.getOne(id)
 
@@ -45,12 +47,12 @@ class UserService {
         return userUpdate.listDonor
 
     }
-   fun collaboratesOnAProject(idUser:Long ,project: Project, donorUser: Int, date: LocalDate){
+   fun collaboratesOnAProject(idUser: Long, project: Project, donorUser: Int, date: LocalDate){
 
        var projectRecover = projectRepository.getOne(project.id!!.toLong())
        var userUpdate = userRepository.getOne(idUser)
 
-       userUpdate.collaboratesOnAProject(projectRecover,donorUser,date)
+       userUpdate.collaboratesOnAProject(projectRecover, donorUser, date)
 
        userRepository.save(userUpdate)
 
@@ -61,5 +63,8 @@ class UserService {
         return userRepository.findAll()
 
     }
-
+    fun deleteUserByName(name: String?): List<User>? {
+        userRepository.deleteByName(name)
+        return ArrayList<User>()
+    }
 }

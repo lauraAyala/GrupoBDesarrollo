@@ -5,8 +5,9 @@ import ar.edu.unq.desapp.grupoB.bakenddesappapl.model.User
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
+import java.net.PasswordAuthentication
 
-
+@Suppress("SpringJavaInjectionPointsAutowiringInspection")
 @CrossOrigin
 @RestController
 @RequestMapping("/user")
@@ -31,5 +32,15 @@ class UserController(val userService: UserService) {
     fun deleteByName(@PathVariable name: String?): List<User>? {
         return userService.deleteUserByName(name)
     }
+
+    @PostMapping("/login")
+    fun login(@PathVariable email:String,password:String): ResponseEntity<User>{
+
+        val user = userService.login(email,password)
+
+        return  ResponseEntity(user, HttpStatus.ACCEPTED)
+    }
+
+
 
 }

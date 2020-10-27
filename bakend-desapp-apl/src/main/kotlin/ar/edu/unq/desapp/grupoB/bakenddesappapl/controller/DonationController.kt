@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
 import org.springframework.web.bind.annotation.PostMapping as PostMapping1
 
+@Suppress("SpringJavaInjectionPointsAutowiringInspection")
 @RestController
 @RequestMapping("/donation")
 class DonationController(val donationService: DonationService) {

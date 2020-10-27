@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
 
+@Suppress("SpringJavaInjectionPointsAutowiringInspection")
 @CrossOrigin
 @RestController
 @RequestMapping("/location")
@@ -27,4 +28,6 @@ class LocationController(val locationService: LocationService) {
     @GetMapping("/locations")
     fun getAll() = locationService.allLoctions()
 
+    @GetMapping("/top10donations")
+    fun top10Donations() = locationService.top10Donations()
 }

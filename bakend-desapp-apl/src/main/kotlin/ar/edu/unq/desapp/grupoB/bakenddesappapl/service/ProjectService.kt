@@ -1,5 +1,6 @@
 package ar.edu.unq.desapp.grupoB.bakenddesappapl.service
 
+import ar.edu.unq.desapp.grupoB.bakenddesappapl.model.Location
 import ar.edu.unq.desapp.grupoB.bakenddesappapl.model.Project
 import ar.edu.unq.desapp.grupoB.bakenddesappapl.repository.ProjectRepository
 import org.springframework.beans.factory.annotation.Autowired
@@ -30,5 +31,10 @@ class ProjectService {
     fun allProjects(): MutableList<Project>{
 
         return repository.findAll()
+    }
+
+    fun top10localitations(): MutableList<Location> {
+
+       return  repository.top10Localitations()
     }
 }

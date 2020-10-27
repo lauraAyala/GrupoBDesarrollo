@@ -67,4 +67,10 @@ class UserService {
         userRepository.deleteByName(name)
         return ArrayList<User>()
     }
+
+    fun login(email: String, password: String): User {
+
+        return userRepository.login(email,password)
+
+    }
 }

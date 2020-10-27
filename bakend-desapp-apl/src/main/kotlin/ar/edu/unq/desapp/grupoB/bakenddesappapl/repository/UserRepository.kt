@@ -17,5 +17,9 @@ interface UserRepository:JpaRepository<User, Long> {
 
     fun deleteByName(@Param("name") name: String?): Int?
 
+    @Modifying(clearAutomatically = true)
+    @Query(value = "SELECT user.name, user.email, user.password, user.isAdmin, user.nickName FROM user WHERE user.email =:email AND user.password =:password", nativeQuery = true)
+    fun login(@Param ("email")email: String,@Param ("password") password: String): User?
+
 
 }

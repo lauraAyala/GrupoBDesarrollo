@@ -35,4 +35,10 @@ class LocationService {
 
         return locationRepository.findAll()
     }
+
+    fun top10Donations(): MutableList<Donor> {
+
+        return locationRepository.top10Donations()
+
+    }
 }

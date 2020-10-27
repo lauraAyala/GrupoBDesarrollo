@@ -15,15 +15,5 @@ class BakendDesappAplApplicationTests {
 	@Test
 	fun contextLoads() {
 	}
-
-	@Test
-	fun testHomeController() {
-		val projectController = ProjectController(ProjectService())
-		var quilmes = Location("Quilmes", "Buenos Aires", 10000, false)
-		var dateI= LocalDate.of(2020, 5, 1)
-		var project = Project("ProjectInitial", dateI!!, LocalDate.of(2020,7,8),quilmes!!)
-
-		val res = projectController.createdProject(project)
-		Assert.assertEquals(res.body!!.nameProject, "ProjectInitial")
-	}
+	
 }

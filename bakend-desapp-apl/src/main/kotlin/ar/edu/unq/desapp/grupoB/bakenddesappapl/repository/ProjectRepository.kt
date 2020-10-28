@@ -12,7 +12,7 @@ import org.springframework.stereotype.Repository
 @Repository
 interface ProjectRepository : JpaRepository<Project, Long>, JpaSpecificationExecutor<Project> {
 
-    @Query(value = " SELECT l.name, l.population, l.stateConective, l.province, l.collection " +
+    @Query(value = " SELECT l.id, l.name, l.population, l.stateConective, l.province, l.collection " +
             "FROM location as l JOIN project as p ON p.location_id = l.id " +
     "LIMIT 10",nativeQuery = true)
     fun top10Localitations(): MutableList<Location>

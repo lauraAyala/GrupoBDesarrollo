@@ -2,6 +2,7 @@ package ar.edu.unq.desapp.grupoB.bakenddesappapl.service
 
 import ar.edu.unq.desapp.grupoB.bakenddesappapl.model.Location
 import ar.edu.unq.desapp.grupoB.bakenddesappapl.model.Project
+import ar.edu.unq.desapp.grupoB.bakenddesappapl.repository.LocationRepository
 import ar.edu.unq.desapp.grupoB.bakenddesappapl.repository.ProjectRepository
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
@@ -12,10 +13,17 @@ class ProjectService {
     @Autowired
     lateinit var repository : ProjectRepository
 
-    fun createdProject(project: Project): Project {
+    @Autowired
+    lateinit var repositoryLocation : LocationRepository
 
-       return repository.save(project)
+    fun createdProject(project: Project): String? {
 
+        val location = repositoryLocation.save(project.locationP!!)
+        val newProject = Project(project.nameProject!!,project.dateInit!!,project.dateEnd!!,location)
+
+
+
+       return repository.save(newProject).nameProject
 
    }
     fun recoverProject(id: Long) : Project{

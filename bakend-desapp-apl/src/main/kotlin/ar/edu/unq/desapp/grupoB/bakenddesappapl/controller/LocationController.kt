@@ -30,4 +30,7 @@ class LocationController(val locationService: LocationService) {
 
     @GetMapping("/top10donations")
     fun top10Donations() = locationService.top10Donations()
+
+    @GetMapping("/top10locations")
+    fun top10Locations() = locationService.top10Locations()
 }

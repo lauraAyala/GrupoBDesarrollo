@@ -3,12 +3,14 @@ package ar.edu.unq.desapp.grupoB.bakenddesappapl.service
 import ar.edu.unq.desapp.grupoB.bakenddesappapl.model.Donor
 import ar.edu.unq.desapp.grupoB.bakenddesappapl.model.Location
 import ar.edu.unq.desapp.grupoB.bakenddesappapl.repository.LocationRepository
+import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 
 @Service
 class LocationService {
 
-  lateinit var locationRepository : LocationRepository
+    @Autowired
+    lateinit var locationRepository : LocationRepository
 
     fun createdLocation(location: Location): Location{
 
@@ -40,5 +42,10 @@ class LocationService {
 
         return locationRepository.top10Donations()
 
+    }
+
+    fun top10Locations(): MutableList<Location> {
+
+       return locationRepository.top10Locations()
     }
 }

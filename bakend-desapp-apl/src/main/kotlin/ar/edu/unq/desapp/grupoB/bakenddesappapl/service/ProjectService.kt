@@ -41,8 +41,19 @@ class ProjectService {
         return repository.findAll()
     }
 
-    fun top10localitations(): MutableList<Location> {
+   /* fun top10localitations(): MutableList<Location> {
 
-       return  repository.top10Localitations()
-    }
+        var locationsRes: MutableList<Location> = mutableListOf()
+
+        var locations = repository.top10Localitations()
+
+        for(l: Location in locations){
+
+            var location = Location(l.name!!,l.province!!,l.population!!,l.stateConective!!)
+
+            locationsRes.add(location)
+        }
+
+       return  locationsRes
+    }*/
 }

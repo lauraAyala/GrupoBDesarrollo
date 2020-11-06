@@ -29,8 +29,8 @@ class ProjectController(val projectService: ProjectService) {
     @GetMapping("/{id}")
     fun findById(@PathVariable id: Int) = projectService.recoverProject(id.toLong())
 
-    @GetMapping("/top10localitations")
-    fun top10Localitations() = projectService.top10localitations()
+    /*@GetMapping("/top10localitations")
+    fun top10Localitations() = projectService.top10localitations()*/
 
 }
 

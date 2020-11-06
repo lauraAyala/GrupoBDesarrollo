@@ -19,11 +19,11 @@ class Location() {
     @Column
     var stateConective : Boolean? = null
 
-    @OneToMany(mappedBy = "locationD", cascade = [CascadeType.ALL])
+    @OneToMany(mappedBy = "locationD", cascade = [CascadeType.ALL], fetch = FetchType.EAGER)
     var listDonation : MutableList<Donor> = mutableListOf()
     var collection : Int = 0
 
-    @OneToMany( mappedBy = "locationP",cascade = [CascadeType.ALL])
+    @OneToMany( mappedBy = "locationP",cascade = [CascadeType.ALL], fetch = FetchType.LAZY)
     var projects : MutableList<Project> = mutableListOf()
 
     constructor(nameLocation:String, provinceL:String, populationL: Int, conective:Boolean): this(){

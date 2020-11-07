@@ -63,13 +63,17 @@ class UserService {
         return userRepository.findAll()
 
     }
-    fun deleteUserByName(name: String?): List<User>? {
+    fun deleteUserByName(name: String?): MutableList<User> {
         userRepository.deleteByName(name)
-        return ArrayList<User>()
+        return this.allUsers()
     }
 
     fun login(email: String, password: String): User? {
 
+      /* var user = userRepository.login(email,password)
+
+        var  userRes = User(user?.nameUser!!,user.email!!, user.password!!,user.isAdmin!!,user.nickName!!)
+       */
         return userRepository.login(email,password)
 
     }

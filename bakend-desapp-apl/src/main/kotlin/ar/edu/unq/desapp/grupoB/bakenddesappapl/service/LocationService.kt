@@ -40,7 +40,17 @@ class LocationService {
 
     fun top10Donations(): MutableList<Donor> {
 
-        return locationRepository.top10Donations()
+        var donations = locationRepository.top10Donations()
+        var res : MutableList<Donor> = mutableListOf()
+
+        for (d : Donor in donations){
+
+            var donor = Donor(d.nickName!!,d.donation!!,d.date!!)
+
+            res.add(donor)
+
+        }
+        return res
 
     }
 

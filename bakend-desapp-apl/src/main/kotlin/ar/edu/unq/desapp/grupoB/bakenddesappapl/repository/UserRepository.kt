@@ -13,13 +13,11 @@ import javax.transaction.Transactional
 interface UserRepository:JpaRepository<User, Long> {
     @Transactional
     @Modifying(clearAutomatically = true)
-    @Query(value = "DELETE FROM user_of_app WHERE nameUser = :name", nativeQuery = true)
+    @Query(value = "DELETE FROM user WHERE nameUser = :name", nativeQuery = true)
+    fun deleteByName(@Param("name") name: String?)
 
-    fun deleteByName(@Param("name") name: String?): Int?
-
-    @Modifying(clearAutomatically = true)
-    @Query(value = "SELECT user.name, user.email, user.password, user.isAdmin, user.nickName FROM user WHERE user.email =:email AND user.password =:password", nativeQuery = true)
-    fun login(@Param ("email")email: String,@Param ("password") password: String): User?
+    @Query(value = "SELECT * FROM user WHERE email =:mail AND password =:pass", nativeQuery = true)
+    fun login(@Param ("mail" )email: String,@Param ("pass") password: String): User?
 
 
 }

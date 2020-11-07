@@ -17,6 +17,6 @@ class DonationController(val donationService: DonationService) {
     @PostMapping1("/registerDonation")
     fun  createdDonation(@RequestBody donation: Donor) : ResponseEntity<Donor>{
         val d = donationService.createdDonation(donation)
-        return ResponseEntity(donationService.recoverDonation(d.toString().toLong()), HttpStatus.CREATED)
+        return ResponseEntity(d, HttpStatus.CREATED)
     }
 }

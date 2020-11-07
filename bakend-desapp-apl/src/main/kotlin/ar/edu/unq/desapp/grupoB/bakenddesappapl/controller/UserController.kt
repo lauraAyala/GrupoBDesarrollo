@@ -34,11 +34,11 @@ class UserController(val userService: UserService) {
     }
 
     @PostMapping("/login")
-    fun login(@PathVariable email:String,password:String): ResponseEntity<User>{
+    fun login(@RequestParam email:String, @RequestParam password:String): ResponseEntity<User>{
 
         val user = userService.login(email,password)
 
-        return  ResponseEntity(user, HttpStatus.ACCEPTED)
+        return ResponseEntity(user, HttpStatus.CREATED)
     }
 
 

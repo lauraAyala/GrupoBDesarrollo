@@ -19,7 +19,7 @@ class ProjectController(val projectService: ProjectService) {
 
         val p = projectService.createdProject(project)
 
-        return  ResponseEntity(projectService.recoverProject(p.toString().toLong()), HttpStatus.CREATED)
+        return  ResponseEntity(projectService.recoverProject(p.id!!), HttpStatus.CREATED)
 
     }
 
@@ -31,6 +31,9 @@ class ProjectController(val projectService: ProjectService) {
 
     /*@GetMapping("/top10localitations")
     fun top10Localitations() = projectService.top10localitations()*/
+
+    @GetMapping("/openProjects")
+    fun listOpentProjects() = projectService.listOpenProject()
 
 }
 

@@ -74,7 +74,7 @@ class Project() {
     fun itsProjectEndDate(): Boolean {
         //RETORNO SI ES LA FECHA FIN DEL POROYECT
         var currenteDate =LocalDate.now()
-        return currenteDate == dateEnd
+        return currenteDate >= dateEnd
     }
 
     fun donationsProject(): MutableList<Donor> {

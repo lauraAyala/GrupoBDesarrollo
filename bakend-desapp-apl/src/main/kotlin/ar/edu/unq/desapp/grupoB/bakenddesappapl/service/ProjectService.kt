@@ -1,6 +1,5 @@
 package ar.edu.unq.desapp.grupoB.bakenddesappapl.service
 
-import ar.edu.unq.desapp.grupoB.bakenddesappapl.model.Location
 import ar.edu.unq.desapp.grupoB.bakenddesappapl.model.Project
 import ar.edu.unq.desapp.grupoB.bakenddesappapl.repository.LocationRepository
 import ar.edu.unq.desapp.grupoB.bakenddesappapl.repository.ProjectRepository
@@ -16,14 +15,14 @@ class ProjectService {
     @Autowired
     lateinit var repositoryLocation : LocationRepository
 
-    fun createdProject(project: Project): String? {
+    fun createdProject(project: Project): Project {
 
         val location = repositoryLocation.save(project.locationP!!)
         val newProject = Project(project.nameProject!!,project.dateInit!!,project.dateEnd!!,location)
 
 
 
-       return repository.save(newProject).nameProject
+       return repository.save(newProject)
 
    }
     fun recoverProject(id: Long) : Project{
@@ -41,19 +40,36 @@ class ProjectService {
         return repository.findAll()
     }
 
-   /* fun top10localitations(): MutableList<Location> {
+    fun listOpenProject(): MutableList<Project> {
 
-        var locationsRes: MutableList<Location> = mutableListOf()
+        val projects = this.allProjects()
 
-        var locations = repository.top10Localitations()
+        var openProjects : MutableList<Project> = mutableListOf()
 
-        for(l: Location in locations){
+        for (p :Project in projects){
 
-            var location = Location(l.name!!,l.province!!,l.population!!,l.stateConective!!)
+            if (!p.itsProjectEndDate()){
 
-            locationsRes.add(location)
+                openProjects.add(p)
+            }
         }
 
-       return  locationsRes
-    }*/
+        return openProjects
+    }
+
+    /* fun top10localitations(): MutableList<Location> {
+
+         var locationsRes: MutableList<Location> = mutableListOf()
+
+         var locations = repository.top10Localitations()
+
+         for(l: Location in locations){
+
+             var location = Location(l.name!!,l.province!!,l.population!!,l.stateConective!!)
+
+             locationsRes.add(location)
+         }
+
+        return  locationsRes
+     }*/
 }

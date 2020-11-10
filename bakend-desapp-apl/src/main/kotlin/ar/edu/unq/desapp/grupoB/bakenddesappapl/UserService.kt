@@ -70,10 +70,6 @@ class UserService {
 
     fun login(email: String, password: String): User? {
 
-      /* var user = userRepository.login(email,password)
-
-        var  userRes = User(user?.nameUser!!,user.email!!, user.password!!,user.isAdmin!!,user.nickName!!)
-       */
         return userRepository.login(email,password)
 
     }

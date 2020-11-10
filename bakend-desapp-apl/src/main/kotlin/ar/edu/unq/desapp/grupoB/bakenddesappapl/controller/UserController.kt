@@ -1,5 +1,6 @@
 package ar.edu.unq.desapp.grupoB.bakenddesappapl.controller
 
+import ar.edu.unq.desapp.grupoB.bakenddesappapl.RequestClass.LoginRequest
 import ar.edu.unq.desapp.grupoB.bakenddesappapl.UserService
 import ar.edu.unq.desapp.grupoB.bakenddesappapl.model.User
 import org.springframework.http.HttpStatus
@@ -34,11 +35,11 @@ class UserController(val userService: UserService) {
     }
 
     @PostMapping("/login")
-    fun login(@RequestParam email:String, @RequestParam password:String): ResponseEntity<User>{
+    fun login(@RequestBody login : LoginRequest): ResponseEntity<User>{
 
-        val user = userService.login(email,password)
+        val user = userService.login(login.email,login.password)
 
-        return ResponseEntity(user, HttpStatus.CREATED)
+        return ResponseEntity(user, HttpStatus.OK)
     }
     /*
     @PostMapping("/makeDonation")

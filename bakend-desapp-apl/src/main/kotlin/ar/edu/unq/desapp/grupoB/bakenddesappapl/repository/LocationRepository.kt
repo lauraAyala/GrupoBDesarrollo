@@ -19,19 +19,12 @@ interface LocationRepository : JpaRepository<Location, Long> {
     @Query(value = "DELETE FROM locality WHERE name = :locality_name", nativeQuery = true)
 
     fun deleteByName(@Param("locality_name") locality_name: String?): Int?
-/*" SELECT donor.nickName, donor.donation, donor.date " +
-            "FROM location.listDonation as d " + " FULL JOIN donor  ON d.id = donor.id " +
-            "ORDER BY donor.donation " + " DESC " +
-            "LIMIT 10"*/
 
-    @Query(value = " SELECT * FROM donor" +
-            "ORDER BY donor.donation " + " DESC " +
-            "LIMIT 10",nativeQuery = true)
-    fun top10Donations(): MutableList<Donor>
 
     @Query(value = "SELECT location.name, location.province, location.population, location.stateConective" +
             "FROM location " +
-            "FULL JOIN project.locationP as l ON l.id = location.id" ,nativeQuery = true)
+            "JOIN location.listDonations d as d" +
+            "FULL JOIN donor  ON l.id = location.id" ,nativeQuery = true)
     fun top10Locations(): MutableList<Location>
 
 }

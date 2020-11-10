@@ -20,4 +20,15 @@ class DonationService {
 
         return donationRepository.getOne(id)
     }
+
+    fun allDonations(): MutableList<Donor> {
+
+        return donationRepository.findAll()
+
+    }
+
+    fun top10Donations(): MutableList<Donor> {
+
+        return donationRepository.top10Donations()
+    }
 }

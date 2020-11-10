@@ -16,7 +16,7 @@ interface UserRepository:JpaRepository<User, Long> {
     @Query(value = "DELETE FROM user WHERE nameUser = :name", nativeQuery = true)
     fun deleteByName(@Param("name") name: String?)
 
-    @Query(value = "SELECT * FROM user WHERE email =:mail AND password =:pass", nativeQuery = true)
+    @Query(value = "SELECT * FROM user WHERE email =:mail AND password =:pass LIMIT 1", nativeQuery = true)
     fun login(@Param ("mail" )email: String,@Param ("pass") password: String): User?
 
 

@@ -77,4 +77,17 @@ class UserService {
         return userRepository.login(email,password)
 
     }
+
+   /* fun makeDonation(user: User, project: Project, donorUser: Int, date: LocalDate){
+
+        // var projectRecover = projectRepository.findById(project.id!!.toLong())
+        //var userUpdate = userRepository.findById(user.id!!.toLong())
+        var projectRecover = projectRepository.getOne(project.id!!.toLong())
+        var userUpdate = userRepository.getOne(user.id!!.toLong())
+        userUpdate.collaboratesOnAProject(projectRecover,donorUser,date)
+
+
+        userRepository.save(userUpdate)
+
+    }*/
 }

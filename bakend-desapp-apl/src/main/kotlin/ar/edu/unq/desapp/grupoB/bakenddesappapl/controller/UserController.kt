@@ -40,7 +40,12 @@ class UserController(val userService: UserService) {
 
         return ResponseEntity(user, HttpStatus.CREATED)
     }
-
+    /*
+    @PostMapping("/makeDonation")
+    fun makeDonation( user: User, project: Project, donorUser: Int, date: LocalDate): ResponseEntity<Unit> {
+        val user = userService.makeDonation(user,project, donorUser, date)
+        return  ResponseEntity(user,HttpStatus.OK)
+    }*/
 
 
 }

@@ -1,5 +1,6 @@
 package ar.edu.unq.desapp.grupoB.bakenddesappapl.service
 
+import ar.edu.unq.desapp.grupoB.bakenddesappapl.dto.ProjectDTO
 import ar.edu.unq.desapp.grupoB.bakenddesappapl.model.Project
 import ar.edu.unq.desapp.grupoB.bakenddesappapl.repository.LocationRepository
 import ar.edu.unq.desapp.grupoB.bakenddesappapl.repository.ProjectRepository
@@ -40,17 +41,19 @@ class ProjectService {
         return repository.findAll()
     }
 
-    fun listOpenProject(): MutableList<Project> {
+    fun listOpenProject(): MutableList<ProjectDTO> {
 
         val projects = this.allProjects()
 
-        var openProjects : MutableList<Project> = mutableListOf()
+        var openProjects : MutableList<ProjectDTO> = mutableListOf()
 
         for (p :Project in projects){
 
             if (!p.itsProjectEndDate()){
 
-                openProjects.add(p)
+                var projectDTO = ProjectDTO(p.id!!,p.nameProject!!,p.locationP?.name!!,p.dateInit!!,p.dateEnd!!)
+
+                openProjects.add(projectDTO)
             }
         }
 

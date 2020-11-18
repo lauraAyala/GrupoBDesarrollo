@@ -47,16 +47,7 @@ class UserService {
         return userUpdate.listDonor
 
     }
-   fun collaboratesOnAProject(idUser: Long, project: Project, donorUser: Int, date: LocalDate){
 
-       var projectRecover = projectRepository.getOne(project.id!!.toLong())
-       var userUpdate = userRepository.getOne(idUser)
-
-       userUpdate.collaboratesOnAProject(projectRecover, donorUser, date)
-
-       userRepository.save(userUpdate)
-
-   }
 
     fun allUsers(): MutableList<User> {
 
@@ -74,7 +65,7 @@ class UserService {
 
     }
 
-   /* fun makeDonation(user: User, project: Project, donorUser: Int, date: LocalDate){
+    fun makeDonation(user: User, project: Project, donorUser: Int, date: LocalDate){
 
         // var projectRecover = projectRepository.findById(project.id!!.toLong())
         //var userUpdate = userRepository.findById(user.id!!.toLong())
@@ -83,7 +74,10 @@ class UserService {
         userUpdate.collaboratesOnAProject(projectRecover,donorUser,date)
 
 
-        userRepository.save(userUpdate)
+       userRepository.save(userUpdate)
 
-    }*/
+    }
+
+    /*/* fun makeDonation(@Param("user")user:User,*/
+    /*@Param("project")project:Project,@Param("donor")donor:Int,@Param("date")date:LocalDate)*/*/
 }

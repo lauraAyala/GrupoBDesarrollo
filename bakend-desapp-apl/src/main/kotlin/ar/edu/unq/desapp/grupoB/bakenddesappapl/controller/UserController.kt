@@ -1,5 +1,6 @@
 package ar.edu.unq.desapp.grupoB.bakenddesappapl.controller
 
+import ar.edu.unq.desapp.grupoB.bakenddesappapl.RequestClass.DonationRequest
 import ar.edu.unq.desapp.grupoB.bakenddesappapl.RequestClass.LoginRequest
 import ar.edu.unq.desapp.grupoB.bakenddesappapl.UserService
 import ar.edu.unq.desapp.grupoB.bakenddesappapl.model.User
@@ -41,12 +42,14 @@ class UserController(val userService: UserService) {
 
         return ResponseEntity(user, HttpStatus.OK)
     }
-    /*
     @PostMapping("/makeDonation")
-    fun makeDonation( user: User, project: Project, donorUser: Int, date: LocalDate): ResponseEntity<Unit> {
-        val user = userService.makeDonation(user,project, donorUser, date)
+    fun makeDonation(@RequestBody donationRequest : DonationRequest): ResponseEntity<Unit> {
+
+        val user = userService.makeDonation(donationRequest.user,donationRequest.project,donationRequest.donorUser,donationRequest.date)
+
         return  ResponseEntity(user,HttpStatus.OK)
-    }*/
+    }
+
 
 
 }

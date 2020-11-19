@@ -65,16 +65,20 @@ class UserService {
 
     }
 
-    fun makeDonation(user: User, project: Project, donorUser: Int, date: LocalDate){
+    fun makeDonation(user: String, project: String, donorUser: Int, date: LocalDate){
 
         // var projectRecover = projectRepository.findById(project.id!!.toLong())
         //var userUpdate = userRepository.findById(user.id!!.toLong())
-        var projectRecover = projectRepository.getOne(project.id!!.toLong())
-        var userUpdate = userRepository.getOne(user.id!!.toLong())
+        var projectRecover = projectRepository.recoverProject(project)
+        var userUpdate = userRepository.recoverUser(user)
+        val donor = Donor(userUpdate.nickName!!,donorUser,date)
         userUpdate.collaboratesOnAProject(projectRecover,donorUser,date)
 
+        donorRepository.save(donor)
 
-       userRepository.save(userUpdate)
+
+       this.updateUser(userUpdate)
+
 
     }
 

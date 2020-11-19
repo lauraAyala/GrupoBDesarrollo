@@ -19,5 +19,8 @@ interface UserRepository:JpaRepository<User, Long> {
     @Query(value = "SELECT * FROM user WHERE email =:mail AND password =:pass LIMIT 1", nativeQuery = true)
     fun login(@Param ("mail" )email: String,@Param ("pass") password: String): User?
 
+    @Query(value = "SELECT * FROM user WHERE name_User = :name LIMIT 1",nativeQuery = true)
+    fun recoverUser(@Param("name") user: String): User
+
 
 }

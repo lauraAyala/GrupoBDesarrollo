@@ -73,7 +73,7 @@ class Project() {
 
     fun itsProjectEndDate(): Boolean {
         //RETORNO SI ES LA FECHA FIN DEL POROYECT
-        var currenteDate =LocalDate.now()
+        var currenteDate = LocalDate.now()
         return currenteDate >= dateEnd
     }
 
@@ -91,7 +91,7 @@ class Project() {
         var location = this.locationP
         if(this.factor > 0){
 
-            count = location!!.population!! * this.factor
+            count += location!!.population!! * this.factor
 
         }
         else{

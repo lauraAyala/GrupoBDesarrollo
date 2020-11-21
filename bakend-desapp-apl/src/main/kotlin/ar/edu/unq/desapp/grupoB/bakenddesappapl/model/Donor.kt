@@ -24,9 +24,9 @@ class Donor() {
     @ManyToOne
     var userD: User? = null
 
-    constructor(nick: String, donation: Int, dateL: LocalDate) : this(){
+    constructor(nick: String, mount: Int, dateL: LocalDate) : this(){
         this.nickName = nick
-        this.donation = donation
+        this.donation = mount
         this.date = dateL
 
     }

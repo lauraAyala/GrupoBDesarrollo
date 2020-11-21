@@ -52,7 +52,7 @@ class User (): Observer{
         this.listDonor.add(donor)
 
         this.scorePoints(donorUser, project, date.month)
-        project.donorUsers!!.add(this)
+        project.donorUsers.add(this)
 
     }
 

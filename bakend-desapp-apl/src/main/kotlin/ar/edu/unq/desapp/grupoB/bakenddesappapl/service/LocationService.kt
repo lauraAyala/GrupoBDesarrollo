@@ -42,6 +42,21 @@ class LocationService {
 
     fun top10Locations(): MutableList<Location> {
 
-       return locationRepository.top10Locations()
+
+        var locations = locationRepository.findAll()
+        var top10locations : MutableList<Location> = mutableListOf()
+
+        locations.sortBy { it.lastDonationOfLocation().date}
+        locations.reverse()
+        var contador : Int = 10
+        for (l :Location in locations){
+
+            if (contador > 0){
+
+                top10locations.add(l)
+                contador -= 1
+            }
+        }
+       return top10locations
     }
 }

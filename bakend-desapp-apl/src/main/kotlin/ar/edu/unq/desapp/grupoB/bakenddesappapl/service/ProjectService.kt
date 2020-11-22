@@ -60,6 +60,25 @@ class ProjectService {
         return openProjects
     }
 
+    fun listUpcomingProjectsToClose(): MutableList<ProjectDTO>  {
+
+    val projects = this.allProjects()
+
+    var closedProjects : MutableList<ProjectDTO> = mutableListOf()
+
+    for (p :Project in projects){
+
+        if (p.isCloseToClosing()){
+
+            var projectDTO = ProjectDTO(p.id!!,p.nameProject!!,p.locationP?.name!!,p.dateInit!!,p.dateEnd!!)
+
+            closedProjects.add(projectDTO)
+        }
+    }
+
+    return closedProjects
+}
+
     /* fun top10localitations(): MutableList<Location> {
 
          var locationsRes: MutableList<Location> = mutableListOf()

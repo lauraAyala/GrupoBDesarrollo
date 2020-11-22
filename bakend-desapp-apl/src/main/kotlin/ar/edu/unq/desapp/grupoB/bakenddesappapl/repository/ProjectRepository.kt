@@ -14,7 +14,7 @@ import org.springframework.stereotype.Repository
 interface ProjectRepository : JpaRepository<Project, Long>, JpaSpecificationExecutor<Project> {
 
     @Query(value = "SELECT * FROM project WHERE name_Project = :name LIMIT 1",nativeQuery = true)
-    fun recoverProject(@Param("name")project: String): Project
+    fun recoverProject(@Param("name") name: String): Project
 
 
 }

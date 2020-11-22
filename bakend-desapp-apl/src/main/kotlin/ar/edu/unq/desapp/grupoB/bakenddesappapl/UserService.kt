@@ -1,5 +1,6 @@
 package ar.edu.unq.desapp.grupoB.bakenddesappapl
 
+import ar.edu.unq.desapp.grupoB.bakenddesappapl.RequestClass.DonationRequest
 import ar.edu.unq.desapp.grupoB.bakenddesappapl.model.Donor
 import ar.edu.unq.desapp.grupoB.bakenddesappapl.model.Project
 import ar.edu.unq.desapp.grupoB.bakenddesappapl.model.User
@@ -8,8 +9,10 @@ import ar.edu.unq.desapp.grupoB.bakenddesappapl.repository.ProjectRepository
 import ar.edu.unq.desapp.grupoB.bakenddesappapl.repository.UserRepository
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
+import java.lang.Error
 import java.time.LocalDate
 import java.util.*
+import java.util.logging.ErrorManager
 
 
 @Service
@@ -65,20 +68,24 @@ class UserService {
 
     }
 
-    fun makeDonation(user: String, project: String, donorUser: Int, date: LocalDate){
+    fun makeDonation(user: Int, project: Int, donorUser: Int, date: LocalDate) : Donor{
 
         // var projectRecover = projectRepository.findById(project.id!!.toLong())
         //var userUpdate = userRepository.findById(user.id!!.toLong())
-        var projectRecover = projectRepository.recoverProject(project)
-        var userUpdate = userRepository.recoverUser(user)
-        val donor = Donor(userUpdate.nickName!!,donorUser,date)
-        userUpdate.collaboratesOnAProject(projectRecover,donorUser,date)
+        var projectRecover = projectRepository.getOne(project.toLong())
+        var userUpdate = userRepository.getOne(user.toLong())
+
+            userUpdate.collaboratesOnAProject(projectRecover, donorUser, date)
+        var donor = Donor(userUpdate.nickName!!, donorUser, date)
+
 
         donorRepository.save(donor)
 
 
-       this.updateUser(userUpdate)
+            this.updateUser(userUpdate)
 
+
+        return donor
 
     }
 

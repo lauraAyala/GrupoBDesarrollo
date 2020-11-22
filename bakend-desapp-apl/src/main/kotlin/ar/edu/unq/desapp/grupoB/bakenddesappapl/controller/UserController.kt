@@ -3,6 +3,7 @@ package ar.edu.unq.desapp.grupoB.bakenddesappapl.controller
 import ar.edu.unq.desapp.grupoB.bakenddesappapl.RequestClass.DonationRequest
 import ar.edu.unq.desapp.grupoB.bakenddesappapl.RequestClass.LoginRequest
 import ar.edu.unq.desapp.grupoB.bakenddesappapl.UserService
+import ar.edu.unq.desapp.grupoB.bakenddesappapl.model.Donor
 import ar.edu.unq.desapp.grupoB.bakenddesappapl.model.User
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
@@ -24,7 +25,7 @@ class UserController(val userService: UserService) {
 
     }
 
-    @GetMapping("/user/{id}")
+    @GetMapping("/{id}")
     fun findById(@PathVariable id: Int) = userService.recoverUser(id.toLong())
 
     @GetMapping("/users")
@@ -43,14 +44,16 @@ class UserController(val userService: UserService) {
         return ResponseEntity(user, HttpStatus.OK)
     }
     @PostMapping("/makeDonation")
-    fun makeDonation(@RequestBody donationRequest : DonationRequest) = userService.makeDonation(donationRequest.user,donationRequest.project,donationRequest.donorUser,donationRequest.date)
+    fun makeDonation(@RequestBody donationRequest : DonationRequest) : ResponseEntity<Donor> {
 
-    /*{
 
-        val user = userService.makeDonation(donationRequest.user,donationRequest.project,donationRequest.donorUser,donationRequest.date)
 
-        return  ResponseEntity(user,HttpStatus.OK)
-    }*/
+
+        //val user = userService.makeDonation(donationRequest.user,donationRequest.project,donationRequest.donorUser,donationRequest.date)
+       var donor = userService.makeDonation(donationRequest.user,donationRequest.project,donationRequest.donorUser,donationRequest.date)
+
+        return  ResponseEntity( donor, HttpStatus.OK)
+    }
 
 
 

@@ -35,5 +35,8 @@ class ProjectController(val projectService: ProjectService) {
     @GetMapping("/openProjects")
     fun listOpentProjects() = projectService.listOpenProject()
 
+    @GetMapping("/upcomingProjectsToClose")
+    fun listUpcomingProjectsToClose() = projectService.listUpcomingProjectsToClose()
+
 }
 

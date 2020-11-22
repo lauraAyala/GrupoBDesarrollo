@@ -113,4 +113,12 @@ class Project() {
 
         }
     }
+
+    fun isCloseToClosing(): Boolean {
+
+        val date = LocalDate.now()
+
+        return this.dateEnd?.month == date.month && this.dateEnd?.year == date.year
+
+    }
 }

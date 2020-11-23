@@ -19,11 +19,11 @@ import java.net.PasswordAuthentication
 class UserController(val userService: UserService) {
 
     @PostMapping("/registerUser")
-    fun createdUser(@RequestBody user: User) : ResponseEntity<User> {
+    fun createdUser(@RequestBody user: User) : ResponseEntity<HttpStatus> {
 
-        val u= userService.createUser(user)
+         userService.createUser(user)
 
-        return  ResponseEntity(userService.recoverUser(u.toLong()), HttpStatus.CREATED)
+        return  ResponseEntity( HttpStatus.CREATED)
 
     }
 
@@ -38,12 +38,12 @@ class UserController(val userService: UserService) {
         return userService.deleteUserByName(name)
     }
 
-    @GetMapping("/login")
-    fun login(@RequestBody login : LoginRequest): ResponseEntity<UserDTO>{
+    @PostMapping("/login")
+    fun login(@RequestBody login : LoginRequest): ResponseEntity<HttpStatus>{
 
-        val user = userService.login(login.email,login.password)
+        userService.login(login.email,login.password)
 
-        return ResponseEntity(user, HttpStatus.OK)
+        return ResponseEntity( HttpStatus.OK)
     }
     @PostMapping("/makeDonation")
 

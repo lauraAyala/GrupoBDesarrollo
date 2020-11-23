@@ -29,11 +29,11 @@ class UserService {
     lateinit var donorRepository: DonationRepository
 
 
-    fun createUser(user: User): Int{
+    fun createUser(user: User){
 
         userRepository.save(user)
 
-        return user.id!!.toInt()
+        //return user.id!!.toInt()
 
     }
     fun updateUser(user: User){
@@ -64,12 +64,12 @@ class UserService {
         return this.allUsers()
     }
 
-    fun login(email: String, password: String): UserDTO {
+    fun login(email: String, password: String) {
 
         var user = userRepository.login(email,password)
-        val userDto = UserDTO(user?.nameUser!!,user?.email!!,user?.nickName!!, user?.points!!)
+        //val userDto = UserDTO(user?.nameUser!!,user?.email!!,user?.nickName!!, user?.points!!)
 
-        return userDto
+      
 
     }
 

@@ -1,6 +1,7 @@
 package ar.edu.unq.desapp.grupoB.bakenddesappapl.modelTest
 
 import ar.edu.unq.desapp.grupoB.bakenddesappapl.model.Donor
+import ar.edu.unq.desapp.grupoB.bakenddesappapl.model.User
 import org.junit.Assert
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
@@ -11,7 +12,9 @@ class DonorTests {
     @Test
     fun aNewDonationIsCreatedAndTheDataIsVerifiedToBeCorrect(){
 
-        var donor = Donor("pepe", 1000, LocalDate.of(2020,4,11))
+        var user = User("Pedro","pepe@gmail.com","pepe",false,"pepe")
+
+        var donor = Donor(user, 1000, LocalDate.of(2020,4,11))
 
 
         Assert.assertEquals(donor!!.nickName, "pepe")

@@ -1,6 +1,8 @@
 package ar.edu.unq.desapp.grupoB.bakenddesappapl
 
 import ar.edu.unq.desapp.grupoB.bakenddesappapl.RequestClass.DonationRequest
+import ar.edu.unq.desapp.grupoB.bakenddesappapl.dto.DonationDTO
+import ar.edu.unq.desapp.grupoB.bakenddesappapl.dto.UserDTO
 import ar.edu.unq.desapp.grupoB.bakenddesappapl.model.Donor
 import ar.edu.unq.desapp.grupoB.bakenddesappapl.model.Project
 import ar.edu.unq.desapp.grupoB.bakenddesappapl.model.User
@@ -62,9 +64,12 @@ class UserService {
         return this.allUsers()
     }
 
-    fun login(email: String, password: String): User? {
+    fun login(email: String, password: String): UserDTO {
 
-        return userRepository.login(email,password)
+        var user = userRepository.login(email,password)
+        val userDto = UserDTO(user?.nameUser!!,user?.email!!,user?.nickName!!, user?.points!!)
+
+        return userDto
 
     }
 
@@ -72,6 +77,15 @@ class UserService {
 
         // var projectRecover = projectRepository.findById(project.id!!.toLong())
         //var userUpdate = userRepository.findById(user.id!!.toLong())
+       // var projectRecover = projectRepository.getOne(project.toLong())
+       // println(projectRecover)
+       // var userUpdate = this.recoverUser(user.toLong())
+       // println(userUpdate)
+       // userUpdate.collaboratesOnAProject(projectRecover, donorUser, date)
+        //var donor = Donor(userUpdate, donorUser, date)
+        //val donorRecover = DonationDTO(donor.nickName!!,projectRecover.nameProject!!,donorUser)
+
+       // return donorRecover
         var projectRecover  = this.projectRepository.recoverProject(donationRequest.project)
         var userUpdate = this.userRepository.recoverUser(donationRequest.user)
 
@@ -81,16 +95,10 @@ class UserService {
        // var donor = Donor(userUpdate.nickName!!, donorUser, date)
 
 
-        //donorRepository.save(donor)
-
-
-           // this.updateUser(userUpdate)
 
 
         return projectRecover.amountCollected()
-
     }
 
-    /*/* fun makeDonation(@Param("user")user:User,*/
-    /*@Param("project")project:Project,@Param("donor")donor:Int,@Param("date")date:LocalDate)*/*/
+
 }

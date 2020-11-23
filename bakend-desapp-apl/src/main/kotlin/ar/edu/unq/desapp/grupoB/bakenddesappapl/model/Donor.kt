@@ -1,10 +1,11 @@
 package ar.edu.unq.desapp.grupoB.bakenddesappapl.model
 
+import java.io.Serializable
 import java.time.LocalDate
 import javax.persistence.*
 
 @Entity
-class Donor() {
+class Donor() : Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,10 +25,11 @@ class Donor() {
     @ManyToOne
     var userD: User? = null
 
-    constructor(nick: String, mount: Int, dateL: LocalDate) : this(){
-        this.nickName = nick
+    constructor(user:User, mount: Int, dateL: LocalDate) : this(){
+        this.nickName = user.nickName
         this.donation = mount
         this.date = dateL
+        this.userD = user
 
     }
 }

@@ -20,7 +20,7 @@ open class Aplication() : Observable(){
     fun userRegister(user : User){
 
         this.listUsers.add(user)
-        this.addObserver(user)
+        //this.addObserver(user)
     }
 
     fun moneyToProvideInternet(project: Project): Int{

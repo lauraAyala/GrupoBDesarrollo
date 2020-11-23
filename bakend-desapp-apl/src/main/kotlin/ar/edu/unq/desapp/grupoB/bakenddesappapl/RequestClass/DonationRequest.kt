@@ -4,5 +4,5 @@ import ar.edu.unq.desapp.grupoB.bakenddesappapl.model.Project
 import ar.edu.unq.desapp.grupoB.bakenddesappapl.model.User
 import java.time.LocalDate
 
-class DonationRequest(val user: Int,val project: Int,val donorUser: Int,val date: LocalDate) {
+class DonationRequest(val user: String,val project: String,val donorUser: Int,val date: LocalDate) {
 }

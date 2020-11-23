@@ -68,24 +68,26 @@ class UserService {
 
     }
 
-    fun makeDonation(user: Int, project: Int, donorUser: Int, date: LocalDate) : Donor{
+    fun makeDonation(donationRequest: DonationRequest) : Int{
 
         // var projectRecover = projectRepository.findById(project.id!!.toLong())
         //var userUpdate = userRepository.findById(user.id!!.toLong())
-        var projectRecover = projectRepository.getOne(project.toLong())
-        var userUpdate = userRepository.getOne(user.toLong())
+        var projectRecover  = this.projectRepository.recoverProject(donationRequest.project)
+        var userUpdate = this.userRepository.recoverUser(donationRequest.user)
 
-            userUpdate.collaboratesOnAProject(projectRecover, donorUser, date)
-        var donor = Donor(userUpdate.nickName!!, donorUser, date)
-
-
-        donorRepository.save(donor)
-
-
-            this.updateUser(userUpdate)
+            userUpdate!!.collaboratesOnAProject(projectRecover,donationRequest.donorUser, donationRequest.date)
+            this.projectRepository.save(projectRecover)
+            this.userRepository.save(userUpdate)
+       // var donor = Donor(userUpdate.nickName!!, donorUser, date)
 
 
-        return donor
+        //donorRepository.save(donor)
+
+
+           // this.updateUser(userUpdate)
+
+
+        return projectRecover.amountCollected()
 
     }
 

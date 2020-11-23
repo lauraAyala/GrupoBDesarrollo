@@ -44,13 +44,13 @@ class UserController(val userService: UserService) {
         return ResponseEntity(user, HttpStatus.OK)
     }
     @PostMapping("/makeDonation")
-    fun makeDonation(@RequestBody donationRequest : DonationRequest) : ResponseEntity<Donor> {
+    fun makeDonation(@RequestBody donationRequest : DonationRequest) : ResponseEntity<Int> {
 
 
 
 
         //val user = userService.makeDonation(donationRequest.user,donationRequest.project,donationRequest.donorUser,donationRequest.date)
-       var donor = userService.makeDonation(donationRequest.user,donationRequest.project,donationRequest.donorUser,donationRequest.date)
+       var donor = userService.makeDonation(donationRequest)
 
         return  ResponseEntity( donor, HttpStatus.OK)
     }

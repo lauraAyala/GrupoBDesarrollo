@@ -1,5 +1,7 @@
 package ar.edu.unq.desapp.grupoB.bakenddesappapl.model
 
+import org.springframework.boot.convert.DataSizeUnit
+import java.io.Serializable
 import java.lang.Exception
 import java.time.LocalDate
 import java.time.Month
@@ -15,8 +17,6 @@ class User (): Observer{
     var id: Long? = null
 
     @Column(nullable = false, length = 500)
-
-
     var nameUser: String? = null
     @Column
     var email: String? = null
@@ -46,7 +46,7 @@ class User (): Observer{
 
     fun collaboratesOnAProject(project: Project, donorUser: Int, date: LocalDate) {
 
-        val donor = Donor(this.nickName!!, donorUser, date)
+        val donor = Donor(this, donorUser, date)
 
         project.locationP!!.listDonation.add(donor)
         this.listDonor.add(donor)
@@ -115,7 +115,7 @@ class User (): Observer{
           }
     }
 
-    override fun update(p0: Observable?, p1: Any?) {
+   override fun update(p0: Observable?, p1: Any?) {
 
         this.cambio = p1.toString()
     }

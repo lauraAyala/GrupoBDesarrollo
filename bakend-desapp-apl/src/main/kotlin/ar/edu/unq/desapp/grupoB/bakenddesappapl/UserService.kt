@@ -1,6 +1,8 @@
 package ar.edu.unq.desapp.grupoB.bakenddesappapl
 
 import ar.edu.unq.desapp.grupoB.bakenddesappapl.RequestClass.DonationRequest
+import ar.edu.unq.desapp.grupoB.bakenddesappapl.dto.DonationDTO
+import ar.edu.unq.desapp.grupoB.bakenddesappapl.dto.UserDTO
 import ar.edu.unq.desapp.grupoB.bakenddesappapl.model.Donor
 import ar.edu.unq.desapp.grupoB.bakenddesappapl.model.Project
 import ar.edu.unq.desapp.grupoB.bakenddesappapl.model.User
@@ -62,21 +64,27 @@ class UserService {
         return this.allUsers()
     }
 
-    fun login(email: String, password: String): User? {
+    fun login(email: String, password: String): UserDTO {
 
-        return userRepository.login(email,password)
+        var user = userRepository.login(email,password)
+        val userDto = UserDTO(user?.nameUser!!,user?.email!!,user?.nickName!!, user?.points!!)
+
+        return userDto
 
     }
 
-    fun makeDonation(user: Int, project: Int, donorUser: Int, date: LocalDate) : Donor{
+    fun makeDonation(user: Int, project: Int, donorUser: Int, date: LocalDate) : DonationDTO{
 
         // var projectRecover = projectRepository.findById(project.id!!.toLong())
         //var userUpdate = userRepository.findById(user.id!!.toLong())
         var projectRecover = projectRepository.getOne(project.toLong())
-        var userUpdate = userRepository.getOne(user.toLong())
+        println(projectRecover)
+        var userUpdate = this.recoverUser(user.toLong())
+        println(userUpdate)
+
 
             userUpdate.collaboratesOnAProject(projectRecover, donorUser, date)
-        var donor = Donor(userUpdate.nickName!!, donorUser, date)
+        var donor = Donor(userUpdate, donorUser, date)
 
 
         donorRepository.save(donor)
@@ -84,8 +92,10 @@ class UserService {
 
             this.updateUser(userUpdate)
 
+        val donorRecover = DonationDTO(donor.nickName!!,projectRecover.nameProject!!,donorUser)
 
-        return donor
+        return donorRecover
+
 
     }
 

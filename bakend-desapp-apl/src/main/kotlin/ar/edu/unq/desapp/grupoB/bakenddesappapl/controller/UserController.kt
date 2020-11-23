@@ -3,6 +3,8 @@ package ar.edu.unq.desapp.grupoB.bakenddesappapl.controller
 import ar.edu.unq.desapp.grupoB.bakenddesappapl.RequestClass.DonationRequest
 import ar.edu.unq.desapp.grupoB.bakenddesappapl.RequestClass.LoginRequest
 import ar.edu.unq.desapp.grupoB.bakenddesappapl.UserService
+import ar.edu.unq.desapp.grupoB.bakenddesappapl.dto.DonationDTO
+import ar.edu.unq.desapp.grupoB.bakenddesappapl.dto.UserDTO
 import ar.edu.unq.desapp.grupoB.bakenddesappapl.model.Donor
 import ar.edu.unq.desapp.grupoB.bakenddesappapl.model.User
 import org.springframework.http.HttpStatus
@@ -36,15 +38,15 @@ class UserController(val userService: UserService) {
         return userService.deleteUserByName(name)
     }
 
-    @PostMapping("/login")
-    fun login(@RequestBody login : LoginRequest): ResponseEntity<User>{
+    @GetMapping("/login")
+    fun login(@RequestBody login : LoginRequest): ResponseEntity<UserDTO>{
 
         val user = userService.login(login.email,login.password)
 
         return ResponseEntity(user, HttpStatus.OK)
     }
     @PostMapping("/makeDonation")
-    fun makeDonation(@RequestBody donationRequest : DonationRequest) : ResponseEntity<Donor> {
+    fun makeDonation(@RequestBody donationRequest : DonationRequest) : ResponseEntity<DonationDTO> {
 
 
 

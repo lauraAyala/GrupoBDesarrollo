@@ -29,8 +29,8 @@ dependencies {
 	implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
 	providedRuntime("org.springframework.boot:spring-boot-starter-tomcat")
 	runtimeOnly ("com.h2database:h2")
-    compile ("io.springfox:springfox-swagger2:2.9.2")
-    compile("io.springfox:springfox-swagger-ui:2.9.2")
+	implementation ("io.springfox:springfox-swagger2:2.7.0")
+	implementation("io.springfox:springfox-swagger-ui:2.7.0")
 	testImplementation("org.springframework.boot:spring-boot-starter-test") {
 		exclude(group = "org.junit.vintage", module = "junit-vintage-engine")
 		testImplementation("junit:junit:4.12")

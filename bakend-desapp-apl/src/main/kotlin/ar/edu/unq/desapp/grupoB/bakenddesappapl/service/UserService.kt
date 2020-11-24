@@ -1,4 +1,4 @@
-package ar.edu.unq.desapp.grupoB.bakenddesappapl
+package ar.edu.unq.desapp.grupoB.bakenddesappapl.service
 
 import ar.edu.unq.desapp.grupoB.bakenddesappapl.RequestClass.DonationRequest
 import ar.edu.unq.desapp.grupoB.bakenddesappapl.dto.DonationDTO
@@ -66,7 +66,7 @@ class UserService {
 
     fun login(email: String, password: String) {
 
-        var user = userRepository.login(email,password)
+        userRepository.login(email,password)
         //val userDto = UserDTO(user?.nameUser!!,user?.email!!,user?.nickName!!, user?.points!!)
 
       
@@ -98,6 +98,16 @@ class UserService {
 
 
         return projectRecover.amountCollected()
+    }
+
+    fun profile(name: String): UserDTO? {
+
+       val userRecover = userRepository.recoverUser(name)
+
+        val user = UserDTO(userRecover?.nameUser!!,userRecover.listDonor,userRecover.points)
+
+        return (user)
+
     }
 
 

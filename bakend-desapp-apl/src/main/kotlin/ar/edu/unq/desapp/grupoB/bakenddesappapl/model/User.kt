@@ -1,12 +1,13 @@
 package ar.edu.unq.desapp.grupoB.bakenddesappapl.model
 
-import org.springframework.boot.convert.DataSizeUnit
-import java.io.Serializable
+
 import java.lang.Exception
 import java.time.LocalDate
 import java.time.Month
 import java.util.*
 import javax.persistence.*
+import javax.validation.constraints.NotBlank
+import javax.validation.constraints.NotNull
 import kotlin.collections.ArrayList
 
 @Entity
@@ -17,17 +18,28 @@ class User (): Observer{
     var id: Long? = null
 
     @Column(nullable = false, length = 500)
+    @NotBlank(message = "Name user is required")
     var nameUser: String? = null
+
     @Column
+    @NotBlank(message = "Email is required")
     var email: String? = null
+
     @Column
+    @NotBlank(message = "Password is required")
     var password: String? = null
+
     @Column
     var isAdmin: Boolean? = null
+
     @Column
+    @NotBlank(message = "Nickname  is required")
     var nickName: String? = null
+
     @Column
+    @NotNull(message = "Points is required")
     var points: Int = 0
+
     @Column
     var cambio: String? = null
     var listOfClosedProjects: ArrayList<Project> = ArrayList()

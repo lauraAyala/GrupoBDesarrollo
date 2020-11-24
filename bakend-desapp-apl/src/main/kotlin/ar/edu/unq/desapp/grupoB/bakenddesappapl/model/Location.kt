@@ -1,6 +1,8 @@
 package ar.edu.unq.desapp.grupoB.bakenddesappapl.model
 
 import javax.persistence.*
+import javax.validation.constraints.NotBlank
+import javax.validation.constraints.NotNull
 
 @Entity
 class Location() {
@@ -9,13 +11,18 @@ class Location() {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     var id: Long? = null
 
-
     @Column(nullable = false, length = 500)
+    @NotBlank(message = " Name is required")
     var name: String? = null
+
     @Column
+    @NotBlank(message = "Province is required")
     var province: String? = null
+
     @Column
+    @NotNull(message = "Population is required")
     var population : Int? = null
+
     @Column
     var stateConective : Boolean? = null
 

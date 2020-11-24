@@ -3,6 +3,8 @@ package ar.edu.unq.desapp.grupoB.bakenddesappapl.model
 import java.io.Serializable
 import java.time.LocalDate
 import javax.persistence.*
+import javax.validation.constraints.NotBlank
+import javax.validation.constraints.NotNull
 
 @Entity
 class Donor() : Serializable {
@@ -12,11 +14,15 @@ class Donor() : Serializable {
     var id: Long? = null
 
     @Column(nullable = false, length = 500)
-
+    @NotBlank(message = "Nickname  is required")
     var nickName : String ? = null
+
     @Column
+    @NotNull(message = "Donation is required")
     var donation: Int ? = null
+
     @Column
+    @NotNull(message = "Date is required")
     var date: LocalDate? = null
 
     @ManyToOne

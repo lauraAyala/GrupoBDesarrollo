@@ -1,4 +1,6 @@
 package ar.edu.unq.desapp.grupoB.bakenddesappapl.dto
 
-class UserDTO(val nameUser: String, val email: String, val nickName:String,val points :Int) {
+import ar.edu.unq.desapp.grupoB.bakenddesappapl.model.Donor
+
+class UserDTO(val nameUser: String, val listDonors: MutableList<Donor>,val points :Int) {
 }

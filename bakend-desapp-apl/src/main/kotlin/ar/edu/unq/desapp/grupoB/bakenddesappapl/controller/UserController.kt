@@ -2,15 +2,12 @@ package ar.edu.unq.desapp.grupoB.bakenddesappapl.controller
 
 import ar.edu.unq.desapp.grupoB.bakenddesappapl.RequestClass.DonationRequest
 import ar.edu.unq.desapp.grupoB.bakenddesappapl.RequestClass.LoginRequest
-import ar.edu.unq.desapp.grupoB.bakenddesappapl.UserService
-import ar.edu.unq.desapp.grupoB.bakenddesappapl.dto.DonationDTO
+import ar.edu.unq.desapp.grupoB.bakenddesappapl.service.UserService
 import ar.edu.unq.desapp.grupoB.bakenddesappapl.dto.UserDTO
-import ar.edu.unq.desapp.grupoB.bakenddesappapl.model.Donor
 import ar.edu.unq.desapp.grupoB.bakenddesappapl.model.User
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
-import java.net.PasswordAuthentication
 
 @Suppress("SpringJavaInjectionPointsAutowiringInspection")
 @CrossOrigin
@@ -61,6 +58,13 @@ class UserController(val userService: UserService) {
         return  ResponseEntity( donor, HttpStatus.OK)
     }
 
+    @GetMapping("/profile/{name}")
+    fun profile(@PathVariable name:String) : ResponseEntity<UserDTO>{
+
+       val user = userService.profile(name)
+
+        return ResponseEntity(user, HttpStatus.OK)
+    }
 
 
 }

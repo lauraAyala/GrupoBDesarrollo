@@ -6,9 +6,11 @@ import java.time.LocalDate
 import java.time.Month
 import java.util.*
 import javax.persistence.*
+import javax.transaction.Transactional
 import javax.validation.constraints.NotBlank
 import javax.validation.constraints.NotNull
 import kotlin.collections.ArrayList
+import kotlin.jvm.Transient
 
 @Entity
 class User (): Observer{
@@ -40,11 +42,13 @@ class User (): Observer{
     @NotNull(message = "Points is required")
     var points: Int = 0
 
-    @Column
+    @Transient
     var cambio: String? = null
     var listOfClosedProjects: ArrayList<Project> = ArrayList()
 
-    @OneToMany(mappedBy = "userD", cascade = [CascadeType.ALL])
+   // @OneToMany(mappedBy = "userD", cascade = [CascadeType.ALL])
+
+    @Transient
     var listDonor: MutableList<Donor> = mutableListOf()
 
     constructor(name: String, mail: String, pass: String, admin: Boolean, nick: String) : this(){
@@ -56,7 +60,7 @@ class User (): Observer{
         this.nickName = nick
     }
 
-    fun collaboratesOnAProject(project: Project, donorUser: Int, date: LocalDate) {
+    fun collaboratesOnAProject(project: Project, donorUser: Int, date: LocalDate) : Donor {
 
         val donor = Donor(this, donorUser, date)
 
@@ -65,6 +69,8 @@ class User (): Observer{
 
         this.scorePoints(donorUser, project, date.month)
         project.donorUsers.add(this)
+
+        return donor
 
     }
 
@@ -80,7 +86,7 @@ class User (): Observer{
             this.points += (donorUser * 2)
 
         }
-        if (isSecondCollaborationInProject(project, monthD)) {
+        if (isSecondCollaborationInProject(monthD)) {
 
             this.points += 500
         }
@@ -88,7 +94,7 @@ class User (): Observer{
 
     }
 
-    fun isSecondCollaborationInProject(project: Project, monthD: Month): Boolean {
+    fun isSecondCollaborationInProject(monthD: Month): Boolean {
 
         //deberia ver que se alla donado a dos proyectos  en el mismo mes
         var res = 0

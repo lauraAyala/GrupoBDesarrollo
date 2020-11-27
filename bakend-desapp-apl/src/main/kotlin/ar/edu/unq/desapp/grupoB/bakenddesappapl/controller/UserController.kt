@@ -2,8 +2,10 @@ package ar.edu.unq.desapp.grupoB.bakenddesappapl.controller
 
 import ar.edu.unq.desapp.grupoB.bakenddesappapl.RequestClass.DonationRequest
 import ar.edu.unq.desapp.grupoB.bakenddesappapl.RequestClass.LoginRequest
+import ar.edu.unq.desapp.grupoB.bakenddesappapl.dto.DonationDTO
 import ar.edu.unq.desapp.grupoB.bakenddesappapl.dto.UserDTO
 import ar.edu.unq.desapp.grupoB.bakenddesappapl.model.User
+import ar.edu.unq.desapp.grupoB.bakenddesappapl.repository.FinishedProjectRequest
 import ar.edu.unq.desapp.grupoB.bakenddesappapl.service.UserService
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
@@ -51,16 +53,15 @@ class UserController(val userService: UserService) {
     }
     @PostMapping("/makeDonation")
 
-    fun makeDonation(@Valid @RequestBody donationRequest: DonationRequest) : ResponseEntity<Int> {
+    fun makeDonation(@Valid @RequestBody donationRequest: DonationRequest) : ResponseEntity<DonationDTO> {
 
    // fun makeDonation(@RequestBody donationRequest : DonationRequest) : ResponseEntity<DonationDTO> {
 
 
-
-
-
         //val user = userService.makeDonation(donationRequest.user,donationRequest.project,donationRequest.donorUser,donationRequest.date)
        var donor = userService.makeDonation(donationRequest)
+
+        println(donor)
 
         return  ResponseEntity(donor, HttpStatus.OK)
     }
@@ -71,6 +72,14 @@ class UserController(val userService: UserService) {
        val user = userService.profile(name)
 
         return ResponseEntity(user, HttpStatus.OK)
+    }
+
+    @PostMapping("/finishedProject")
+    fun finishedProject(@RequestBody finishedProject: FinishedProjectRequest): ResponseEntity<HttpStatus>{
+
+        userService.finishedProject(finishedProject.nameProject,finishedProject.nameUser)
+
+        return ResponseEntity(HttpStatus.OK)
     }
 
     @ResponseStatus(HttpStatus.BAD_REQUEST)

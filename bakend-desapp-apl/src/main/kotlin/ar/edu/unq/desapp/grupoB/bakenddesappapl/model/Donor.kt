@@ -5,6 +5,7 @@ import java.time.LocalDate
 import javax.persistence.*
 import javax.validation.constraints.NotBlank
 import javax.validation.constraints.NotNull
+import kotlin.jvm.Transient
 
 @Entity
 class Donor() : Serializable {
@@ -25,10 +26,7 @@ class Donor() : Serializable {
     @NotNull(message = "Date is required")
     var date: LocalDate? = null
 
-    @ManyToOne
-    var locationD: Location? = null
-
-    @ManyToOne
+    @Transient
     var userD: User? = null
 
     constructor(user:User, mount: Int, dateL: LocalDate) : this(){

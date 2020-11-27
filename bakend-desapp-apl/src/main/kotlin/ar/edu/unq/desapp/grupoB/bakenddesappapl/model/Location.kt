@@ -3,6 +3,7 @@ package ar.edu.unq.desapp.grupoB.bakenddesappapl.model
 import javax.persistence.*
 import javax.validation.constraints.NotBlank
 import javax.validation.constraints.NotNull
+import kotlin.jvm.Transient
 
 @Entity
 class Location() {
@@ -26,8 +27,10 @@ class Location() {
     @Column
     var stateConective : Boolean? = null
 
-    @OneToMany(mappedBy = "locationD", cascade = [CascadeType.ALL], fetch = FetchType.EAGER)
+    //@OneToMany(mappedBy = "locationD", cascade = [CascadeType.ALL], fetch = FetchType.EAGER)
+    @Transient
     var listDonation : MutableList<Donor> = mutableListOf()
+
     var collection : Int = 0
 
     @OneToMany( mappedBy = "locationP",cascade = [CascadeType.ALL], fetch = FetchType.LAZY)

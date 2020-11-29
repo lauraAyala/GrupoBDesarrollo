@@ -25,11 +25,11 @@ import javax.validation.Valid
 class UserController(val userService: UserService) {
 
     @PostMapping("/registerUser")
-    fun createdUser(@Valid @RequestBody user: User) : ResponseEntity<HttpStatus> {
+    fun createdUser(@Valid @RequestBody user: User) : ResponseEntity<User> {
 
-         userService.createUser(user)
+         val user = userService.createUser(user)
 
-        return  ResponseEntity(HttpStatus.CREATED)
+        return  ResponseEntity(user,HttpStatus.CREATED)
 
     }
 
@@ -45,11 +45,11 @@ class UserController(val userService: UserService) {
     }
 
     @PostMapping("/login")
-    fun login(@Valid @RequestBody login: LoginRequest): ResponseEntity<HttpStatus>{
+    fun login(@Valid @RequestBody login: LoginRequest): ResponseEntity<UserDTO>{
 
-        userService.login(login.email, login.password)
+        val user = userService.login(login.email, login.password)
 
-        return ResponseEntity(HttpStatus.OK)
+        return ResponseEntity(user,HttpStatus.OK)
     }
     @PostMapping("/makeDonation")
 

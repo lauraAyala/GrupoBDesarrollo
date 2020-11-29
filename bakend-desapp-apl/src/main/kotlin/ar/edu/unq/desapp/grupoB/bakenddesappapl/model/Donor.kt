@@ -27,6 +27,7 @@ class Donor() : Serializable {
     var date: LocalDate? = null
 
     @Transient
+    @OneToOne
     var userD: User? = null
 
     constructor(user:User, mount: Int, dateL: LocalDate) : this(){

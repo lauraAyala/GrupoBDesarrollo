@@ -40,6 +40,7 @@ dependencies {
 	}
 
 	implementation("org.jscience:jscience:4.3.1")
+	compile ("com.auth0:auth0-spring-security-api:1.1.0")
 
 }
 

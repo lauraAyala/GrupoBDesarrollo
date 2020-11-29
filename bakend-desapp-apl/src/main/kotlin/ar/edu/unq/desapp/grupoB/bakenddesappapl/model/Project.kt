@@ -43,9 +43,12 @@ class Project() {
     var collection :Int =0
 
     @Column(nullable = false, length = 500)
+    @Transient
+    @OneToMany
     var donorUsers:ArrayList<User> = ArrayList()
 
-    @Transient
+   // @Transient
+    @OneToOne
     var locationP : Location? = null
 
 

@@ -15,7 +15,7 @@ import kotlin.jvm.Transient
 @Entity
 @SequenceGenerator(name="seq", initialValue=4, allocationSize=100)
 
-class User (): Observer{
+class User (){
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY, generator="seq")
@@ -51,6 +51,7 @@ class User (): Observer{
    // @OneToMany(mappedBy = "userD", cascade = [CascadeType.ALL])
 
     @Transient
+    @OneToMany
     var listDonor: MutableList<Donor> = mutableListOf()
 
     @Transient
@@ -138,10 +139,10 @@ class User (): Observer{
           }
     }
 
-   override fun update(p0: Observable?, p1: Any?) {
+   /*override fun update(p0: Observable?, p1: Any?) {
 
         this.cambio = p1.toString()
-    }
+    }*/
 
 
 }

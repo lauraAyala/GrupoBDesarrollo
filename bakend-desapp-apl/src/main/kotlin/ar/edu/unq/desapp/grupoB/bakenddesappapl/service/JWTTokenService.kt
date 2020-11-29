@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service
 import java.util.*
 import java.util.stream.Collectors
 
+
 @Service
 class JWTTokenService {
 
@@ -15,7 +16,7 @@ class JWTTokenService {
         fun getJWTToken(name: String?): String {
             val secretKey = "mySecretKey"
             val grantedAuthorities: List<GrantedAuthority> = AuthorityUtils
-                    .commaSeparatedStringToAuthorityList("RS256")
+                    .commaSeparatedStringToAuthorityList("isAdmin")
             val token = Jwts
                     .builder()
                     .setSubject(name)
@@ -24,8 +25,8 @@ class JWTTokenService {
                                     .map<Any>(GrantedAuthority::getAuthority)
                                     .collect(Collectors.toList()))
                     .setIssuedAt(Date(System.currentTimeMillis()))
-                    .setExpiration(Date(System.currentTimeMillis() + 600000))
-                    .signWith(SignatureAlgorithm.HS512,
+                    .setExpiration(Date(System.currentTimeMillis() + 86400))
+                    .signWith(SignatureAlgorithm.RS256,
                             secretKey.toByteArray()).compact()
             return "Bearer $token"
         }

@@ -27,11 +27,11 @@ class UserService {
     lateinit var jWTTokenService: JWTTokenService
 
 
-    fun createUser(user: User){
+    fun createUser(user: User): User {
 
-        userRepository.save(user)
+        val user = userRepository.save(user)
 
-        //return user.id!!.toInt()
+        return user
 
     }
     fun updateUser(user: User){
@@ -62,15 +62,17 @@ class UserService {
         return this.allUsers()
     }
 
-    fun login(email: String, password: String) {
+    fun login(email: String, password: String): UserDTO {
 
         try {
           var  user  = userRepository.login(email, password)
-            //val userDto = UserDTO(user?.nameUser!!,user?.email!!,user?.nickName!!, user?.points!!)
+            val userDto = UserDTO(user?.nameUser!!,user.listDonor,user.points)
 
 
-            val token: String = jWTTokenService.getJWTToken(user?.nameUser)
+
+           val token: String = jWTTokenService.getJWTToken(user?.nameUser)
             user?.tokend = token
+            return userDto
 
         }
         catch ( e:Exception) {

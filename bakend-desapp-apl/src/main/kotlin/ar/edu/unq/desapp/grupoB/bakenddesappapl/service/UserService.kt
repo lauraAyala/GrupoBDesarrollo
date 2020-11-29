@@ -108,6 +108,8 @@ class UserService {
 
         var project = this.projectRepository.recoverProject(nameProject)
         var user = this.userRepository.recoverUser(nameUser)
+        println(project)
+        println(user)
 
         user?.projectFinished(project)
 

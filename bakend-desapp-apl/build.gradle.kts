@@ -31,6 +31,7 @@ dependencies {
 	runtimeOnly ("com.h2database:h2")
 	implementation ("io.springfox:springfox-swagger2:2.7.0")
 	implementation("io.springfox:springfox-swagger-ui:2.7.0")
+	testImplementation ("com.tngtech.archunit:archunit-junit5:0.14.1")
 	testImplementation("org.springframework.boot:spring-boot-starter-test") {
 		exclude(group = "org.junit.vintage", module = "junit-vintage-engine")
 		testImplementation("junit:junit:4.12")
@@ -49,4 +50,5 @@ tasks.withType<KotlinCompile> {
 		freeCompilerArgs = listOf("-Xjsr305=strict")
 		jvmTarget = "1.8"
 	}
+
 }

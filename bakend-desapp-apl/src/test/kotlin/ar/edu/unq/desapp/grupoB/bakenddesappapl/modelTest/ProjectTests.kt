@@ -3,6 +3,7 @@ package ar.edu.unq.desapp.grupoB.bakenddesappapl.modelTest
 import ar.edu.unq.desapp.grupoB.bakenddesappapl.model.Donor
 import ar.edu.unq.desapp.grupoB.bakenddesappapl.model.Location
 import ar.edu.unq.desapp.grupoB.bakenddesappapl.model.Project
+import ar.edu.unq.desapp.grupoB.bakenddesappapl.model.User
 import org.junit.Assert
 import org.junit.jupiter.api.Test
 import java.time.LocalDate
@@ -53,9 +54,12 @@ class ProjectTests {
     @Test
     fun test04GivenAProjectIVerifyHowMuchICollectFromDonations(){
 
+        var user = User("Lara","laraA@gmail.com","lara", false,"ara")
+        var user2 = User("Isaias","isa@gmail.com","isaias", false,"ara")
+
         var quilmes = Location("Quilmes", "Buenos Aires", 10000, false)
-        var donorIsaias = Donor("Isaias", 500, LocalDate.of(2020,4,11))
-        var donorPepe   = Donor("pepe", 1000, LocalDate.of(2020,4,11))
+        var donorIsaias = Donor(user2, 500, LocalDate.of(2020,4,11))
+        var donorPepe   = Donor(user, 1000, LocalDate.of(2020,4,11))
         quilmes!!.donorRegister(donorIsaias!!)
         quilmes!!.donorRegister(donorPepe!!)
         var dateI       = LocalDate.of(2020, 5, 1)
@@ -100,8 +104,10 @@ class ProjectTests {
     @Test
     fun test08GivenAProjectThatReceivedDonationsIVerifyThatTheMinimumRequiredHasBeenCollected(){
 
+        var user = User("Jose","jose@gmail.com","jose", false,"jose")
+
         var bernal      = Location("Quilmes", "Buenos Aires", 10000, false)
-        var donorJose   = Donor("Jose", 6000000, LocalDate.of(2020,4,11))
+        var donorJose   = Donor(user, 6000000, LocalDate.of(2020,4,11))
         bernal!!.donorRegister(donorJose!!)
         var todayDate   = LocalDate.now()
         var dateI       = LocalDate.of(2020, 5, 1)
@@ -118,10 +124,13 @@ class ProjectTests {
     @Test
     fun lastDonationFromProject(){
 
+        var user = User("Lara","laraA@gmail.com","lara", false,"ara")
+        var user2 = User("Isaias","isa@gmail.com","isaias", false,"ara")
+
         var quilmes = Location("Quilmes", "Buenos Aires", 10000, false)
         var dateI       = LocalDate.of(2020, 5, 1)
-        var donorPepe   = Donor("pepe", 1000, LocalDate.of(2020,4,11))
-        var donorIsaias = Donor("Isaias", 500, LocalDate.of(2020,4,11))
+        var donorPepe   = Donor(user, 1000, LocalDate.of(2020,4,11))
+        var donorIsaias = Donor(user2, 500, LocalDate.of(2020,4,11))
         quilmes!!.donorRegister(donorPepe!!)
         quilmes!!.donorRegister(donorIsaias!!)
         var project = Project("ProjectInitial", dateI!!, LocalDate.of(2020,7,8),quilmes!!)
@@ -143,10 +152,13 @@ class ProjectTests {
     @Test
     fun collectionOfAnProjectc(){
 
+        var user = User("Lara","laraA@gmail.com","lara", false,"ara")
+        var user2 = User("Isaias","isa@gmail.com","isaias", false,"ara")
+
         var quilmes = Location("Quilmes", "Buenos Aires", 10000, false)
         var dateI       = LocalDate.of(2020, 5, 1)
-        var donorIsaias = Donor("Isaias", 500, LocalDate.of(2020,4,11))
-        var donorPepe   = Donor("pepe", 1000, LocalDate.of(2020,4,11))
+        var donorIsaias = Donor(user2, 500, LocalDate.of(2020,4,11))
+        var donorPepe   = Donor(user, 1000, LocalDate.of(2020,4,11))
         quilmes!!.donorRegister(donorPepe!!)
         quilmes!!.donorRegister(donorIsaias!!)
         var project = Project("ProjectInitial", dateI!!, LocalDate.of(2020,7,8),quilmes!!)

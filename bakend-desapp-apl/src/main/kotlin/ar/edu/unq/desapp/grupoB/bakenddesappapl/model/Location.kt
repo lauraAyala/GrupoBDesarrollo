@@ -33,7 +33,8 @@ class Location() {
 
     var collection : Int = 0
 
-    @OneToMany( mappedBy = "locationP",cascade = [CascadeType.ALL], fetch = FetchType.LAZY)
+   // @OneToMany( mappedBy = "locationP",cascade = [CascadeType.ALL], fetch = FetchType.LAZY)
+   @Transient
     var projects : MutableList<Project> = mutableListOf()
 
     constructor(nameLocation:String, provinceL:String, populationL: Int, conective:Boolean): this(){

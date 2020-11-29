@@ -5,6 +5,7 @@ import java.time.LocalDate
 import javax.persistence.*
 import javax.validation.constraints.NotBlank
 import javax.validation.constraints.NotNull
+import kotlin.jvm.Transient
 
 @Entity
 class Project() {
@@ -44,7 +45,7 @@ class Project() {
     @Column(nullable = false, length = 500)
     var donorUsers:ArrayList<User> = ArrayList()
 
-    @ManyToOne
+    @Transient
     var locationP : Location? = null
 
 

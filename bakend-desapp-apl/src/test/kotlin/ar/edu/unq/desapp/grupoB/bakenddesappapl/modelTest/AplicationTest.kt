@@ -159,9 +159,12 @@ class AplicationTest {
     fun fromTheApplicationIVerifyTheAmountCollectedFromTheNewProjectThatReceiveTwoDonations(){
 
         var aplicationNew = Aplication()
+        var user = User("Lara","laraA@gmail.com","lara", false,"ara")
+        var user2 = User("Isaias","isa@gmail.com","isaias", false,"ara")
+
         var quilmes     = Location("Quilmes","Buenos Aires",12000,false)
-        var donorPepe   = Donor("pepe", 1000, LocalDate.of(2020,4,11))
-        var donorIsaias = Donor("Isaias", 500, LocalDate.of(2020,4,11))
+        var donorPepe   = Donor(user, 1000, LocalDate.of(2020,4,11))
+        var donorIsaias = Donor(user2, 500, LocalDate.of(2020,4,11))
         quilmes!!.donorRegister(donorPepe!!)
         quilmes!!.donorRegister(donorIsaias!!)
         var project  = Project("Caritas", LocalDate.of(2020,5,8), LocalDate.of(2020,7,8),quilmes!!)

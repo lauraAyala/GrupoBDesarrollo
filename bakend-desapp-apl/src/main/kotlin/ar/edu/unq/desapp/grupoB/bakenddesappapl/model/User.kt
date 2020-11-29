@@ -13,10 +13,12 @@ import kotlin.collections.ArrayList
 import kotlin.jvm.Transient
 
 @Entity
+@SequenceGenerator(name="seq", initialValue=4, allocationSize=100)
+
 class User (): Observer{
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY, generator="seq")
     var id: Long? = null
 
     @Column(nullable = false, length = 500)

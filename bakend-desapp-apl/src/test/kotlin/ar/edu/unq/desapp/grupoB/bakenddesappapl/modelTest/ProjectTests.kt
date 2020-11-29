@@ -74,7 +74,7 @@ class ProjectTests {
 
         var quilmes = Location("Quilmes", "Buenos Aires", 10000, false)
         var dateI       = LocalDate.of(2020, 5, 1)
-        var project = Project("ProjectInitial", dateI!!, LocalDate.of(2020,7,8),quilmes!!)
+        var project = Project("ProjectInitial", dateI!!, LocalDate.of(2021,7,8),quilmes!!)
 
         Assert.assertEquals(false,project!!.itsProjectEndDate())
     }
@@ -89,6 +89,8 @@ class ProjectTests {
 
 
         Assert.assertEquals(true, project2!!.itsProjectEndDate())
+
+
     }
     @Test
     fun test07GivenAProjectIVerifyIfTheMinimumRequiredWasCollected() {

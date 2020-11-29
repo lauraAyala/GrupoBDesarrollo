@@ -29,4 +29,3 @@ class ArchitectureTest {
             .whereLayer("Repository").mayOnlyBeAccessedByLayers("Services")
 */
 }
-   

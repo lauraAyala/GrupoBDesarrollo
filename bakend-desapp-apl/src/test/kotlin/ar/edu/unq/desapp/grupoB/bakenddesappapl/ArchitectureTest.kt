@@ -19,13 +19,13 @@ class ArchitectureTest {
     }*/
 
 
-  /*  @ArchTest
+    @ArchTest
     val layer_dependencies_are_respected: ArchRule = layeredArchitecture()
-            .layer("Controllers").definedBy("ar.edu.unq.desapp.grupoB.backenddesappapl.controller..")
-            .layer("Services").definedBy("ar.edu.unq.desapp.grupoB.backenddesappapl.service..")
-            .layer("Repository").definedBy("ar.edu.unq.desapp.grupoB.backenddesappapl.repository..")
+            .layer("Controllers").definedBy("ar.edu.unq.desapp.grupoB.backenddesappapl.controller.DonationController")
+            .layer("Services").definedBy("ar.edu.unq.desapp.grupoB.backenddesappapl.service.DonationService")
+            .layer("Repository").definedBy("ar.edu.unq.desapp.grupoB.backenddesappapl.repository.DonationRepository")
             .whereLayer("Controllers").mayNotBeAccessedByAnyLayer()
             .whereLayer("Services").mayOnlyBeAccessedByLayers("Controllers")
             .whereLayer("Repository").mayOnlyBeAccessedByLayers("Services")
-*/
+
 }

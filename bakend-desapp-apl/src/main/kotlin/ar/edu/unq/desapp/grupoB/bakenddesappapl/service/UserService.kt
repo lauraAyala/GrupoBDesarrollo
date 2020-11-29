@@ -23,6 +23,9 @@ class UserService {
     @Autowired
     lateinit var donorRepository: DonationRepository
 
+    @Autowired
+    lateinit var jWTTokenService: JWTTokenService
+
 
     fun createUser(user: User){
 
@@ -61,9 +64,18 @@ class UserService {
 
     fun login(email: String, password: String) {
 
-        userRepository.login(email,password)
-        //val userDto = UserDTO(user?.nameUser!!,user?.email!!,user?.nickName!!, user?.points!!)
+        try {
+          var  user  = userRepository.login(email, password)
+            //val userDto = UserDTO(user?.nameUser!!,user?.email!!,user?.nickName!!, user?.points!!)
 
+
+            val token: String = jWTTokenService.getJWTToken(user?.nameUser)
+            user?.tokend = token
+
+        }
+        catch ( e:Exception) {
+            throw Exception("the email or password is incorrect");
+        }
     }
 
     fun makeDonation(donationRequest: DonationRequest) : DonationDTO {

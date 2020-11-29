@@ -53,6 +53,9 @@ class User (): Observer{
     @Transient
     var listDonor: MutableList<Donor> = mutableListOf()
 
+    @Transient
+    var tokend:String? = null
+
     constructor(name: String, mail: String, pass: String, admin: Boolean, nick: String) : this(){
 
         this.nameUser = name

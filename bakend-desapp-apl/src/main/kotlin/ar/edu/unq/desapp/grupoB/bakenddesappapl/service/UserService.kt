@@ -23,8 +23,8 @@ class UserService {
     @Autowired
     lateinit var donorRepository: DonationRepository
 
-    @Autowired
-    lateinit var jWTTokenService: JWTTokenService
+   // @Autowired
+   // lateinit var jWTTokenService: JWTTokenService
 
 
     fun createUser(user: User): User {
@@ -70,8 +70,8 @@ class UserService {
 
 
 
-           val token: String = jWTTokenService.getJWTToken(user?.nameUser)
-            user?.tokend = token
+           /*val token: String = jWTTokenService.getJWTToken(user?.nameUser)
+            user?.tokend = token*/
             return userDto
 
         }
@@ -97,7 +97,9 @@ class UserService {
         var userUpdate = this.userRepository.recoverUser(donationRequest.user)
 
           var donor =  userUpdate!!.collaboratesOnAProject(projectRecover,donationRequest.donorUser, donationRequest.date)
-          projectRecover =  this.projectRepository.saveAndFlush(projectRecover)
+        println(donor)
+        projectRecover =  this.projectRepository.saveAndFlush(projectRecover)
+        println(projectRecover)
           this.userRepository.saveAndFlush(userUpdate)
        // var donor = Donor(userUpdate.nickName!!, donorUser, date)
 

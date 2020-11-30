@@ -45,9 +45,9 @@ class Project() {
     @Column(nullable = false, length = 500)
     @Transient
     @OneToMany
-    var donorUsers:ArrayList<User> = ArrayList()
+    var donorUsers:MutableList<User> = mutableListOf()
 
-   // @Transient
+
     @OneToOne
     var locationP : Location? = null
 

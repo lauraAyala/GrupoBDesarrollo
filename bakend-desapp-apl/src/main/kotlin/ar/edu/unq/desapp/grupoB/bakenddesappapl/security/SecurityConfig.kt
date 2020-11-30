@@ -2,11 +2,11 @@ package ar.edu.unq.desapp.grupoB.bakenddesappapl.security
 
 import io.swagger.models.HttpMethod
 import org.springframework.context.annotation.Configuration
-import org.springframework.security.config.annotation.web.builders.HttpSecurity
+/*import org.springframework.security.config.annotation.web.builders.HttpSecurity
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity
-import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter*/
 
-@Configuration
+/*@Configuration
 @EnableWebSecurity
 class SecurityConfig {
 
@@ -25,5 +25,5 @@ class SecurityConfig {
     //JWTAuthorizationFilter(),
 }
 
-
+*/
 

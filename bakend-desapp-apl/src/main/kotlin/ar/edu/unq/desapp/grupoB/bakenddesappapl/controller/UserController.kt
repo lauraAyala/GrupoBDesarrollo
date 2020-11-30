@@ -62,7 +62,7 @@ class UserController(val userService: UserService) {
        var donor = userService.makeDonation(donationRequest)
 
 
-        return  ResponseEntity(donor, HttpStatus.BAD_REQUEST)
+        return  ResponseEntity(donor, HttpStatus.OK)
     }
 
     @GetMapping("/profile/{name}")

@@ -29,12 +29,14 @@ class Location() {
 
     //@OneToMany(mappedBy = "locationD", cascade = [CascadeType.ALL], fetch = FetchType.EAGER)
     @Transient
+    @OneToMany
     var listDonation : MutableList<Donor> = mutableListOf()
 
     var collection : Int = 0
 
    // @OneToMany( mappedBy = "locationP",cascade = [CascadeType.ALL], fetch = FetchType.LAZY)
    @Transient
+   @OneToMany
     var projects : MutableList<Project> = mutableListOf()
 
     constructor(nameLocation:String, provinceL:String, populationL: Int, conective:Boolean): this(){

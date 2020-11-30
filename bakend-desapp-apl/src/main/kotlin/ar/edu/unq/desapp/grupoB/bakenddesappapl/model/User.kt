@@ -50,7 +50,7 @@ class User (){
 
    // @OneToMany(mappedBy = "userD", cascade = [CascadeType.ALL])
 
-    @Transient
+   @Transient
     @OneToMany
     var listDonor: MutableList<Donor> = mutableListOf()
 
@@ -70,7 +70,9 @@ class User (){
 
         val donor = Donor(this, donorUser, date)
 
-        project.locationP!!.listDonation.add(donor)
+       project.locationP!!.listDonation.add(donor)
+        var mount = project.amountCollected()
+        project.collection = mount
         this.listDonor.add(donor)
 
         this.scorePoints(donorUser, project, date.month)
@@ -130,7 +132,7 @@ class User (){
 
     fun projectFinished(project: Project) {
 
-        if (isAdmin!! && this.theProjectIsComplete(project)){
+        if (this.isAdmin!! && this.theProjectIsComplete(project)){
                   project.notifyDonorsThatTheProjectHasEnded()
         }
         else {

@@ -7,12 +7,15 @@ import ar.edu.unq.desapp.grupoB.bakenddesappapl.dto.UserDTO
 import ar.edu.unq.desapp.grupoB.bakenddesappapl.model.User
 import ar.edu.unq.desapp.grupoB.bakenddesappapl.repository.FinishedProjectRequest
 import ar.edu.unq.desapp.grupoB.bakenddesappapl.service.UserService
+import org.springframework.data.jpa.convert.threeten.Jsr310JpaConverters
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.validation.FieldError
 import org.springframework.validation.ObjectError
 import org.springframework.web.bind.MethodArgumentNotValidException
 import org.springframework.web.bind.annotation.*
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
 import java.util.*
 import java.util.function.Consumer
 import javax.validation.Valid
@@ -53,16 +56,15 @@ class UserController(val userService: UserService) {
     }
     @PostMapping("/makeDonation")
 
-    fun makeDonation(@Valid @RequestBody donationRequest: DonationRequest) : ResponseEntity<DonationDTO> {
-
-   // fun makeDonation(@RequestBody donationRequest : DonationRequest) : ResponseEntity<DonationDTO> {
-
-
+    fun makeDonation(@Valid @RequestBody donationRequest: DonationRequest) : ResponseEntity<UserDTO> {
+        val date = LocalDate.now()
+        println(date)
         //val user = userService.makeDonation(donationRequest.user,donationRequest.project,donationRequest.donorUser,donationRequest.date)
-       var donor = userService.makeDonation(donationRequest)
+       var user = userService.makeDonation(donationRequest.user!!, donationRequest.project,donationRequest.donorUser, date )
 
 
-        return  ResponseEntity(donor, HttpStatus.OK)
+
+        return  ResponseEntity(user, HttpStatus.OK)
     }
 
     @GetMapping("/profile/{name}")

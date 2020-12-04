@@ -1,6 +1,5 @@
 package ar.edu.unq.desapp.grupoB.bakenddesappapl.service
 
-import ar.edu.unq.desapp.grupoB.bakenddesappapl.RequestClass.DonationRequest
 import ar.edu.unq.desapp.grupoB.bakenddesappapl.dto.DonationDTO
 import ar.edu.unq.desapp.grupoB.bakenddesappapl.dto.UserDTO
 import ar.edu.unq.desapp.grupoB.bakenddesappapl.model.Donor
@@ -9,7 +8,10 @@ import ar.edu.unq.desapp.grupoB.bakenddesappapl.repository.DonationRepository
 import ar.edu.unq.desapp.grupoB.bakenddesappapl.repository.ProjectRepository
 import ar.edu.unq.desapp.grupoB.bakenddesappapl.repository.UserRepository
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.http.HttpStatus
+import org.springframework.http.ResponseEntity
 import org.springframework.stereotype.Service
+import java.time.LocalDate
 
 
 @Service
@@ -80,7 +82,7 @@ class UserService {
         }
     }
 
-    fun makeDonation(donationRequest: DonationRequest) : DonationDTO {
+    fun makeDonation(user: String,project: String, amount: Int, date: LocalDate) : UserDTO {
 
         // var projectRecover = projectRepository.findById(project.id!!.toLong())
         //var userUpdate = userRepository.findById(user.id!!.toLong())
@@ -93,10 +95,10 @@ class UserService {
         //val donorRecover = DonationDTO(donor.nickName!!,projectRecover.nameProject!!,donorUser)
 
        // return donorRecover
-        var projectRecover  = this.projectRepository.recoverProject(donationRequest.project)
-        var userUpdate = this.userRepository.recoverUser(donationRequest.user)
+        var projectRecover  = this.projectRepository.recoverProject(project)
+        var userUpdate = this.userRepository.recoverUser(user)
 
-          var donor =  userUpdate!!.collaboratesOnAProject(projectRecover,donationRequest.donorUser, donationRequest.date)
+          var donor =  userUpdate!!.collaboratesOnAProject(projectRecover,amount, date)
         println(donor)
         projectRecover =  this.projectRepository.saveAndFlush(projectRecover)
         println(projectRecover)
@@ -105,9 +107,10 @@ class UserService {
 
           this.donorRepository.save(donor)
 
-        val donorDto = DonationDTO(donor.nickName!!,projectRecover.nameProject!!, donationRequest.donorUser)
+        val userDto = UserDTO(user,userUpdate.listDonor,userUpdate.points)
+        val donorDto = DonationDTO(donor.nickName!!,projectRecover.nameProject!!,amount)
 
-        return  donorDto
+        return  userDto
     }
 
     fun profile(name: String): UserDTO? {

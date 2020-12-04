@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.PostMapping as PostMapping1
 
 @Suppress("SpringJavaInjectionPointsAutowiringInspection")
 @RestController
+@CrossOrigin
 @RequestMapping("/donation")
 class DonationController(val donationService: DonationService) {
     

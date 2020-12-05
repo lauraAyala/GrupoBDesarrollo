@@ -14,7 +14,7 @@ class DonorTests {
 
         var user = User("Pedro","pepe@gmail.com","pepe",false,"pepe")
 
-        var donor = Donor(user, 1000, LocalDate.of(2020,4,11))
+        var donor = Donor(user, 1000,"Caritas", LocalDate.of(2020,4,11))
 
 
         Assert.assertEquals(donor!!.nickName, "pepe")

@@ -46,10 +46,21 @@ class UserService {
         return userRepository.getOne(id)
 
     }
-    fun allDonation(user: User): MutableList<Donor>{
+    fun allDonation(user: String): MutableList<Donor>{
 
-      //  var userUpdate = userRepository.getOne(user.id!!.toLong())
-        return user.listDonor
+      val donors = donorRepository.findAll()
+        var donations: MutableList<Donor> =  mutableListOf()
+
+        for (d in donors){
+
+            if(d.userD?.nameUser == user){
+
+                donations.add(d)
+
+            }
+        }
+
+        return donors
 
     }
 

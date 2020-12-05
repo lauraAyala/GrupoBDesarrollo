@@ -68,7 +68,7 @@ class User (){
 
     fun collaboratesOnAProject(project: Project, donorUser: Int, date: LocalDate) : Donor {
 
-        val donor = Donor(this, donorUser, date)
+        val donor = Donor(this, donorUser, project.nameProject!!, date)
 
        project.locationP!!.listDonation.add(donor)
         var mount = project.amountCollected()

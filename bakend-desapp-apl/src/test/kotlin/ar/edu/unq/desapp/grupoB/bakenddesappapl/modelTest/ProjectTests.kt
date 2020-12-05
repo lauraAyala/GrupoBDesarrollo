@@ -58,8 +58,8 @@ class ProjectTests {
         var user2 = User("Isaias","isa@gmail.com","isaias", false,"ara")
 
         var quilmes = Location("Quilmes", "Buenos Aires", 10000, false)
-        var donorIsaias = Donor(user2, 500, LocalDate.of(2020,4,11))
-        var donorPepe   = Donor(user, 1000, LocalDate.of(2020,4,11))
+        var donorIsaias = Donor(user2, 500, "ProjectInitial", LocalDate.of(2020,4,11))
+        var donorPepe   = Donor(user, 1000, "ProjectInitial",LocalDate.of(2020,4,11))
         quilmes!!.donorRegister(donorIsaias!!)
         quilmes!!.donorRegister(donorPepe!!)
         var dateI       = LocalDate.of(2020, 5, 1)
@@ -109,7 +109,7 @@ class ProjectTests {
         var user = User("Jose","jose@gmail.com","jose", false,"jose")
 
         var bernal      = Location("Quilmes", "Buenos Aires", 10000, false)
-        var donorJose   = Donor(user, 6000000, LocalDate.of(2020,4,11))
+        var donorJose   = Donor(user, 6000000,"Project2", LocalDate.of(2020,4,11))
         bernal!!.donorRegister(donorJose!!)
         var todayDate   = LocalDate.now()
         var dateI       = LocalDate.of(2020, 5, 1)
@@ -131,8 +131,8 @@ class ProjectTests {
 
         var quilmes = Location("Quilmes", "Buenos Aires", 10000, false)
         var dateI       = LocalDate.of(2020, 5, 1)
-        var donorPepe   = Donor(user, 1000, LocalDate.of(2020,4,11))
-        var donorIsaias = Donor(user2, 500, LocalDate.of(2020,4,11))
+        var donorPepe   = Donor(user, 1000,"ProjectInitial", LocalDate.of(2020,4,11))
+        var donorIsaias = Donor(user2, 500,"ProjectInitial", LocalDate.of(2020,4,11))
         quilmes!!.donorRegister(donorPepe!!)
         quilmes!!.donorRegister(donorIsaias!!)
         var project = Project("ProjectInitial", dateI!!, LocalDate.of(2020,7,8),quilmes!!)
@@ -159,8 +159,8 @@ class ProjectTests {
 
         var quilmes = Location("Quilmes", "Buenos Aires", 10000, false)
         var dateI       = LocalDate.of(2020, 5, 1)
-        var donorIsaias = Donor(user2, 500, LocalDate.of(2020,4,11))
-        var donorPepe   = Donor(user, 1000, LocalDate.of(2020,4,11))
+        var donorIsaias = Donor(user2, 500, "ProjectInitial",LocalDate.of(2020,4,11))
+        var donorPepe   = Donor(user, 1000, "ProjectInitial",LocalDate.of(2020,4,11))
         quilmes!!.donorRegister(donorPepe!!)
         quilmes!!.donorRegister(donorIsaias!!)
         var project = Project("ProjectInitial", dateI!!, LocalDate.of(2020,7,8),quilmes!!)

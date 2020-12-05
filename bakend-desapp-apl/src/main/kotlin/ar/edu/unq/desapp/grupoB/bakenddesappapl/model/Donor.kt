@@ -30,9 +30,15 @@ class Donor() : Serializable {
      @OneToOne
     var userD: User? = null
 
-    constructor(user:User, mount: Int, dateL: LocalDate) : this(){
+    @Column
+    var nameProject: String? = null
+
+
+
+    constructor(user:User, mount: Int, nameP: String, dateL: LocalDate) : this(){
         this.nickName = user.nickName
         this.donation = mount
+        this.nameProject = nameP
         this.date = dateL
         this.userD = user
 

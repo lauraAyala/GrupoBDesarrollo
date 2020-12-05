@@ -4,6 +4,7 @@ import ar.edu.unq.desapp.grupoB.bakenddesappapl.RequestClass.DonationRequest
 import ar.edu.unq.desapp.grupoB.bakenddesappapl.RequestClass.LoginRequest
 import ar.edu.unq.desapp.grupoB.bakenddesappapl.dto.DonationDTO
 import ar.edu.unq.desapp.grupoB.bakenddesappapl.dto.UserDTO
+import ar.edu.unq.desapp.grupoB.bakenddesappapl.model.Donor
 import ar.edu.unq.desapp.grupoB.bakenddesappapl.model.User
 import ar.edu.unq.desapp.grupoB.bakenddesappapl.repository.FinishedProjectRequest
 import ar.edu.unq.desapp.grupoB.bakenddesappapl.service.UserService
@@ -73,6 +74,14 @@ class UserController(val userService: UserService) {
        val user = userService.profile(name)
 
         return ResponseEntity(user, HttpStatus.OK)
+    }
+
+    @GetMapping("/donations/{name}")
+    fun allDonations(@PathVariable name: String): ResponseEntity<MutableList<Donor>> {
+
+        val donors = userService.allDonation(name)
+
+        return ResponseEntity(donors, HttpStatus.OK)
     }
 
     @PostMapping("/finishedProject")

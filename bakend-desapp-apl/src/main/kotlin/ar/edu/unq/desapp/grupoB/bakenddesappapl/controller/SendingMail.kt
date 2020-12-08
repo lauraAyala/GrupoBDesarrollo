@@ -6,7 +6,7 @@ import org.springframework.scheduling.annotation.Scheduled
 import org.springframework.stereotype.Component
 import org.springframework.stereotype.Controller
 
-/*@Component
+@Component
 @Controller
 class SendingMail {
 
@@ -18,4 +18,4 @@ class SendingMail {
 
         donationRepository.top10Donations()
     }
-}*/
+}
